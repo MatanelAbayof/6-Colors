@@ -1,3 +1,9 @@
+/*
+ * main for tests
+ */
+#define MATANEL_TESTS
+#ifdef MATANEL_TESTS
+
 #pragma region Libs
 // for SFML library
 #ifdef _DEBUG
@@ -17,7 +23,8 @@
 #endif
 #pragma endregion
 
-
+#pragma region Includes
+//-------------- include section --------------
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -27,17 +34,34 @@
 #include "VerticalLayout.h"
 #include "EditText.h"
 #include "ImageButton.h"
+#include "ErrorDialog.h"
+#pragma endregion
 
+#pragma region Usings
+//-------------- using section -----------------
 using namespace GUI;
+#pragma endregion
 
+#pragma region Declarations
+//-------------- declare functions -------------
 sf::Color randColor();
 void testGUI();
+#pragma endregion
 
+//--------------  main -------------------------
 int main()
 {
     std::cout << "Hello World!\n";
 
-	testGUI();
+	try
+	{
+		testGUI();
+	}
+	catch (const std::exception& ex)
+	{
+		// Oh No! error...
+		ErrorDialog::show(ex.what());
+	}
 }
 
 void testGUI() {
@@ -118,3 +142,6 @@ void testGUI() {
 sf::Color randColor() {
 	return sf::Color(rand() % 0xFF, rand() % 0xFF, rand() % 0xFF);
 }
+
+
+#endif // MATANEL_TESTS
