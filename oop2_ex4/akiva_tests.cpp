@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define MATANEL_TESTS
+#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
 #pragma region Libs
@@ -46,6 +46,7 @@ using namespace GUI;
 //-------------- declare functions -------------
 sf::Color randColor();
 void testGUI();
+void testFirstTime();
 #pragma endregion
 
 //--------------  main -------------------------
@@ -55,12 +56,51 @@ int main()
 
 	try
 	{
+		testFirstTime();
 		//testGUI();
 	}
 	catch (const std::exception& ex)
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testFirstTime() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "testFirstTime");
+
+	// create root view
+	VerticalLayout<Button> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(2.f);
+	mainLayout.getBorder().setColor(sf::Color::Cyan);
+
+
+	// add button
+	std::shared_ptr<Button> bt1 = std::make_shared<Button>(window, "Bt1");
+	bt1->getBorder().setSize(1.f);
+	bt1->getBorder().setColor(sf::Color::Red);
+	bt1->addClickListener([&bt1](View& view) {
+		bt1->hide();
+	});
+	mainLayout.addView(bt1);
+	std::shared_ptr<Button> bt2 = std::make_shared<Button>(window, "Bt2");
+	mainLayout.addView(bt2);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 

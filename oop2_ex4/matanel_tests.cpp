@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-#define MATANEL_TESTS
+//#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
 #pragma region Libs
