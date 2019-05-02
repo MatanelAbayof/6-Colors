@@ -1,0 +1,12 @@
+{
+    "textures": [
+        {
+            "name": "life",
+            "path": "life.png"
+        },
+        {
+            "name": "wall",
+            "path": "wall.png"
+        }
+    ]
+}

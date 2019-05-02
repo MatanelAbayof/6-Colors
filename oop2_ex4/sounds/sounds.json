@@ -1,0 +1,16 @@
+{
+    "sounds": [
+        {
+            "name": "bt_click",
+            "path": "bt_click.ogg"
+        },
+        {
+            "name": "bt_hover",
+            "path": "bt_hover.ogg"
+        },
+        {
+            "name": "error",
+            "path": "error.ogg"
+        }
+    ]
+}

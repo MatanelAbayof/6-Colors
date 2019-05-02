@@ -92,6 +92,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,6 +109,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,6 +128,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,6 +149,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,7 +159,61 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlertDialog.cpp" />
+    <ClCompile Include="Border.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="EditText.cpp" />
+    <ClCompile Include="ErrorDialog.cpp" />
+    <ClCompile Include="example_class.cpp" />
+    <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="ImageButton.cpp" />
+    <ClCompile Include="ImageTexture.cpp" />
+    <ClCompile Include="ImageView.cpp" />
+    <ClCompile Include="LoadResourceException.cpp" />
     <ClCompile Include="oop2_ex4.cpp" />
+    <ClCompile Include="RectUtils.cpp" />
+    <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="TextureInfo.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TextView.cpp" />
+    <ClCompile Include="Utilities.cpp" />
+    <ClCompile Include="View.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlertDialog.h" />
+    <ClInclude Include="Border.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Cell.h" />
+    <ClInclude Include="EditText.h" />
+    <ClInclude Include="ErrorDialog.h" />
+    <ClInclude Include="example_class.h" />
+    <ClInclude Include="FontManager.h" />
+    <ClInclude Include="HorizontalLayout.h" />
+    <ClInclude Include="IHandler.h" />
+    <ClInclude Include="ImageButton.h" />
+    <ClInclude Include="ImageTexture.h" />
+    <ClInclude Include="ImageView.h" />
+    <ClInclude Include="LoadResourceException.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="RectUtils.h" />
+    <ClInclude Include="RelativeLayout.h" />
+    <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="TextureInfo.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TextView.h" />
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="VerticalLayout.h" />
+    <ClInclude Include="View.h" />
+    <ClInclude Include="ViewGroup.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fonts\fonts.json" />
+    <None Include="sounds\back_musics.json" />
+    <None Include="sounds\sounds.json" />
+    <None Include="textures\textures.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,12 @@
+{
+    "fonts": [
+        {
+            "name": "arial",
+            "path": "arial.ttf"
+        },
+        {
+            "name": "ARLRDBD",
+            "path": "ARLRDBD.TTF"
+        }
+    ]
+}
