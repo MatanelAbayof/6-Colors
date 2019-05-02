@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="akiva_tests.cpp" />
     <ClCompile Include="AlertDialog.cpp" />
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -171,7 +172,8 @@
     <ClCompile Include="ImageTexture.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="LoadResourceException.cpp" />
-    <ClCompile Include="oop2_ex4.cpp" />
+    <ClCompile Include="matanel_tests.cpp" />
+    <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="RectUtils.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="SoundManager.cpp" />

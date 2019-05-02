@@ -1,11 +1,11 @@
 /*
  * main for tests
  */
-#define MATANEL_TESTS
+//#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
 #pragma region Libs
-// for SFML library
+ // for SFML library
 #ifdef _DEBUG
 #pragma comment ( lib , "sfml-main-d.lib" )
 #pragma comment ( lib , "sfml-system-d.lib" )
@@ -51,11 +51,11 @@ void testGUI();
 //--------------  main -------------------------
 int main()
 {
-    std::cout << "Hello World!\n";
+	std::cout << "Hello Akiva World!\n";
 
 	try
 	{
-		testGUI();
+		//testGUI();
 	}
 	catch (const std::exception& ex)
 	{
