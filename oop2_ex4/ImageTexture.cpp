@@ -111,5 +111,5 @@ void GUI::ImageTexture::draw(sf::RenderWindow& window)
 string GUI::ImageTexture::toString() const
 {
 	string loadModeStr = (m_loadMode == COLOR) ? "Color" : "Texture";
-	return "ImageTexture: loadMode=" + loadModeStr;
+	return "ImageTexture: { loadMode=" + loadModeStr + " }";
 }

@@ -80,7 +80,7 @@ void GUI::TextView::draw()
 
 string GUI::TextView::toString() const
 {
-	return "TextView: text=" + m_text.getString() + ", " + View::toString();
+	return "TextView: { text=" + m_text.getString() + ", " + View::toString() + " }";
 }
 
 void GUI::TextView::updateComponents()

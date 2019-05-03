@@ -14,7 +14,7 @@ void GUI::ErrorDialog::show(const string& errorMessage)
 
 string GUI::ErrorDialog::toString() const
 {
-	return "ErrorDialog: " + AlertDialog::toString();
+	return "ErrorDialog: { " + AlertDialog::toString() + " }";
 }
 
 GUI::ErrorDialog::ErrorDialog(sf::RenderWindow& window, const string& errorMessage)

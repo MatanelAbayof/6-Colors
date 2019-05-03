@@ -25,15 +25,15 @@ const sf::Font& GUI::FontManager::getFont(const string& name)
 
 string GUI::FontManager::toString() const
 {
-	string str = "FontManager: Fonts names={ ";
+	string str = "FontManager: { names={ ";
 	int count = 0;
 	for (auto it = m_fonts.cbegin(); it != m_fonts.cend(); ++it) {
 		str += it->first;
-		if (count + 1 < m_fonts.size())
+		if (count + 1 < static_cast<int>(m_fonts.size()))
 			str += ", ";
 		count++;
 	}
-	str += " } " + ResourceLoader::toString();
+	str += " } " + ResourceLoader::toString() + " }";
 	return str;
 }
 
