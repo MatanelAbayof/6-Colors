@@ -16,6 +16,7 @@ void ColorPanel::initComponents(sf::RenderWindow & window)
 {
 	// set my border & background
 	getBorder().setColor(sf::Color::Black);
+	getBorder().setSize(1.f);
 	getBackground().setColor(sf::Color(240, 255, 239));
 
 	//init ptr
@@ -39,6 +40,7 @@ void ColorPanel::initButton(std::shared_ptr<ColorButton> bt)
 {
 	bt->getBackground().setColor(bt->getColor());
 	bt->getBorder().setColor(sf::Color::Black);
+	bt->getBorder().setSize(1.f);
 	float relativeSize = float(1.f / 6.f);
 	addView(bt, relativeSize);
 }

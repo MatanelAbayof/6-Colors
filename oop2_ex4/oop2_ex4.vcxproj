@@ -162,8 +162,12 @@
     <ClCompile Include="akiva_tests.cpp" />
     <ClCompile Include="AlertDialog.cpp" />
     <ClCompile Include="Border.cpp" />
+    <ClCompile Include="BotoomPanel.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="ClientThread.cpp" />
+    <ClCompile Include="ColorButton.cpp" />
+    <ClCompile Include="ColorPanel.cpp" />
     <ClCompile Include="EditText.cpp" />
     <ClCompile Include="ErrorDialog.cpp" />
     <ClCompile Include="example_class.cpp" />
@@ -193,8 +197,12 @@
   <ItemGroup>
     <ClInclude Include="AlertDialog.h" />
     <ClInclude Include="Border.h" />
+    <ClInclude Include="BotoomPanel.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="ClientThread.h" />
+    <ClInclude Include="ColorButton.h" />
+    <ClInclude Include="ColorPanel.h" />
     <ClInclude Include="EditText.h" />
     <ClInclude Include="ErrorDialog.h" />
     <ClInclude Include="example_class.h" />

@@ -14,11 +14,11 @@ class ColorButton :
 {
 public:
 	// constructor
-	ColorButton(sf::RenderWindow& window, const sf::Color color);
+	ColorButton(sf::RenderWindow& window, const sf::Color& color);
 	//get color
 	sf::Color getColor() const;
 	//set color
-	void setColor(const sf::Color color);
+	void setColor(const sf::Color& color);
 	// convert to string
 	virtual string toString() const;
 private:

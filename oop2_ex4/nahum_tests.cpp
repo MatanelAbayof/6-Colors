@@ -38,6 +38,7 @@
 #include "GameMenu.h"
 #include "ColorButton.h"
 #include "ColorPanel.h"
+#include "BotoomPanel.h"
 #pragma endregion
 
 #pragma region Usings
@@ -83,9 +84,10 @@ void testGameMenu() {
 	
 	// add edit text
 	std::shared_ptr<GameMenu> et = std::make_shared<GameMenu>(window);
-	std::shared_ptr<ColorPanel> cp = std::make_shared<ColorPanel>(window);
+	//std::shared_ptr<ColorPanel> cp = std::make_shared<ColorPanel>(window);
+	std::shared_ptr<BotoomPanel> bp = std::make_shared<BotoomPanel>(window);
 	mainLayout.addView(et);
-	mainLayout.addView(cp);
+	mainLayout.addView(bp);
 
 	while (window.isOpen())
 	{

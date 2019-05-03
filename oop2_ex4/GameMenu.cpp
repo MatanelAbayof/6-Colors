@@ -16,6 +16,7 @@ void GameMenu::initComponents(sf::RenderWindow& window)
 {
 	// set my border & background
 	getBorder().setColor(sf::Color::Black);
+	getBorder().setSize(1.f);
 	getBackground().setColor(sf::Color(240, 255, 239));
 	
 	m_restart = std::make_shared<GUI::Button>(window, "restart");
@@ -31,6 +32,8 @@ void GameMenu::initComponents(sf::RenderWindow& window)
 void GameMenu::initButton(std::shared_ptr<GUI::Button> bt)
 {
 	bt->getBorder().setColor(sf::Color::Black);
+	bt->getBorder().setSize(1.f);
+	bt->setTextSize(70);
 	/*addEnterListener([bt](View &view) {
 		bt->getBackground().setColor(sf::Color::Transparent);
 	});
