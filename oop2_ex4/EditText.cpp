@@ -10,7 +10,7 @@ GUI::EditText::EditText(sf::RenderWindow& window, const string& text)
 
 string GUI::EditText::toString() const
 {
-	return "EditText: recordText=" + std::to_string(m_recordText) + ", " + TextView::toString();
+	return "EditText: { recordText=" + std::to_string(m_recordText) + ", " + TextView::toString() + " }";
 }
 
 void GUI::EditText::init()

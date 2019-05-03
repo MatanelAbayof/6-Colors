@@ -55,6 +55,6 @@ const sf::Texture& GUI::TextureInfo::getTexture() const
 
 string GUI::TextureInfo::toString() const
 {
-	return "TextureInfo: numOfRows=" + std::to_string(m_numOfRows) + ", numOfCols=" + std::to_string(m_numOfCols) +
-		   ", numOfImages=" + std::to_string(m_numOfImages);
+	return "TextureInfo: { numOfRows=" + std::to_string(m_numOfRows) + ", numOfCols=" + std::to_string(m_numOfCols) +
+			", numOfImages=" + std::to_string(m_numOfImages) + " }";
 }

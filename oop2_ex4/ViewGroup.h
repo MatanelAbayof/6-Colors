@@ -105,10 +105,10 @@ void GUI::ViewGroup<ViewType>::draw()
 template <class ViewType>
 string GUI::ViewGroup<ViewType>::toString() const
 {
-	string str = "ViewGroup: view=" + View::toString() + ", childs={\n";
+	string str = "ViewGroup: { view=" + View::toString() + ", childs={\n";
 	for (const auto& view : m_views)
 		str += "v=" + view->toString() + "\n";
-	str += "}";
+	str += "} }";
 	return str;
 }
 

@@ -69,8 +69,8 @@ int main()
 
 	try
 	{
-		testClientAndServerNetwork();
-		//testGUI();
+		//testClientAndServerNetwork();
+		testGUI();
 	}
 	catch (const std::exception& ex)
 	{
@@ -89,7 +89,7 @@ void testClientAndServerNetwork() {
 
 	// create clients threads
 	std::vector<std::unique_ptr<std::thread>> clients;
-	int numOfClients = 1;
+	int numOfClients = 2;
 	for (int i = 0; i < numOfClients; i++) {
 		std::unique_ptr<std::thread> clientTheard = std::make_unique<std::thread>(testClientNetwork, port);
 		clientTheard->detach();
@@ -226,7 +226,9 @@ void testGUI() {
 		case sf::Keyboard::Key::D: {
 			mainLayout.getBorder().setColor(randColor());
 		} break;
-
+		case sf::Keyboard::Key::F: {
+			std::cout << mainLayout.toString() << std::endl;
+		} break;
 		}
 	}));
 

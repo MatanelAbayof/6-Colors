@@ -9,8 +9,8 @@ RequestsServerThread::RequestsServerThread(RequestsQueue<string>& sendRequests,
 
 string RequestsServerThread::toString() const
 {
-	return "RequestsServerThread: numSendRequests=" + std::to_string(m_sendRequests.size()) + ", numReceivedRequests=" +
-		    std::to_string(m_receiveRequests.size()) + ", " + ServerThread::toString();
+	return "RequestsServerThread: { numSendRequests=" + std::to_string(m_sendRequests.size()) + ", numReceivedRequests=" +
+			std::to_string(m_receiveRequests.size()) + ", " + ServerThread::toString() + " }";
 }
 
 void RequestsServerThread::onClientJoined(const sf::TcpSocket& clientSocket)

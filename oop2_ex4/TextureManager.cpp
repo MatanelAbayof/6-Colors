@@ -25,15 +25,15 @@ const GUI::TextureInfo& GUI::TextureManager::getTextureInfo(const string& name)
 
 string GUI::TextureManager::toString() const
 {
-	string texturesStr = "TextureManager: Textures={ ";
+	string texturesStr = "TextureManager: { Textures={ ";
 	int count = 0;
 	for (auto it = m_textures.cbegin(); it != m_textures.cend(); ++it) {
 		texturesStr += "{ name=" + it->first + ", " + it->second.toString()  + " }";
-		if (count + 1 < m_textures.size())
+		if (count + 1 < static_cast<int>(m_textures.size()))
 			texturesStr += ", ";
 		count++;
 	}
-	texturesStr += " } " + ResourceLoader::toString();
+	texturesStr += " } " + ResourceLoader::toString() + " }";
 	return texturesStr;
 }
 

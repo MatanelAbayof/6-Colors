@@ -9,8 +9,8 @@ RequestsClientThread::RequestsClientThread(RequestsQueue<string>& sendRequests,
 
 string RequestsClientThread::toString() const
 {
-	return "RequestsClientThread: numSendRequests=" + std::to_string(m_sendRequests.size()) + ", numReceivedRequests=" +
-		    std::to_string(m_receiveRequests.size()) + ", " + ClientThread::toString();
+	return "RequestsClientThread: { numSendRequests=" + std::to_string(m_sendRequests.size()) + ", numReceivedRequests=" +
+			std::to_string(m_receiveRequests.size()) + ", " + ClientThread::toString() + " }";
 }
 
 void RequestsClientThread::buildPacket(sf::Packet& packet)

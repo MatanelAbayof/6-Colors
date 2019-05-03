@@ -83,6 +83,6 @@ INetworkThread::State INetworkThread::getState() const
 
 string INetworkThread::toString() const
 {
-	return "INetworkThread: state=" + stateToStr() + ", requestToExit=" + std::to_string(isRequestedToExit());
+	return "INetworkThread: { state=" + stateToStr() + ", requestToExit=" + std::to_string(isRequestedToExit()) + " }";
 }
 

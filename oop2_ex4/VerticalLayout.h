@@ -43,7 +43,7 @@ private:
 template <class ViewType>
 string GUI::VerticalLayout<ViewType>::toString() const
 {
-	return "VerticalLayout: view=" + ViewGroup<ViewType>::toString();
+	return "VerticalLayout: { view=" + ViewGroup<ViewType>::toString() + " }";
 }
 
 template <class ViewType>

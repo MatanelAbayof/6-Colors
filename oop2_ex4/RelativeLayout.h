@@ -60,7 +60,7 @@ void GUI::RelativeLayout<ViewType>::removeView(int index)
 template <class ViewType>
 string GUI::RelativeLayout<ViewType>::toString() const
 {
-	return "RelativeLayout: " + ViewGroup<ViewType>::toString();
+	return "RelativeLayout: { " + ViewGroup<ViewType>::toString() + " }";
 }
 
 template <class ViewType>

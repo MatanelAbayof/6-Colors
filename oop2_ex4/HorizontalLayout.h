@@ -78,7 +78,7 @@ void GUI::HorizontalLayout<ViewType>::arrangeChildrens()
 template <class ViewType>
 string GUI::HorizontalLayout<ViewType>::toString() const
 {
-	return "HorizontalLayout: view=" + ViewGroup<ViewType>::toString();
+	return "HorizontalLayout: { view=" + ViewGroup<ViewType>::toString() + " }";
 }
 
 template <class ViewType>

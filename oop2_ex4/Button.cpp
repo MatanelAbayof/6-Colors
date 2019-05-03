@@ -10,7 +10,7 @@ GUI::Button::Button(sf::RenderWindow& window, const string& text)
 
 string GUI::Button::toString() const
 {
-	return "Button: " + TextView::toString();
+	return "Button: { " + TextView::toString() + " }";
 }
 
 void GUI::Button::initComponents()

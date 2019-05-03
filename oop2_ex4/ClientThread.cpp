@@ -29,7 +29,7 @@ bool ClientThread::isConnectedToServer() const
 
 string ClientThread::toString() const
 {
-	return "ClientThread: state=" + INetworkThread::toString();
+	return "ClientThread: { state=" + INetworkThread::toString() + " }";
 }
 
 void ClientThread::runClientThread(const sf::IpAddress& serverIpAddress, const unsigned short port)
