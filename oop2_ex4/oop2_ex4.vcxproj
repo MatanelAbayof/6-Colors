@@ -164,11 +164,11 @@
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="ClientThread.cpp" />
     <ClCompile Include="EditText.cpp" />
     <ClCompile Include="ErrorDialog.cpp" />
     <ClCompile Include="example_class.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="ImageButton.cpp" />
     <ClCompile Include="ImageTexture.cpp" />
     <ClCompile Include="ImageView.cpp" />
@@ -195,11 +195,11 @@
     <ClInclude Include="Border.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
-    <ClInclude Include="ClientThread.h" />
     <ClInclude Include="EditText.h" />
     <ClInclude Include="ErrorDialog.h" />
     <ClInclude Include="example_class.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="GameMenu.h" />
     <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="IHandler.h" />
     <ClInclude Include="ImageButton.h" />
