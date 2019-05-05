@@ -208,6 +208,7 @@
     <ClInclude Include="example_class.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameMenu.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="IHandler.h" />
     <ClInclude Include="ImageButton.h" />

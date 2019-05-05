@@ -277,7 +277,7 @@ void GUI::View::draw()
 			m_window.setView(sf::View(getBound()));
 		}
 
-		// update camera if have
+		// update camera if used
 		if (m_useCamera)
 			m_window.setView(*m_camera);
 

@@ -233,6 +233,9 @@
     <ClInclude Include="BotoomPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sounds\back_musics.json" />
