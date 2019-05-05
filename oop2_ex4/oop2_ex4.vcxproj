@@ -172,6 +172,7 @@
     <ClCompile Include="ImageTexture.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="LoadResourceException.cpp" />
+    <ClCompile Include="MainScreen.cpp" />
     <ClCompile Include="matanel_tests.cpp" />
     <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="RectUtils.cpp" />
@@ -185,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlertDialog.h" />
+    <ClInclude Include="BaseScreen.h" />
     <ClInclude Include="Border.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
@@ -198,6 +200,7 @@
     <ClInclude Include="ImageTexture.h" />
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="LoadResourceException.h" />
+    <ClInclude Include="MainScreen.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="RectUtils.h" />
     <ClInclude Include="RelativeLayout.h" />
@@ -212,6 +215,7 @@
     <ClInclude Include="ViewGroup.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="fonts\fonts.json" />
     <None Include="sounds\back_musics.json" />
     <None Include="sounds\sounds.json" />

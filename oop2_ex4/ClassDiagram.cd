@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GUI::AlertDialog" Collapsed="true">
+    <Position X="8.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAhEAAAAAAAAQgAgAAAABAAAAAAAQAAQBAAAAAAAAAA=</HashCode>
+      <FileName>AlertDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::Border" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAgAAEIADgAAAgAAAAAAAABCoAoIAAA=</HashCode>
+      <FileName>Border.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::Button" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::Cell" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAABBAAAAAAAAABUBwAAAAAAEAQACQACIAAAACA=</HashCode>
+      <FileName>Cell.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::EditText" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAJAAAAAAAAAAACBAAAIAAAAAIAACAAAAAAAAA=</HashCode>
+      <FileName>EditText.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ErrorDialog" Collapsed="true">
+    <Position X="8.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAABAAAAAAAAAAABAEAAAAAAAA=</HashCode>
+      <FileName>ErrorDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::FontManager" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABABAAAAAAAAAAIAQAgCAABAAA=</HashCode>
+      <FileName>FontManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::HorizontalLayout&lt;ViewType&gt;" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAACAAAAAACAAIQBAAAAAACAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>HorizontalLayout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::IHandler&lt;T&gt;" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAIAAAAAAAAAEAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>IHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ImageButton" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgAAAAAAAAAAgAAEBAADACAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImageButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ImageTexture" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAACAABAICBAAAAoAAAAAgAAACAAAIAAA=</HashCode>
+      <FileName>ImageTexture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ImageView" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAQAAAAAAAABIABAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImageView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::LoadResourceException" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>LoadResourceException.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::RelativeLayout&lt;ViewType&gt;" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEACAAAAAAACAAQBAAAAAACAAAAAAAAQgAAAAA=</HashCode>
+      <FileName>RelativeLayout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ResourceLoader" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAgAAEAAAA=</HashCode>
+      <FileName>ResourceLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::SoundManager" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIqAAABABAAAAAAIAAAhIAAwgAAAAQA=</HashCode>
+      <FileName>SoundManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::TextureInfo" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEYAAAQAAAgAAQAAABAEAAAAAAAgAQAAAACgAEAA=</HashCode>
+      <FileName>TextureInfo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::TextureManager" Collapsed="true">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAABABABAAAAAAAAAAAAIAgAAAAAAg=</HashCode>
+      <FileName>TextureManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::TextView" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAAAIAAAAAgAAAwIADACCgAgCgAAAEAAAAAAAAAA=</HashCode>
+      <FileName>TextView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::VerticalLayout&lt;ViewType&gt;" Collapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAACAAARBAAAAEACAAAAQAAAAQAAAAA=</HashCode>
+      <FileName>VerticalLayout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::View" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>7YAILCEAQLJAAdirAIJRBFYCAIyDYCWGRMSUBQBQICA=</HashCode>
+      <FileName>View.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ViewGroup&lt;ViewType&gt;" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAQAACAIAAACgAAIQBAAAAAQAAAUAQAAIAAAAAAA=</HashCode>
+      <FileName>ViewGroup.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::BaseScreen&lt;ViewType&gt;" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExampleClass" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQABAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>example_class.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Matrix&lt;T&gt;" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAQIACAAAAAAAAAIAADQEQAAEgAAAAQQAAgAAACAA=</HashCode>
+      <FileName>Matrix.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::MainScreen" Collapsed="true">
+    <Position X="8.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEEAAQBAAMAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>MainScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,8 +1,8 @@
 /*
  * main for tests
  */
-#define MATANEL_TESTS
-#ifdef MATANEL_TESTS
+#define AKIVA_TESTS
+#ifdef AKIVA_TESTS
 
 #pragma region Libs
  // for SFML library
@@ -35,6 +35,7 @@
 #include "EditText.h"
 #include "ImageButton.h"
 #include "ErrorDialog.h"
+#include "MainScreen.h"
 #pragma endregion
 
 #pragma region Usings
@@ -71,7 +72,7 @@ void testFirstTime() {
 	sf::RenderWindow window(sf::VideoMode(1000, 500), "testFirstTime");
 
 	// create root view
-	VerticalLayout<Button> mainLayout(window);
+	VerticalLayout<View> mainLayout(window);
 	mainLayout.makeRootView();
 	mainLayout.getBackground().setColor(sf::Color::Blue);
 	mainLayout.getBorder().setSize(2.f);
@@ -85,9 +86,12 @@ void testFirstTime() {
 	bt1->addClickListener([&bt1](View& view) {
 		bt1->hide();
 	});
-	mainLayout.addView(bt1);
+	//mainLayout.addView(bt1);
 	std::shared_ptr<Button> bt2 = std::make_shared<Button>(window, "Bt2");
-	mainLayout.addView(bt2);
+	//mainLayout.addView(bt2);
+
+	std::shared_ptr <MainScreen> screen = std::make_shared <MainScreen> (window);
+	mainLayout.addView(screen);
 
 	while (window.isOpen())
 	{
@@ -184,4 +188,4 @@ sf::Color randColor() {
 }
 
 
-#endif // MATANEL_TESTS
+#endif // AKIVA_TESTS

@@ -84,6 +84,9 @@
     <ClCompile Include="akiva_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -164,11 +167,18 @@
     <ClInclude Include="Utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BaseScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sounds\back_musics.json" />
     <None Include="sounds\sounds.json" />
     <None Include="textures\textures.json" />
     <None Include="fonts\fonts.json" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
