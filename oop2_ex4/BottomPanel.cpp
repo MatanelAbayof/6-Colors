@@ -1,17 +1,17 @@
-#include "BotoomPanel.h"
+#include "BottomPanel.h"
 
-BotoomPanel::BotoomPanel(sf::RenderWindow & window)
+BottomPanel::BottomPanel(sf::RenderWindow & window)
 	: HorizontalLayout(window)
 {
 	initComponents(window);
 }
 
-string BotoomPanel::toString() const
+string BottomPanel::toString() const
 {
-	return "BotoomPanel: " + HorizontalLayout::toString();
+	return "BottomPanel: { " + HorizontalLayout::toString() + " }";
 }
 
-void BotoomPanel::initComponents(sf::RenderWindow & window)
+void BottomPanel::initComponents(sf::RenderWindow & window)
 {
 	// set my border & background
 	getBorder().setColor(sf::Color::Black);
@@ -31,7 +31,7 @@ void BotoomPanel::initComponents(sf::RenderWindow & window)
 	initButton(m_rivalArea);
 }
 
-void BotoomPanel::initButton(std::shared_ptr<GUI::View> bt)
+void BottomPanel::initButton(std::shared_ptr<GUI::View> bt)
 {
 	bt->getBorder().setColor(sf::Color::Black);
 	bt->getBorder().setSize(1.f);

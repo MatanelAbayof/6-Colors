@@ -1,13 +1,13 @@
 #include "MainScreen.h"
 
 GUI::MainScreen::MainScreen(sf::RenderWindow& window)
-	:BaseScreen(window), m_menuTitle(std::make_shared< TextView >(window, "Six Colors")), m_createGameBt(std::make_shared< Button >(window, "Create Game")), m_exitBt(std::make_shared< Button >(window, "Exit Game")), m_joinGameBt(std::make_shared< Button >(window, "Join Game")), m_singlePlayerBt(std::make_shared< Button >(window, "Single Player"))
+	:BaseScreen(window), m_menuTitle(std::make_shared<TextView>(window, "Six Colors")), 
+	m_createGameBt(std::make_shared<Button>(window, "Create Game")), 
+	m_exitBt(std::make_shared<Button>(window, "Exit Game")), 
+	m_joinGameBt(std::make_shared<Button>(window, "Join Game")), 
+	m_singlePlayerBt(std::make_shared<Button>(window, "Single Player"))
 {
 	init();
-}
-
-GUI::MainScreen::~MainScreen()
-{
 }
 
 const std::shared_ptr<GUI::Button>& GUI::MainScreen::getSingleBt()

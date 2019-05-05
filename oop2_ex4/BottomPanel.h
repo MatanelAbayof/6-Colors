@@ -10,14 +10,14 @@
 using std::string;
 
 /*
- * BotoomPanel class
+ * BottomPanel class
  */
-class BotoomPanel :
+class BottomPanel :
 	public GUI::HorizontalLayout<GUI::View>
 {
 public:
 	// constructor
-	BotoomPanel(sf::RenderWindow& window);
+	BottomPanel(sf::RenderWindow& window);
 	// convert to string
 	virtual string toString() const;
 protected:

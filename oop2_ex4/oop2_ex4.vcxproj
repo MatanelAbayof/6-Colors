@@ -162,7 +162,7 @@
     <ClCompile Include="akiva_tests.cpp" />
     <ClCompile Include="AlertDialog.cpp" />
     <ClCompile Include="Border.cpp" />
-    <ClCompile Include="BotoomPanel.cpp" />
+    <ClCompile Include="BottomPanel.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ClientThread.cpp" />
@@ -179,6 +179,7 @@
     <ClCompile Include="INetworkThread.cpp" />
     <ClCompile Include="LoadResourceException.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="MainScreen.cpp" />
     <ClCompile Include="matanel_tests.cpp" />
     <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="NetworkException.cpp" />
@@ -196,8 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlertDialog.h" />
+    <ClInclude Include="BaseScreen.h" />
     <ClInclude Include="Border.h" />
-    <ClInclude Include="BotoomPanel.h" />
+    <ClInclude Include="BottomPanel.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="ClientThread.h" />
@@ -217,6 +219,7 @@
     <ClInclude Include="INetworkThread.h" />
     <ClInclude Include="LoadResourceException.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="MainScreen.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NetworkException.h" />
     <ClInclude Include="RectUtils.h" />

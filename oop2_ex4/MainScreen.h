@@ -20,12 +20,12 @@ namespace GUI {
 		// constructor
 		explicit MainScreen(sf::RenderWindow& window);
 		// destructor
-		~MainScreen();
+		~MainScreen() = default;
 		//get certin button
-		const std::shared_ptr <Button>& getSingleBt();
-		const std::shared_ptr <Button>& getCreateBt();
-		const std::shared_ptr <Button>& getJoinBt();
-		const std::shared_ptr <Button>& getExitleBt();
+		const std::shared_ptr<Button>& getSingleBt();
+		const std::shared_ptr<Button>& getCreateBt();
+		const std::shared_ptr<Button>& getJoinBt();
+		const std::shared_ptr<Button>& getExitleBt();
 		// convert to string
 		virtual string toString() const override;
 	private:
