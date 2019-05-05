@@ -7,35 +7,35 @@
 using std::string;
 
 namespace GUI {
-/*
- * HorizontalLayout class
- */
-template <class ViewType = GUI::View>
-class HorizontalLayout :
-	public GUI::ViewGroup<ViewType>
-{
-public:
-	// constructor
-	explicit HorizontalLayout(sf::RenderWindow& window) : ViewGroup<ViewType>(window) { }
-	// add view with default width
-	virtual void addView(const std::shared_ptr<ViewType>& view) override;
-	// add view with custom width
-	virtual void addView(const std::shared_ptr<ViewType>& view, float relativeWidth);
-	// remove view
-	virtual void removeView(int index) override;
-	// convert to string
-	virtual string toString() const override;
-protected:
-	// update components
-	virtual void updateComponents() override;
-	// arrange all childrens with same widths
-	void arrangeChildrens();
-private:
-	// childrens relative widths
-	vector<float> m_relativeWidths;
-	// check if relative width in [0, 1]
-	bool checkRelativeWidth(float relativeWidth) const;	
-};
+	/*
+	 * HorizontalLayout class
+	 */
+	template <class ViewType = GUI::View>
+	class HorizontalLayout :
+		public GUI::ViewGroup<ViewType>
+	{
+	public:
+		// constructor
+		explicit HorizontalLayout(sf::RenderWindow& window) : ViewGroup<ViewType>(window) { }
+		// add view with default width
+		virtual void addView(const std::shared_ptr<ViewType>& view) override;
+		// add view with custom width
+		virtual void addView(const std::shared_ptr<ViewType>& view, float relativeWidth);
+		// remove view
+		virtual void removeView(int index) override;
+		// convert to string
+		virtual string toString() const override;
+	protected:
+		// update components
+		virtual void updateComponents() override;
+		// arrange all childrens with same widths
+		void arrangeChildrens();
+	private:
+		// childrens relative widths
+		vector<float> m_relativeWidths;
+		// check if relative width in [0, 1]
+		bool checkRelativeWidth(float relativeWidth) const;
+	};
 }
 
 template <class ViewType>

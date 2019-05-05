@@ -42,6 +42,7 @@
 #include "Logger.h"
 #include "RequestsClientThread.h"
 #include "RequestsServerThread.h"
+#include "Graph.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -51,6 +52,7 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testGraph();
 sf::Color randColor();
 void testGUI();
 void testClientAndServerNetwork();
@@ -69,13 +71,36 @@ int main()
 
 	try
 	{
+		testGraph();
 		//testClientAndServerNetwork();
-		testGUI();
+		//testGUI();
 	}
 	catch (const std::exception& ex)
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testGraph() {
+	// create graph
+	Graph<int> graph;
+
+	// add vertices
+	for (int i = 0; i < 10; i++) {
+		graph.addVertex(i);
+	}
+
+	// add adjacents
+	for (int i = 0; i < graph.getNumOfVertices()-1; i++) {
+		Graph<int>::Vertex<int>* vertex = graph.getVertex(i);
+		//vertex->addAdjacent(graph.getVertex(i + 1));
+	}
+
+	// print graph
+	std::cout << graph.toString() << std::endl;
+	for (int i = 0; i < graph.getNumOfVertices(); i++) {
+		std::cout << "V[" << i << "] = " << graph.getVertex(i)->getValue() << std::endl;
 	}
 }
 

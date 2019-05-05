@@ -1,8 +1,8 @@
 /*
  * main for tests
  */
-#define MATANEL_TESTS
-#ifdef MATANEL_TESTS
+//#define NAHUM_TESTS
+#ifdef NAHUM_TESTS
 
 #pragma region Libs
  // for SFML library
@@ -198,4 +198,4 @@ sf::Color randColor() {
 }
 
 
-#endif // MATANEL_TESTS
+#endif // NAHUM_TESTS
