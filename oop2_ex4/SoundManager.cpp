@@ -48,15 +48,15 @@ void GUI::SoundManager::stopBackgroundMusic()
 
 string GUI::SoundManager::toString() const
 {
-	string soundsStr = "SoundManager: Sounds names={ ";
+	string soundsStr = "SoundManager: { Sounds names={ ";
 	int count = 0;
 	for (auto it = m_soundsBuffers.cbegin(); it != m_soundsBuffers.cend(); ++it) {
 		soundsStr += it->first;
-		if(count + 1 < m_soundsBuffers.size())
+		if(count + 1 < static_cast<int>(m_soundsBuffers.size()))
 			soundsStr += ", ";
 		count++;
 	}
-	soundsStr += " }, num of media players=" + std::to_string(m_mediaPlayers.size()) + " " + ResourceLoader::toString();;
+	soundsStr += " }, num of media players=" + std::to_string(m_mediaPlayers.size()) + " " + ResourceLoader::toString() + " }";
 
 	// TODO add background musics to string
 

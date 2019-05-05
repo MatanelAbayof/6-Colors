@@ -69,7 +69,7 @@ public:
 	// check if cell exists
 	bool isCellExists(const Cell& cell) const { return ((cell.getRowNum() < m_numOfRows) && (cell.getColNum() < m_numOfCols)); }
 	// convert to string
-	virtual string toString() const { return "Matrix: rows=" + std::to_string(m_numOfRows) + ", cols=" + std::to_string(m_numOfCols); }	
+	virtual string toString() const { return "Matrix: { rows=" + std::to_string(m_numOfRows) + ", cols=" + std::to_string(m_numOfCols) +" }"; }
 private:
 	// matrix data
 	std::vector<std::vector<T>> m_data;

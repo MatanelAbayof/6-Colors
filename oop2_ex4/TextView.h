@@ -14,7 +14,7 @@ namespace GUI {
 class TextView : public GUI::View
 {
 public:
-	// text horizonal alignment
+	// text horizontal alignment
 	enum TextHAlignment {
 		RIGHT, CENTER, LEFT
 	};
@@ -33,13 +33,13 @@ public:
 	// set font
 	void setFont(const sf::Font& font);
 	void setFont(const string& fontName);
-	// set text horizonal alignment
+	// set text horizontal alignment
 	void setTextHAlignment(TextHAlignment textHAlign);
 	// set text size
 	void setTextSize(unsigned int textSize);
 	// get text size
 	unsigned int getTextSize() const;
-	// get text horizonal alignment
+	// get text horizontal alignment
 	TextHAlignment getTextHAlignment() const;
 	// draw
 	virtual void draw() override;

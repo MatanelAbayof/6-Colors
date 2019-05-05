@@ -40,7 +40,7 @@ void GUI::ImageButton::setTextHAligment(TextView::TextHAlignment textHAl)
 
 string GUI::ImageButton::toString() const
 {
-	return "ImageButton: " + HorizontalLayout<GUI::View>::toString();
+	return "ImageButton: { " + HorizontalLayout<GUI::View>::toString() + " }";
 }
 
 void GUI::ImageButton::initComponents(sf::RenderWindow& window, const string& text)

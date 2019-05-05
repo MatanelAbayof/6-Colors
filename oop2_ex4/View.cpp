@@ -291,9 +291,9 @@ void GUI::View::draw()
 
 string GUI::View::toString() const
 {
-	return "View: position: {x=" + std::to_string(m_position.x) + ", y=" + std::to_string(m_position.y) + 
-		   "}, size: {width = " + std::to_string(getWidth()) + ", height = " + std::to_string(getHeight()) + 
-		   "}, background=" + m_background.toString() + ", " + m_border.toString();
+	return "View: { position: {x=" + std::to_string(m_position.x) + ", y=" + std::to_string(m_position.y) +
+			"}, size: {width = " + std::to_string(getWidth()) + ", height = " + std::to_string(getHeight()) +
+			"}, background=" + m_background.toString() + ", " + m_border.toString() + " }";
 }
 
 void GUI::View::setWidth(int width)

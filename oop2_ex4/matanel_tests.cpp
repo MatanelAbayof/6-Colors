@@ -4,6 +4,7 @@
 //#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
+ //-------------- libs -------------------------
 #pragma region Libs
 // for SFML library
 #ifdef _DEBUG
@@ -23,44 +24,182 @@
 #endif
 #pragma endregion
 
+//-------------- include section ---------------
 #pragma region Includes
-//-------------- include section --------------
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <nlohmann/json.hpp> // JSON library
 #include <iostream>
+#include <thread>
+#include <Windows.h>
+#include <sstream>
 #include "View.h"
 #include "VerticalLayout.h"
 #include "EditText.h"
 #include "ImageButton.h"
 #include "ErrorDialog.h"
+#include "Logger.h"
+#include "RequestsClientThread.h"
+#include "RequestsServerThread.h"
 #pragma endregion
 
-#pragma region Usings
 //-------------- using section -----------------
+#pragma region Usings
 using namespace GUI;
 #pragma endregion
 
-#pragma region Declarations
 //-------------- declare functions -------------
+#pragma region Declarations
 sf::Color randColor();
 void testGUI();
+void testClientAndServerNetwork();
+void testClientNetwork(const unsigned short port);
+void testServerNetwork(const unsigned short port);
 #pragma endregion
 
-//--------------  main -------------------------
+// -------------- globals & constants --------------------
+
+//--------------  main ------------------------
 int main()
 {
     std::cout << "Hello Matanel World!\n";
+	// initialize random seed
+	srand(unsigned (time(NULL)));
 
 	try
 	{
+		//testClientAndServerNetwork();
 		testGUI();
 	}
 	catch (const std::exception& ex)
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testClientAndServerNetwork() {
+	// create port
+	const unsigned short port = 30123 + rand()%100;
+
+	// create server theard
+	std::thread server(testServerNetwork, port);
+	server.detach(); // make thread as unjoinable
+
+	// create clients threads
+	std::vector<std::unique_ptr<std::thread>> clients;
+	int numOfClients = 2;
+	for (int i = 0; i < numOfClients; i++) {
+		std::unique_ptr<std::thread> clientTheard = std::make_unique<std::thread>(testClientNetwork, port);
+		clientTheard->detach();
+	}
+
+	// wait
+	std::this_thread::sleep_for(std::chrono::seconds(2000));
+}
+
+void testClientNetwork(const unsigned short port) {
+	// get thread id
+	std::ostringstream clientTheardIdStream;
+	clientTheardIdStream << GetCurrentThreadId();
+	string clientTheardId = clientTheardIdStream.str();
+
+	string clientPreText = "client " + clientTheardId;
+
+	// server IP address
+	string serverIpAddressStr = sf::IpAddress::getLocalAddress().toString();
+	sf::IpAddress serverIpAddress(serverIpAddressStr);
+
+
+	LOG(clientPreText + ": connecting to ip = " + serverIpAddressStr + " at port " + std::to_string(port) + "...");
+
+	// create requests queues
+	RequestsQueue<string> sendRequests, receiveRequests;
+
+	// create client thread
+	RequestsClientThread clientThread(sendRequests, receiveRequests);
+
+	// connect to server
+	clientThread.start(serverIpAddress, port);
+
+	// wait to server
+	while (!clientThread.isConnectedToServer()) {
+
+		// TODO do work...
+
+		// check if thread exit
+		if (clientThread.getState() == RequestsClientThread::State::STOPPED) {
+			LOG(clientPreText + ": exit");
+			return; // exit
+		}
+
+		// breathe...
+		std::this_thread::sleep_for(std::chrono::milliseconds(5));
+	}
+
+
+	LOG(clientPreText + ": connected to server!");
+
+	// run main thread - "the game"
+	while (true) {
+
+		// check if disconnected
+		if (!clientThread.isConnectedToServer()) {
+			LOG(clientPreText + ": disconnected");
+			return; // exit
+		}
+
+		// check if have request from server
+		std::unique_ptr<string> serverRequest = receiveRequests.tryPop();
+		if (serverRequest != nullptr) {
+			// print request
+			LOG(clientPreText + ": get '" + *serverRequest + "'");
+		}
+
+		// send data to server
+		string messageToServer = "Message from " + clientTheardId;
+		sendRequests.push(messageToServer);
+		LOG(clientPreText + ": sent '" + messageToServer + "'");
+
+		// wait
+		std::this_thread::sleep_for(std::chrono::seconds(5));
+	}
+}
+
+void testServerNetwork(const unsigned short port) {
+	// say hello
+	LOG("server: listen to port = " + std::to_string(port));
+
+	// create requests queues
+	RequestsQueue<string> sendRequests, receiveRequests;
+
+	// create server
+	RequestsServerThread serverThread(sendRequests, receiveRequests);
+	serverThread.start(port);
+
+	// run main thread - "the game"
+	while (true) {
+
+		// block connetions
+		//serverThread.setBlockConnections(true);
+
+		// TODO check number of connected clients	
+
+		// check if have request from client
+		std::unique_ptr<string> clientRequest = receiveRequests.tryPop();
+		if (clientRequest != nullptr) {
+			// print request
+			LOG("Server: get '" + *clientRequest + "'");
+		}
+
+		// send data to clients
+		string messageToClients = "Message from server";
+		sendRequests.push(messageToClients);
+		LOG("server: sent '" + messageToClients + "'");
+
+		// breathe...
+		std::this_thread::sleep_for(std::chrono::seconds(5));
 	}
 }
 
@@ -87,7 +226,9 @@ void testGUI() {
 		case sf::Keyboard::Key::D: {
 			mainLayout.getBorder().setColor(randColor());
 		} break;
-
+		case sf::Keyboard::Key::F: {
+			std::cout << mainLayout.toString() << std::endl;
+		} break;
 		}
 	}));
 

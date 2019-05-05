@@ -20,7 +20,7 @@ void GUI::ImageView::draw()
 
 string GUI::ImageView::toString() const
 {
-	return "ImageView: image=" + m_image.toString() + ", view=" + View::toString();
+	return "ImageView: { image=" + m_image.toString() + ", view=" + View::toString() + " }";
 }
 
 void GUI::ImageView::updateComponents()

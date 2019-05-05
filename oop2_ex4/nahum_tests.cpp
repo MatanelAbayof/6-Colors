@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define MATANEL_TESTS
+#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
 #pragma region Libs
@@ -35,6 +35,10 @@
 #include "EditText.h"
 #include "ImageButton.h"
 #include "ErrorDialog.h"
+#include "GameMenu.h"
+#include "ColorButton.h"
+#include "ColorPanel.h"
+#include "BotoomPanel.h"
 #pragma endregion
 
 #pragma region Usings
@@ -46,6 +50,7 @@ using namespace GUI;
 //-------------- declare functions -------------
 sf::Color randColor();
 void testGUI();
+void testGameMenu();
 #pragma endregion
 
 //--------------  main -------------------------
@@ -55,12 +60,53 @@ int main()
 
 	try
 	{
+		testGameMenu();
 		//testGUI();
 	}
 	catch (const std::exception& ex)
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testGameMenu() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "GUI");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(3);
+	//mainLayout.setBorder(Border(sf::Color::Blue, 5));
+	mainLayout.getBackground().setColor(sf::Color::Blue);
+	
+	// add edit text
+	std::shared_ptr<GameMenu> et = std::make_shared<GameMenu>(window);
+	//std::shared_ptr<ColorPanel> cp = std::make_shared<ColorPanel>(window);
+	std::shared_ptr<BotoomPanel> bp = std::make_shared<BotoomPanel>(window);
+	mainLayout.addView(et);
+	mainLayout.addView(bp);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+			if (event.type == sf::Event::MouseMoved) {
+				sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+				sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+				//cout << "m.x=" << worldPos.x << ", m.y=" << worldPos.y << endl;
+			}
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 

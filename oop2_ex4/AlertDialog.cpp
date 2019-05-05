@@ -17,7 +17,7 @@ void GUI::AlertDialog::show(const string& title, const string& message, const st
 
 string GUI::AlertDialog::toString() const
 {
-	return "AlertDialog: " + m_content->toString();
+	return "AlertDialog: { " + m_content->toString() + " }";
 }
 
 GUI::AlertDialog::AlertDialog(sf::RenderWindow& window, const string& title, const string& message, const string& btText)
