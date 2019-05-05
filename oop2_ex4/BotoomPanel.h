@@ -18,18 +18,33 @@ class BotoomPanel :
 public:
 	// constructor
 	BotoomPanel(sf::RenderWindow& window);
+	// get color panel
+	const std::shared_ptr<ColorPanel>& getColorPanel() const {
+		return m_colorPanel;
+	}
+	//get my arae button
+	const std::shared_ptr<GUI::TextView>& getMyAreaButton() const {
+		return m_myArea;
+	}
+	//get rival arae button
+	const std::shared_ptr<GUI::TextView>& getRivalAreaButton() const {
+		return m_rivalArea;
+	}
 	// convert to string
 	virtual string toString() const;
 protected:
 	//init
 	void initComponents(sf::RenderWindow& window);
 	//init button
-	void initButton(std::shared_ptr<GUI::View> bt);
-
+	void initButton(std::shared_ptr<GUI::TextView> bt);
+	//init color panel bootom
+	void initColorPanel(std::shared_ptr<ColorPanel> bt);
 private:
+	//color panel
 	std::shared_ptr<ColorPanel> m_colorPanel;
-	std::shared_ptr<GUI::TextView> m_myArea, m_rivalArea, m_turn;
-
-
+	//the area button
+	std::shared_ptr<GUI::TextView> m_myArea, m_rivalArea;
+	//percent of area
+	int m_myAreaPercent, m_rivalAreaPercent;
 };
 

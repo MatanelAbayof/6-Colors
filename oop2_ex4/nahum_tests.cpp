@@ -84,11 +84,19 @@ void testGameMenu() {
 	
 	// add edit text
 	std::shared_ptr<GameMenu> et = std::make_shared<GameMenu>(window);
-	//std::shared_ptr<ColorPanel> cp = std::make_shared<ColorPanel>(window);
 	std::shared_ptr<BotoomPanel> bp = std::make_shared<BotoomPanel>(window);
 	mainLayout.addView(et);
 	mainLayout.addView(bp);
-
+	std::shared_ptr<ColorPanel> cp = bp->getColorPanel();
+	const sf::Color color = sf::Color::Black;
+	for (auto c : ColorPanel::COLORS) {
+		std::shared_ptr<ColorButton> cb = cp->getColorButton(c);
+		std::cout << cb->toString() << std::endl;
+	}
+	
+	cp->addClickColorListener([](std::shared_ptr<ColorButton> colorButton) {
+		std::cout << colorButton->toString() << std::endl;
+	});
 	while (window.isOpen())
 	{
 		sf::Event event;

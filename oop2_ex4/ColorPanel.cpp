@@ -1,5 +1,8 @@
 #include "ColorPanel.h"
 
+const std::array<sf::Color, 6> ColorPanel::COLORS = { sf::Color::Blue, sf::Color::Green,
+												      sf::Color::Red, sf::Color::Yellow,
+												      sf::Color(82, 67, 170), sf::Color(255, 139, 0) };
 
 ColorPanel::ColorPanel(sf::RenderWindow & window)
 	: HorizontalLayout(window)
@@ -19,29 +22,31 @@ void ColorPanel::initComponents(sf::RenderWindow & window)
 	getBorder().setSize(1.f);
 	getBackground().setColor(sf::Color(240, 255, 239));
 
-	//init ptr
-	m_blue = std::make_shared<ColorButton>(window, sf::Color::Blue);
-	m_green = std::make_shared<ColorButton>(window, sf::Color::Green);
-	m_red = std::make_shared<ColorButton>(window, sf::Color::Red);
-	m_yellow = std::make_shared<ColorButton>(window, sf::Color::Yellow);
-	m_purple = std::make_shared<ColorButton>(window, sf::Color(82, 67, 170));
-	m_orange = std::make_shared<ColorButton>(window, sf::Color(255, 139, 0));
-
-	//init button
-	initButton(m_blue);
-	initButton(m_green);
-	initButton(m_red);
-	initButton(m_yellow);
-	initButton(m_purple);
-	initButton(m_orange);
+	//init color panel
+	for (int i = 0; i < COLORS.size(); i++) {
+		std::shared_ptr<ColorButton> cb = std::make_shared<ColorButton>(window, COLORS[i]);
+		m_colorPanel.push_back(cb);
+		addView(cb);
+	}
 }
 
-void ColorPanel::initButton(std::shared_ptr<ColorButton> bt)
+void ColorPanel::addClickColorListener(std::function<void(std::shared_ptr<ColorButton>)> onClickCB)
 {
-	bt->getBackground().setColor(bt->getColor());
-	bt->getBorder().setColor(sf::Color::Black);
-	bt->getBorder().setSize(1.f);
-	float relativeSize = float(1.f / 6.f);
-	addView(bt, relativeSize);
+	for (auto colorButton : m_colorPanel) {
+		colorButton->addClickListener([onClickCB, colorButton](View& view) {
+			onClickCB(colorButton);
+	});
+	}
+	
+}
+
+const std::shared_ptr<ColorButton>& ColorPanel::getColorButton(const sf::Color& color) const
+{
+	auto it = std::find_if(m_colorPanel.begin(), m_colorPanel.end(), [&color](std::shared_ptr<ColorButton> colorButton) { 
+				return colorButton->getColor() == color;
+			});
+	if (it == m_colorPanel.end())
+		throw std::invalid_argument("the color " + std::to_string(color.toInteger()) + "not exists in panel");
+	return *it;
 }
 

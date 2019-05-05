@@ -1,6 +1,8 @@
 #pragma once
 //---- include section ------
 #include <string>
+#include <array>
+#include <vector>
 #include "HorizontalLayout.h"
 #include "ColorButton.h"
 
@@ -18,15 +20,18 @@ public:
 	ColorPanel(sf::RenderWindow& window);
 	// convert to string
 	virtual string toString() const;
+	// get button by color
+	const std::shared_ptr<ColorButton>& getColorButton(const sf::Color& color) const;
+	// add click on color listever
+	void addClickColorListener(std::function<void(std::shared_ptr<ColorButton>)> onClickCB);
+	//array of colors
+	static const std::array<sf::Color, 6> COLORS;
 protected:
 	//init
 	void initComponents(sf::RenderWindow& window);
-	//init button
-	void initButton(std::shared_ptr<ColorButton> bt);
-
 private:
-	std::shared_ptr<ColorButton> m_blue, m_green, m_red,
-		                         m_yellow, m_purple, m_orange;
+	//color panel
+	std::vector<std::shared_ptr<ColorButton>> m_colorPanel;
 
 };
 
