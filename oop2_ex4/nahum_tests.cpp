@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define NAHUM_TESTS
+#define NAHUM_TESTS
 #ifdef NAHUM_TESTS
 
 #pragma region Libs
@@ -38,7 +38,7 @@
 #include "GameMenu.h"
 #include "ColorButton.h"
 #include "ColorPanel.h"
-#include "BotoomPanel.h"
+#include "BottomPanel.h"
 #pragma endregion
 
 #pragma region Usings
@@ -84,7 +84,7 @@ void testGameMenu() {
 	
 	// add edit text
 	std::shared_ptr<GameMenu> et = std::make_shared<GameMenu>(window);
-	std::shared_ptr<BotoomPanel> bp = std::make_shared<BotoomPanel>(window);
+	std::shared_ptr<BottomPanel> bp = std::make_shared<BottomPanel>(window);
 	mainLayout.addView(et);
 	mainLayout.addView(bp);
 	std::shared_ptr<ColorPanel> cp = bp->getColorPanel();

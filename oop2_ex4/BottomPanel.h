@@ -10,14 +10,14 @@
 using std::string;
 
 /*
- * BotoomPanel class
+ * BottomPanel class
  */
-class BotoomPanel :
+class BottomPanel :
 	public GUI::HorizontalLayout<GUI::View>
 {
 public:
 	// constructor
-	BotoomPanel(sf::RenderWindow& window);
+	BottomPanel(sf::RenderWindow& window);
 	// get color panel
 	const std::shared_ptr<ColorPanel>& getColorPanel() const {
 		return m_colorPanel;
@@ -31,14 +31,14 @@ public:
 		return m_rivalArea;
 	}
 	// convert to string
-	virtual string toString() const;
+	virtual string toString() const override;
 protected:
 	//init
 	void initComponents(sf::RenderWindow& window);
 	//init button
-	void initButton(std::shared_ptr<GUI::TextView> bt);
+	void initButton(const std::shared_ptr<GUI::TextView>& bt);
 	//init color panel bootom
-	void initColorPanel(std::shared_ptr<ColorPanel> bt);
+	void initColorPanel(const std::shared_ptr<ColorPanel>& bt);
 private:
 	//color panel
 	std::shared_ptr<ColorPanel> m_colorPanel;

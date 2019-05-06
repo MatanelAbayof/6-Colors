@@ -1,17 +1,17 @@
-#include "BotoomPanel.h"
+#include "BottomPanel.h"
 
-BotoomPanel::BotoomPanel(sf::RenderWindow & window)
+BottomPanel::BottomPanel(sf::RenderWindow & window)
 	: HorizontalLayout(window), m_myAreaPercent(0), m_rivalAreaPercent(0)
 {
 	initComponents(window);
 }
 
-string BotoomPanel::toString() const
+string BottomPanel::toString() const
 {
-	return "BotoomPanel: " + HorizontalLayout::toString();
+	return "BottomPanel: { " + HorizontalLayout::toString() + " }";
 }
 
-void BotoomPanel::initComponents(sf::RenderWindow & window)
+void BottomPanel::initComponents(sf::RenderWindow & window)
 {
 	// set my border & background
 	getBorder().setColor(sf::Color::Black);
@@ -29,7 +29,7 @@ void BotoomPanel::initComponents(sf::RenderWindow & window)
 	initButton(m_rivalArea);
 }
 
-void BotoomPanel::initButton(std::shared_ptr<GUI::TextView> bt)
+void BottomPanel::initButton(const std::shared_ptr<GUI::TextView>& bt)
 {
 	bt->getBorder().setColor(sf::Color::Black);
 	bt->getBorder().setSize(1.f);
@@ -40,7 +40,7 @@ void BotoomPanel::initButton(std::shared_ptr<GUI::TextView> bt)
 	addView(bt, relativeSize);
 }
 
-void BotoomPanel::initColorPanel(std::shared_ptr<ColorPanel> bt)
+void BottomPanel::initColorPanel(const std::shared_ptr<ColorPanel>& bt)
 {
 	bt->getBorder().setColor(sf::Color::Black);
 	bt->getBorder().setSize(1.f);

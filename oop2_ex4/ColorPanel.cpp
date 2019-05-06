@@ -1,5 +1,6 @@
 #include "ColorPanel.h"
 
+// init array
 const std::array<sf::Color, 6> ColorPanel::COLORS = { sf::Color::Blue, sf::Color::Green,
 												      sf::Color::Red, sf::Color::Yellow,
 												      sf::Color(82, 67, 170), sf::Color(255, 139, 0) };
@@ -12,7 +13,7 @@ ColorPanel::ColorPanel(sf::RenderWindow & window)
 
 string ColorPanel::toString() const
 {
-	return "ColorPanel: " + HorizontalLayout::toString();
+	return "ColorPanel: { " + HorizontalLayout::toString() + " }";
 }
 
 void ColorPanel::initComponents(sf::RenderWindow & window)
@@ -36,8 +37,7 @@ void ColorPanel::addClickColorListener(std::function<void(std::shared_ptr<ColorB
 		colorButton->addClickListener([onClickCB, colorButton](View& view) {
 			onClickCB(colorButton);
 	});
-	}
-	
+	}	
 }
 
 const std::shared_ptr<ColorButton>& ColorPanel::getColorButton(const sf::Color& color) const
@@ -45,8 +45,9 @@ const std::shared_ptr<ColorButton>& ColorPanel::getColorButton(const sf::Color& 
 	auto it = std::find_if(m_colorPanel.begin(), m_colorPanel.end(), [&color](std::shared_ptr<ColorButton> colorButton) { 
 				return colorButton->getColor() == color;
 			});
+	// check if not found the color
 	if (it == m_colorPanel.end())
-		throw std::invalid_argument("the color " + std::to_string(color.toInteger()) + "not exists in panel");
+		throw std::invalid_argument("The color " + std::to_string(color.toInteger()) + "not exists in panel");
 	return *it;
 }
 
