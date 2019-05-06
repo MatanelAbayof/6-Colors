@@ -97,6 +97,11 @@ void testGameMenu() {
 	cp->addClickColorListener([](std::shared_ptr<ColorButton> colorButton) {
 		std::cout << colorButton->toString() << std::endl;
 	});
+	
+	bp->addClickListener([&bp](View& view) {
+		bp->getMyAreaButton()->getAreaPercent()++;
+		std::cout << bp->toString();
+	});
 	while (window.isOpen())
 	{
 		sf::Event event;

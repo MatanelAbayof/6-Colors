@@ -1,7 +1,8 @@
 #include "BottomPanel.h"
 
+
 BottomPanel::BottomPanel(sf::RenderWindow & window)
-	: HorizontalLayout(window), m_myAreaPercent(0), m_rivalAreaPercent(0)
+	: HorizontalLayout(window)
 {
 	initComponents(window);
 }
@@ -20,21 +21,22 @@ void BottomPanel::initComponents(sf::RenderWindow & window)
 
 	//init ptr
 	m_colorPanel = std::make_shared<ColorPanel>(window);
-	m_myArea = std::make_shared<GUI::TextView>(window, "MyArea");
-	m_rivalArea = std::make_shared<GUI::TextView>(window, "RivalArea");
+	m_myArea = std::make_shared<AreaButton>(window);
+	m_rivalArea = std::make_shared<AreaButton>(window);
 
+	m_myArea->setText("My " + m_myArea->getText());
+	m_rivalArea->setText("Rival " + m_rivalArea->getText());
 	//init button
 	initButton(m_myArea);
 	initColorPanel(m_colorPanel);
 	initButton(m_rivalArea);
 }
 
-void BottomPanel::initButton(const std::shared_ptr<GUI::TextView>& bt)
+void BottomPanel::initButton(const std::shared_ptr<AreaButton>& bt)
 {
 	bt->getBorder().setColor(sf::Color::Black);
 	bt->getBorder().setSize(1.f);
 	bt->getBackground().setColor(sf::Color::Cyan);
-	bt->appendText(":\n10%");
 	bt->setTextHAlignment(GUI::TextView::TextHAlignment::CENTER);
 	float relativeSize = 0.2f;
 	addView(bt, relativeSize);
