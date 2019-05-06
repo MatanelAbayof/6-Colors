@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define MATANEL_TESTS
+#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
  //-------------- libs -------------------------
@@ -84,23 +84,26 @@ int main()
 
 void testGraph() {
 	// create graph
-	Graph<int> graph;
+	Graph<string> graph;
 
 	// add vertices
 	for (int i = 0; i < 10; i++) {
-		graph.addVertex(i);
+		graph.addVertex("vertex_" + std::to_string(i));
 	}
 
 	// add adjacents
-	for (int i = 0; i < graph.getNumOfVertices()-1; i++) {
-		Graph<int>::Vertex<int>* vertex = graph.getVertex(i);
-		//vertex->addAdjacent(graph.getVertex(i + 1));
+	for (int i = 0; i < graph.getNumOfVertices()-2; i++) {
+		auto vertex = graph.getVertex(i);
+		vertex->addAdjacent(graph.getVertex(i + 1));
+		vertex->addAdjacent(graph.getVertex(i + 1)); // graph ignore duplicate adjs
+		vertex->addAdjacent(graph.getVertex(i + 2));
 	}
 
 	// print graph
 	std::cout << graph.toString() << std::endl;
 	for (int i = 0; i < graph.getNumOfVertices(); i++) {
 		std::cout << "V[" << i << "] = " << graph.getVertex(i)->getValue() << std::endl;
+		std::cout << graph.getVertex(i)->toString() << std::endl;
 	}
 }
 

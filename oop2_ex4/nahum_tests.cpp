@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-#define NAHUM_TESTS
+//#define NAHUM_TESTS
 #ifdef NAHUM_TESTS
 
 #pragma region Libs
