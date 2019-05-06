@@ -6,6 +6,7 @@
 #include <SFML/Network.hpp>
 #include <thread>
 #include <list>
+#include <memory>
 #include "INetworkThread.h"
 
 //---- using section --------
@@ -18,6 +19,8 @@ using std::string;
 class ServerThread : public INetworkThread
 {
 public:
+	using ClientList = std::list<std::unique_ptr<sf::TcpSocket>>;
+
 	// start server in new thread
 	void start(const unsigned short port);
 	// stop thread
@@ -27,7 +30,7 @@ public:
 	// check if server block new connections
 	bool isBlockNewConnections() const;
 	// get number of clients
-	/*size_t getNumOfClients() const; */						// TODO make this function safe!!!!!!!!!!!!!!!!!!
+	int getNumOfClients() const;
 	// convert to string
 	virtual string toString() const override;
 protected:
@@ -47,12 +50,15 @@ private:
 	// listener
 	sf::TcpListener m_listener;
 	// list of clients
-	std::list<sf::TcpSocket*> m_clients;
+	ClientList m_clients;
+	int m_numOfClients; // saved with lock guard
 	// flag for block new connections
 	bool m_blockNewConnections;
 	// run server thread
 	void runServerThread(const unsigned short port);
 	// clear
 	void clear();
+	// set number of clients
+	void setNumOfClients(int numOfClients);
 };
 

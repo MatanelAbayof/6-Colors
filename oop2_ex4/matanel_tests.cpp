@@ -71,8 +71,8 @@ int main()
 
 	try
 	{
-		testGraph();
-		//testClientAndServerNetwork();
+		//testGraph();
+		testClientAndServerNetwork();
 		//testGUI();
 	}
 	catch (const std::exception& ex)
@@ -117,7 +117,7 @@ void testClientAndServerNetwork() {
 
 	// create clients threads
 	std::vector<std::unique_ptr<std::thread>> clients;
-	int numOfClients = 2;
+	int numOfClients = 3;
 	for (int i = 0; i < numOfClients; i++) {
 		std::unique_ptr<std::thread> clientTheard = std::make_unique<std::thread>(testClientNetwork, port);
 		clientTheard->detach();
@@ -206,13 +206,18 @@ void testServerNetwork(const unsigned short port) {
 	RequestsServerThread serverThread(sendRequests, receiveRequests);
 	serverThread.start(port);
 
+	// wait for 1 client
+	while (serverThread.getNumOfClients() == 0) {
+		std::this_thread::sleep_for(std::chrono::milliseconds(5));
+	}
+
+	LOG("server: i have 1 client");
+
 	// run main thread - "the game"
 	while (true) {
 
 		// block connetions
 		//serverThread.setBlockConnections(true);
-
-		// TODO check number of connected clients	
 
 		// check if have request from client
 		std::unique_ptr<string> clientRequest = receiveRequests.tryPop();

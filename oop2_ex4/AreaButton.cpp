@@ -1,7 +1,7 @@
 #include "AreaButton.h"
 
 
-AreaButton::AreaButton(sf::RenderWindow & window, const string & text, float areaPercent)
+AreaButton::AreaButton(sf::RenderWindow& window, const string& text, float areaPercent)
 	: TextView(window, text)
 {
 	setAreaPercent(areaPercent);
@@ -17,11 +17,11 @@ float& AreaButton::getAreaPercent()
 void AreaButton::setAreaPercent(float area)
 {
 	if (area < 0)
-		throw std::out_of_range("area percent cannot be less from zero");
+		throw std::out_of_range("Area percent " + std::to_string(area) + " cannot be less than zero");
 	m_areaPercent = area;
 }
 
 string AreaButton::toString() const
 {
-	return "AreaButton: " + TextView::toString() + "areaPercent: " + std::to_string(m_areaPercent);
+	return "AreaButton: { " + TextView::toString() + ", areaPercent: " + std::to_string(m_areaPercent) + " }";
 }
