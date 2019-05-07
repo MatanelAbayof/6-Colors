@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define NAHUM_TESTS
+#define NAHUM_TESTS
 #ifdef NAHUM_TESTS
 
 #pragma region Libs
@@ -63,8 +63,8 @@ int main()
 
 	try
 	{
-		testShape();
-		//testGameMenu();
+		//testShape();
+		testGameMenu();
 		//testGUI();
 	}
 	catch (const std::exception& ex)
@@ -143,8 +143,8 @@ void testGameMenu() {
 		std::cout << colorButton->toString() << std::endl;
 	});
 	
-	bp->addClickListener([&bp](View& view) {
-		bp->getMyAreaButton()->getAreaPercent()++;
+	bp->addClickListener([&bp](View& view){ 
+		bp->getMyAreaButton()->setAreaPercent(bp->getMyAreaButton()->getAreaPercent() + 3.f);
 		std::cout << bp->toString();
 	});
 	while (window.isOpen())
