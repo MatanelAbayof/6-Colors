@@ -21,7 +21,7 @@ public:
 			// adjacency list
 			using AdjList = std::set<Graph<T>::Vertex*>;
 			// constructor
-			Vertex(Graph<T>& graph, const T& value, int index) : m_graph(graph), m_index(index) { m_value = std::make_unique<T>(value); }
+			Vertex(Graph<T>& graph, const std::shared_ptr<T>& value, int index) : m_graph(graph), m_index(index), m_value(value) { }
 			// get adjacency list
 			const AdjList& getAdjacencyList() const { return m_adjs; }
 			// add adjacent
@@ -38,7 +38,7 @@ public:
 			// index of vertex at graph
 			int m_index;
 			// my value
-			std::unique_ptr<T> m_value;
+			std::shared_ptr<T> m_value;
 			// get index
 			int getIndex() const { return m_index; }
 	};
@@ -48,7 +48,7 @@ public:
 	// get vertex at position
 	Vertex* getVertex(int index) const;
 	// add vertex
-	void addVertex(const T& value);
+	void addVertex(const std::shared_ptr<T>& value);
 	// get number of vertices
 	int getNumOfVertices() const { return static_cast<int>(m_vertices.size()); }
 	// clear
@@ -67,7 +67,7 @@ friend class Vertex;
 };
 
 template<class T>
-void Graph<T>::addVertex(const T& value)
+void Graph<T>::addVertex(const std::shared_ptr<T>& value)
 {
 	// create new vertex
 	int index = m_vertices.size();
