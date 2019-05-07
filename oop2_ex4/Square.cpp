@@ -1,6 +1,6 @@
 #include "Square.h"
 
-Square::Square(const sf::Color& color)
+Square::Square(const sf::Color & color)
 	: PolygonShape(color)
 {
 	init();
