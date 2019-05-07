@@ -49,6 +49,12 @@ void GUI::MainScreen::init()
 	m_singlePlayerBt->addClickListener([this](View& view) {
 		getWindow().close();
 	});
+	m_singlePlayerBt->addEnterListener([this](View& view) {
+		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
+	});
+	m_singlePlayerBt->addLeaveListener(([this](View& view) {
+		view.getBackground().setColor(sf::Color(sf::Color::Cyan));
+	}));
 	addView(m_singlePlayerBt, sf::FloatRect(2.f / 5.f, 0.25f, 1.f / 5.f, 0.10f));
 
 	// init create game button
@@ -58,6 +64,12 @@ void GUI::MainScreen::init()
 	m_createGameBt->addClickListener([this](View& view) {
 		getWindow().close();
 	});
+	m_createGameBt->addEnterListener([this](View& view) {
+		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
+	});
+	m_createGameBt->addLeaveListener(([this](View& view) {
+		view.getBackground().setColor(sf::Color(sf::Color::Yellow));
+	}));
 	addView(m_createGameBt, sf::FloatRect(2.f / 5.f, 0.45f, 1.f / 5.f, 0.10f));
 
 	// init start game button
@@ -67,6 +79,12 @@ void GUI::MainScreen::init()
 	m_joinGameBt->addClickListener([this](View& view) {
 		getWindow().close();
 	});
+	m_joinGameBt->addEnterListener([this](View& view) {
+		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
+	});
+	m_joinGameBt->addLeaveListener(([this](View& view) {
+		view.getBackground().setColor(sf::Color(sf::Color::Magenta));
+	}));
 	addView(m_joinGameBt, sf::FloatRect(2.f / 5.f, 0.65f, 1.f / 5.f, 0.10f));
 
 	// init exit game button
@@ -76,6 +94,12 @@ void GUI::MainScreen::init()
 	m_exitBt->addClickListener([this](View& view) {
 		getWindow().close();
 	});
+	m_exitBt->addEnterListener([this](View& view) {
+		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
+	});
+	m_exitBt->addLeaveListener(([this](View& view) {
+		view.getBackground().setColor(sf::Color(sf::Color::Red));
+	}));
 	addView(m_exitBt, sf::FloatRect(2.f / 5.f, 0.85f, 1.f / 5.f, 0.10f));
 }
 
