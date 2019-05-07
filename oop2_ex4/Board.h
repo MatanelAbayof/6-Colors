@@ -2,7 +2,7 @@
 //---- include section ------
 #include <string>
 #include <memory>
-#include "View.h"
+#include "RelativeLayout.h"
 #include "Graph.h"
 #include "PolygonView.h"
 //---- using section --------
@@ -12,28 +12,27 @@ using std::string;
  * Board class
  */
 class Board :
-	public GUI::View
+	public GUI::RelativeLayout<PolygonView>
 {
 public:
 	// constructor
 	Board(sf::RenderWindow& window, const sf::Vector2i& boardSize = { 0,0 });
-	// draw in window
-	virtual void draw() override;
 	// set board size
 	void setBoardSize(const sf::Vector2i& boardSize);
+	// clear board
+	void clear();
 	// get board size
 	const sf::Vector2i& getboardSize() const { return m_boardSize; }
+	// add polygon view
+	virtual void addView(const std::shared_ptr<PolygonView>& polygonView, const sf::FloatRect& relativeBounds) override;
 	// get polygons graph
-	Graph<PolygonView>& getPolygons();
+	Graph<PolygonView>& getPolygonsGraph() { return m_polygonsGraph; }
 	// convert to string
 	virtual string toString() const override;
-protected:
-	// update components
-	virtual void updateComponents() override;
 private:
 	// board size (number of shapes)
 	sf::Vector2i m_boardSize;
 	// polygons
-	Graph<PolygonView> m_polygons;
+	Graph<PolygonView> m_polygonsGraph;
 };
 
