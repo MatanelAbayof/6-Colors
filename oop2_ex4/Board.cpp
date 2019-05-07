@@ -1,7 +1,7 @@
 #include "Board.h"
 #include "Triangle.h"
 #include "Square.h"
-#include "Utils.h"
+#include "Utilities.h"
 
 Board::Board(sf::RenderWindow& window, const sf::Vector2i& boardSize)
 	: RelativeLayout<PolygonView>(window)
@@ -30,8 +30,6 @@ void Board::randomizeBoard()
 
 	for (int rowNum = 1; rowNum < m_boardSize.y; ++rowNum) {
 
-		// TODO add Trig right
-
 		int i;
 		if (rowNum % 2 == 0) {
 			i = 0;
@@ -42,11 +40,13 @@ void Board::randomizeBoard()
 		
 		for (; i < m_boardSize.x; ++i) {
 
-			Utils::SquareStruct squareStruct = Utils::randSquareStruct();
+			// TODO add Trig right
+
+			Utilities::SquareStruct squareStruct = Utilities::randSquareStruct();
 			switch (squareStruct)
 			{
-				case Utils::SquareStruct::SQUARE: {
-					std::unique_ptr<PolygonShape> shape = std::make_unique<Square>(Utils::randColor()); 
+				case Utilities::SquareStruct::SQUARE: {
+					std::unique_ptr<PolygonShape> shape = std::make_unique<Square>(Utilities::randColor());
 					std::shared_ptr<PolygonView> shapeView = std::make_shared<PolygonView>(getWindow(), std::move(shape));
 					sf::FloatRect downTrigBounds;
 					if (rowNum % 2 == 0)
@@ -58,11 +58,11 @@ void Board::randomizeBoard()
 					downTrigBounds.height = 2.f / m_boardSize.y;
 					addView(shapeView, downTrigBounds);
 				} break;
-				case Utils::SquareStruct::UP_DOWN_TRIG: {
+				case Utilities::SquareStruct::UP_DOWN_TRIG: {
 
-					std::unique_ptr<PolygonShape> upTrig = std::make_unique<Triangle>(Utils::randColor(), Triangle::PointingSide::UP);
+					std::unique_ptr<PolygonShape> upTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::UP);
 					std::shared_ptr<PolygonView> upTrigView = std::make_shared<PolygonView>(getWindow(), std::move(upTrig));
-					std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(Utils::randColor(), Triangle::PointingSide::DOWN);
+					std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::DOWN);
 					std::shared_ptr<PolygonView> downTrigView = std::make_shared<PolygonView>(getWindow(), std::move(downTrig));
 					sf::FloatRect upTrigBounds, downTrigBounds;
 					if (rowNum % 2 == 0) {
@@ -77,10 +77,10 @@ void Board::randomizeBoard()
 					addView(upTrigView, upTrigBounds);
 					addView(downTrigView, downTrigBounds);
 				} break;
-				case Utils::SquareStruct::LEFT_RIGHT_TRIG: {
-					std::unique_ptr<PolygonShape> leftTrig = std::make_unique<Triangle>(Utils::randColor(), Triangle::PointingSide::LEFT);
+				case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
+					std::unique_ptr<PolygonShape> leftTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::LEFT);
 					std::shared_ptr<PolygonView> leftTrigView = std::make_shared<PolygonView>(getWindow(), std::move(leftTrig));
-					std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Utils::randColor(), Triangle::PointingSide::RIGHT);
+					std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::RIGHT);
 					std::shared_ptr<PolygonView> rightTrigView = std::make_shared<PolygonView>(getWindow(), std::move(rightTrig));
 					sf::FloatRect leftTrigBounds, rightTrigBounds;
 					if (rowNum % 2 == 0) {
@@ -104,6 +104,8 @@ void Board::randomizeBoard()
 
 		
 	}
+
+	// TODO add trigs in bottom
 }
 
 void Board::clear()

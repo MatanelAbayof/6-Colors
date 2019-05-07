@@ -48,6 +48,7 @@
 #include "Square.h"
 #include "Board.h"
 #include "Triangle.h"
+#include "Utilities.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -60,7 +61,6 @@ using namespace GUI;
 void testBoard();
 void testPolygon();
 void testGraph();
-sf::Color randColor();
 void testGUI();
 void testClientAndServerNetwork();
 void testClientNetwork(const unsigned short port);
@@ -104,10 +104,18 @@ void testBoard() {
 	mainLayout.getBorder().setSize(1.f);
 
 
-	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 5,4 });
+	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 50, 40 });
 	board->randomizeBoard();
 	mainLayout.addView(board);
 
+
+	for (int i = 0; i < board->getNumOfViews(); ++i) {
+		auto& p = board->getView(i);
+		p->addKeyDownListener([&p](sf::Keyboard::Key& key) {
+			if(key == sf::Keyboard::A)
+				p->setColor(Utilities::randColor());
+		});
+	}
 
 	board->addClickListener([](View& view) {
 		std::cout << view.toString() << std::endl;
@@ -146,7 +154,7 @@ void testPolygon() {
 		std::unique_ptr<PolygonShape> poly = std::make_unique<Square>(sf::Color::Yellow);
 		std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(poly));		
 		polygonView->addClickListener([polygonView](View& view) {
-			polygonView->setColor(randColor());
+			polygonView->setColor(Utilities::randColor());
 		});
 		mainLayout.addView(polygonView);
 	}
@@ -347,7 +355,7 @@ void testGUI() {
 			mainLayout.getBorder().setSize(mainLayout.getBorder().getSize() - 1);
 		} break;
 		case sf::Keyboard::Key::D: {
-			mainLayout.getBorder().setColor(randColor());
+			mainLayout.getBorder().setColor(Utilities::randColor());
 		} break;
 		case sf::Keyboard::Key::F: {
 			std::cout << mainLayout.toString() << std::endl;
@@ -401,10 +409,6 @@ void testGUI() {
 		mainLayout.draw();
 		window.display();
 	}
-}
-
-sf::Color randColor() {
-	return sf::Color(rand() % 0xFF, rand() % 0xFF, rand() % 0xFF);
 }
 
 void testCleanScreen() {
