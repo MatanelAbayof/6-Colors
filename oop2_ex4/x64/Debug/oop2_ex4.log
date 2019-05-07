@@ -1,7 +1,0 @@
-﻿  AreaButton.cpp
-  BottomPanel.cpp
-  nahum_tests.cpp
-  Shape.cpp
-  Square.cpp
-c:\users\נחום\source\repos\oop2_ex4\oop2_ex4\square.cpp(6): error C2661: 'Shape::Shape': no overloaded function takes 4 arguments
-  Generating Code...
