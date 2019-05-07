@@ -98,6 +98,7 @@ void testPolygon() {
 	mainLayout.getBorder().setColor(sf::Color::Blue);
 	mainLayout.getBorder().setSize(1.f);
 
+	/*
 	// create polygon
 	std::unique_ptr<PolygonShape> poly = std::make_unique<PolygonShape>(sf::Color::Yellow);
 	std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(poly));
@@ -106,9 +107,9 @@ void testPolygon() {
 	polygonView->addPoint(sf::Vector2f(1.f, 0.5f));
 	polygonView->addPoint(sf::Vector2f(0.5f, 1.f));
 	polygonView->addPoint(sf::Vector2f(0.f, 0.5f)); 
-
+	
 	mainLayout.addView(polygonView);
-
+	*/
 	//PolygonShape p1;
 	//
 
