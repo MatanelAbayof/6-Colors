@@ -105,7 +105,7 @@ void testPolygon() {
 	polygonView->addPoint(sf::Vector2f(0.5f, 0.f));
 	polygonView->addPoint(sf::Vector2f(1.f, 0.5f));
 	polygonView->addPoint(sf::Vector2f(0.5f, 1.f));
-	polygonView->addPoint(sf::Vector2f(0.f, 0.5f));
+	polygonView->addPoint(sf::Vector2f(0.f, 0.5f)); 
 
 	mainLayout.addView(polygonView);
 
