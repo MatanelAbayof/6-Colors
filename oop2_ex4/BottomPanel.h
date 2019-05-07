@@ -17,7 +17,7 @@ class BottomPanel :
 {
 public:
 	// constructor
-	BottomPanel(sf::RenderWindow& window);
+	explicit BottomPanel(sf::RenderWindow& window);
 	// get color panel
 	const std::shared_ptr<ColorPanel>& getColorPanel() const { return m_colorPanel; }
 	//get my arae button

@@ -63,7 +63,7 @@ int main()
 	catch (const std::exception& ex)
 	{
 		// Oh No! error...
-		ErrorDialog::show(ex.what());
+		ErrorDialog::show(ex.what()); 
 	}
 }
 

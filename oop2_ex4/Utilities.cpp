@@ -1,5 +1,19 @@
 //---- include section ------
 #include "Utilities.h"
+#include "ColorPanel.h"
+
+sf::Color Utilities::randColor()
+{
+	int index = rand() % ColorPanel::COLORS.size();
+
+	return ColorPanel::COLORS[index];
+}
+
+Utilities::SquareStruct Utilities::randSquareStruct()
+{
+	int squareStructIndex = rand() % NUM_SQUARE_STRUCTS;
+	return static_cast<SquareStruct>(squareStructIndex);
+}
 
 string Utilities::keyCodeToString(sf::Keyboard::Key keyCode)
 {

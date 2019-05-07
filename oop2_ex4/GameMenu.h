@@ -14,7 +14,7 @@ class GameMenu :
 {
 public:
 	// constructor
-	GameMenu(sf::RenderWindow& window);
+	explicit GameMenu(sf::RenderWindow& window);
 	//get restart button
 	const std::shared_ptr<GUI::Button>& getRestartButton() const {
 		return m_restart;

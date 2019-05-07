@@ -14,7 +14,7 @@ class ColorButton :
 {
 public:
 	// constructor
-	ColorButton(sf::RenderWindow& window, const sf::Color& color);
+	explicit ColorButton(sf::RenderWindow& window, const sf::Color& color);
 	// get color
 	const sf::Color& getColor() const { return m_color; }
 	// set color

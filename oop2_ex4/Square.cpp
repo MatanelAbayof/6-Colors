@@ -8,7 +8,7 @@ Square::Square(const sf::Color & color)
 
 string Square::toString() const
 {
-	return "Square: " + Shape::toString();
+	return "Square: { " + PolygonShape::toString() + " }";
 }
 
 void Square::init()

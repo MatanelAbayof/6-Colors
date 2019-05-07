@@ -13,7 +13,7 @@ class Shape
 {
 public:
 	// constructor
-	Shape(const sf::Color& color = sf::Color::Transparent);
+	explicit Shape(const sf::Color& color = sf::Color::Transparent);
 	//set color
 	void setColor(const sf::Color& color) { m_color = color; }
 	//get width

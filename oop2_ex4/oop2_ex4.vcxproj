@@ -179,6 +179,7 @@
     <ClCompile Include="ImageTexture.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="INetworkThread.cpp" />
+    <ClCompile Include="JoinGameScreen.cpp" />
     <ClCompile Include="LoadResourceException.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MainScreen.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="TextureInfo.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TextView.cpp" />
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="View.cpp" />
   </ItemGroup>
@@ -226,6 +228,7 @@
     <ClInclude Include="ImageTexture.h" />
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="INetworkThread.h" />
+    <ClInclude Include="JoinGameScreen.h" />
     <ClInclude Include="LoadResourceException.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MainScreen.h" />
@@ -247,6 +250,7 @@
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextView.h" />
+    <ClInclude Include="Triangle.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="VerticalLayout.h" />
     <ClInclude Include="View.h" />

@@ -46,6 +46,10 @@
 #include "PolygonView.h"
 #include "PolygonShape.h"
 #include "Square.h"
+#include "Board.h"
+#include "Triangle.h"
+#include "Utilities.h"
+#include "JoinGameScreen.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -55,9 +59,10 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testJoinGameScreen();
+void testBoard();
 void testPolygon();
 void testGraph();
-sf::Color randColor();
 void testGUI();
 void testClientAndServerNetwork();
 void testClientNetwork(const unsigned short port);
@@ -76,7 +81,9 @@ int main()
 
 	try
 	{
-		testPolygon();
+		testJoinGameScreen();
+		//testBoard();
+		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
 		//testGUI();
@@ -85,6 +92,75 @@ int main()
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testJoinGameScreen() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	JoinGameScreen joinGameScreen(window);
+	joinGameScreen.makeRootView();
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			joinGameScreen.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		joinGameScreen.draw();
+		window.display();
+	}
+}
+
+void testBoard() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+
+	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 20, 20 });
+	board->randomizeBoard();
+	mainLayout.addView(board);
+
+
+	for (int i = 0; i < board->getNumOfViews(); ++i) {
+		auto& p = board->getView(i);
+		p->addKeyDownListener([&p](sf::Keyboard::Key& key) {
+			if(key == sf::Keyboard::A)
+				p->setColor(Utilities::randColor());
+		});
+	}
+
+	board->addClickListener([](View& view) {
+		std::cout << view.toString() << std::endl;
+	});
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 
@@ -105,7 +181,7 @@ void testPolygon() {
 		std::unique_ptr<PolygonShape> poly = std::make_unique<Square>(sf::Color::Yellow);
 		std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(poly));		
 		polygonView->addClickListener([polygonView](View& view) {
-			polygonView->setColor(randColor());
+			polygonView->setColor(Utilities::randColor());
 		});
 		mainLayout.addView(polygonView);
 	}
@@ -306,7 +382,7 @@ void testGUI() {
 			mainLayout.getBorder().setSize(mainLayout.getBorder().getSize() - 1);
 		} break;
 		case sf::Keyboard::Key::D: {
-			mainLayout.getBorder().setColor(randColor());
+			mainLayout.getBorder().setColor(Utilities::randColor());
 		} break;
 		case sf::Keyboard::Key::F: {
 			std::cout << mainLayout.toString() << std::endl;
@@ -360,10 +436,6 @@ void testGUI() {
 		mainLayout.draw();
 		window.display();
 	}
-}
-
-sf::Color randColor() {
-	return sf::Color(rand() % 0xFF, rand() % 0xFF, rand() % 0xFF);
 }
 
 void testCleanScreen() {

@@ -15,7 +15,7 @@ class PolygonShape :
 {
 public:
 	// constructor
-	PolygonShape(const sf::Color& color = sf::Color::Transparent);
+	explicit PolygonShape(const sf::Color& color = sf::Color::Transparent);
 	// add relative point to polygon
 	void addPoint(const sf::Vector2f& relPoint);
 	// get number of points
@@ -24,6 +24,8 @@ public:
 	const sf::Vector2f& getPoint(int index) const;
 	// get number of edges
 	virtual int getNumOfEdges() const { return getNumOfPoints(); }
+	// convert to string
+	virtual string toString() const override;
 private:
 	// relative points of polygon
 	std::vector<sf::Vector2f> m_relPoints;

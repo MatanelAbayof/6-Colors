@@ -14,6 +14,11 @@ void PolygonShape::addPoint(const sf::Vector2f& relPoint)
 const sf::Vector2f& PolygonShape::getPoint(int index) const
 {
 	if (index < 0 || index >= getNumOfPoints())
-		throw std::out_of_range("Canoot find point at " + std::to_string(index));
+		throw std::out_of_range("Cannot find point at " + std::to_string(index));
 	return m_relPoints[index];
+}
+
+string PolygonShape::toString() const
+{
+	return "PolygonShape: { " + Shape::toString() + " }";
 }
