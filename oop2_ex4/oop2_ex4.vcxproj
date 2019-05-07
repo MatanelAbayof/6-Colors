@@ -198,6 +198,7 @@
     <ClCompile Include="TextureInfo.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TextView.cpp" />
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="View.cpp" />
   </ItemGroup>
@@ -245,6 +246,7 @@
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextView.h" />
+    <ClInclude Include="Triangle.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="VerticalLayout.h" />
     <ClInclude Include="View.h" />
