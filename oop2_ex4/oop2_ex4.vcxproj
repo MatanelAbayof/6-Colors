@@ -189,7 +189,9 @@
     <ClCompile Include="RequestsServerThread.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="ServerThread.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Square.cpp" />
     <ClCompile Include="TextureInfo.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TextView.cpp" />
@@ -231,7 +233,9 @@
     <ClInclude Include="RequestsServerThread.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="ServerThread.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Square.h" />
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextView.h" />
