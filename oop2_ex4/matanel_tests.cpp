@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define MATANEL_TESTS
+#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
  //-------------- libs -------------------------
@@ -45,6 +45,7 @@
 #include "Graph.h"
 #include "PolygonView.h"
 #include "PolygonShape.h"
+#include "Square.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -98,18 +99,18 @@ void testPolygon() {
 	mainLayout.getBorder().setColor(sf::Color::Blue);
 	mainLayout.getBorder().setSize(1.f);
 
-	/*
-	// create polygon
-	std::unique_ptr<PolygonShape> poly = std::make_unique<PolygonShape>(sf::Color::Yellow);
-	std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(poly));
-	polygonView->setColor(sf::Color::Black);
-	polygonView->addPoint(sf::Vector2f(0.5f, 0.f));
-	polygonView->addPoint(sf::Vector2f(1.f, 0.5f));
-	polygonView->addPoint(sf::Vector2f(0.5f, 1.f));
-	polygonView->addPoint(sf::Vector2f(0.f, 0.5f)); 
+
+	for (int i = 0; i < 3; i++) {
+		// create polygon
+		std::unique_ptr<PolygonShape> poly = std::make_unique<Square>(sf::Color::Yellow);
+		std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(poly));		
+		polygonView->addClickListener([polygonView](View& view) {
+			polygonView->setColor(randColor());
+		});
+		mainLayout.addView(polygonView);
+	}
 	
-	mainLayout.addView(polygonView);
-	*/
+	
 	//PolygonShape p1;
 	//
 
