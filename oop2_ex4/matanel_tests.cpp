@@ -43,6 +43,7 @@
 #include "RequestsClientThread.h"
 #include "RequestsServerThread.h"
 #include "Graph.h"
+#include "PolygonView.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -52,12 +53,14 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testPolygon();
 void testGraph();
 sf::Color randColor();
 void testGUI();
 void testClientAndServerNetwork();
 void testClientNetwork(const unsigned short port);
 void testServerNetwork(const unsigned short port);
+void testCleanScreen();
 #pragma endregion
 
 // -------------- globals & constants --------------------
@@ -71,14 +74,52 @@ int main()
 
 	try
 	{
+		testPolygon();
 		//testGraph();
-		testClientAndServerNetwork();
+		//testClientAndServerNetwork();
 		//testGUI();
 	}
 	catch (const std::exception& ex)
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testPolygon() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "GUI");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+	// create polygon
+	std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window);
+	polygonView->setColor(sf::Color::Black);
+	polygonView->addPoint(sf::Vector2f(0.5f, 0.f));
+	polygonView->addPoint(sf::Vector2f(1.f, 0.5f));
+	polygonView->addPoint(sf::Vector2f(0.5f, 1.f));
+	polygonView->addPoint(sf::Vector2f(0.f, 0.5f));
+
+	mainLayout.addView(polygonView);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 
@@ -317,5 +358,31 @@ sf::Color randColor() {
 	return sf::Color(rand() % 0xFF, rand() % 0xFF, rand() % 0xFF);
 }
 
+void testCleanScreen() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
+	}
+}
 
 #endif // MATANEL_TESTS
