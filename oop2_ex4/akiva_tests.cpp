@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define AKIVA_TESTS
+#define AKIVA_TESTS
 #ifdef AKIVA_TESTS
 
 #pragma region Libs
