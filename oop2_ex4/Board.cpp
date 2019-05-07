@@ -11,52 +11,56 @@ Board::Board(sf::RenderWindow& window, const sf::Vector2i& boardSize)
 
 void Board::setBoardSize(const sf::Vector2i& boardSize)
 {
+	// check board size
+	if (boardSize.x < 0 || boardSize.y < 0)
+		throw std::length_error("Board size {x=" + std::to_string(boardSize.x) + ", y=" + std::to_string(boardSize.y) + "} must be a natural numbers");
+
 	clear();
 	m_boardSize = boardSize;
 }
 
-void Board::randomizeBoard()
+void Board::randomizeBoard()                                          // TODO must set adjs!!!!
 {
+	// check if board is set
+	if (m_boardSize.x == 0 || m_boardSize.y == 0)
+		throw std::length_error("Board size isn't set");
+
+	// the shape size
+	float shapeWidth = 1.f / float(m_boardSize.x);
+	float shapeHeight = 1.f / float(m_boardSize.y);
+
+	// add top triangles (first row)
 	for (int colNum = 0; colNum < m_boardSize.x; ++colNum) {
-		std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(sf::Color::Blue, Triangle::PointingSide::DOWN);
+		std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::DOWN);
 		std::shared_ptr<PolygonView> downTrigView = std::make_shared<PolygonView>(getWindow(), std::move(downTrig));
-		sf::FloatRect downTrigBounds;
-		downTrigBounds.left = float(colNum) / m_boardSize.x;
-		downTrigBounds.top = 0.f;
-		downTrigBounds.width = 1.f / m_boardSize.x;
-		downTrigBounds.height = 1.f / m_boardSize.y;
+		sf::FloatRect downTrigBounds(float(colNum) * shapeWidth, 0.f, shapeWidth, shapeHeight);
 		addView(downTrigView, downTrigBounds);
 	}
 
+	// add shapes exclude last row
 	for (int rowNum = 1; rowNum < m_boardSize.y; ++rowNum) {
 
-		int i;
-		if (rowNum % 2 == 0) {
-			i = 0;
-		}
-		else {
-			i = 1;
-		}
-		
-		for (; i < m_boardSize.x; ++i) {
 
-			// TODO add Trig right
+		// TODO add Trigangle in left side
 
+	
+		for (int i = (rowNum % 2 == 0) ? 0 : 1; i < m_boardSize.x; ++i) {
+			// random shapes in current square struct
 			Utilities::SquareStruct squareStruct = Utilities::randSquareStruct();
 			switch (squareStruct)
 			{
 				case Utilities::SquareStruct::SQUARE: {
-					std::unique_ptr<PolygonShape> shape = std::make_unique<Square>(Utilities::randColor());
-					std::shared_ptr<PolygonView> shapeView = std::make_shared<PolygonView>(getWindow(), std::move(shape));
-					sf::FloatRect downTrigBounds;
+					std::unique_ptr<PolygonShape> square = std::make_unique<Square>(Utilities::randColor());
+					std::shared_ptr<PolygonView> squareView = std::make_shared<PolygonView>(getWindow(), std::move(square));
+					sf::FloatRect squareBounds;
 					if (rowNum % 2 == 0)
-						downTrigBounds.left = float(2 * i) / (2.f*m_boardSize.x);
+						squareBounds.left = float(i)*shapeWidth;
 					else
-						downTrigBounds.left = float(2 * i - 1) / (2.f*m_boardSize.x);
-					downTrigBounds.top = float(rowNum - 1) / (m_boardSize.y);
-					downTrigBounds.width = 1.f / m_boardSize.x;
-					downTrigBounds.height = 2.f / m_boardSize.y;
-					addView(shapeView, downTrigBounds);
+						squareBounds.left = float(2 * i - 1) / (2.f*m_boardSize.x);
+					squareBounds.top = float(rowNum - 1) / (m_boardSize.y);
+					squareBounds.width = shapeWidth;
+					squareBounds.height = 2.f * shapeHeight;
+					addView(squareView, squareBounds);
 				} break;
 				case Utilities::SquareStruct::UP_DOWN_TRIG: {
 
@@ -100,12 +104,12 @@ void Board::randomizeBoard()
 			}			
 		}
 
-		// TODO add Trig left
+		// TODO add Trigangle in right side
 
 		
 	}
 
-	// TODO add trigs in bottom
+	// TODO add trigs in bottom (last row)
 }
 
 void Board::clear()

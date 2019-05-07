@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <set>
+#include <unordered_set>
 #include <vector>
 #include <memory>
 
@@ -19,7 +19,7 @@ public:
 	class Vertex {
 		public:
 			// adjacency list
-			using AdjList = std::set<Graph<T>::Vertex*>;
+			using AdjList = std::unordered_set<Graph<T>::Vertex*>;
 			// constructor
 			Vertex(Graph<T>& graph, const std::shared_ptr<T>& value, int index) : m_graph(graph), m_index(index), m_value(value) { }
 			// get adjacency list
