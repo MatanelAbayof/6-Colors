@@ -4,7 +4,7 @@
 #include "NetworkException.h"
 
 ServerThread::ServerThread()
-	: INetworkThread(), m_blockNewConnections(true)
+	: INetworkThread(), m_blockNewConnections(true), m_numOfClients(0)
 { }
 
 ServerThread::~ServerThread()
@@ -48,11 +48,11 @@ bool ServerThread::isBlockNewConnections() const
 	return m_blockNewConnections;
 }
 
-/*size_t ServerThread::getNumOfClients() const                       // TODO
+int ServerThread::getNumOfClients() const
 {
 	std::shared_lock<std::shared_mutex> lock(m_mutex);
-	return m_clients.size();
-}*/
+	return m_numOfClients;
+}
 
 string ServerThread::toString() const
 {
@@ -77,24 +77,26 @@ void ServerThread::runServerThread(const unsigned short port)
 			if (m_selector.isReady(m_listener)) {
 				// check if is not blocking new connections
 				if (!isBlockNewConnections()) {
-					sf::TcpSocket* client = new sf::TcpSocket;
+					std::unique_ptr<sf::TcpSocket> client = std::make_unique<sf::TcpSocket>();
 					if (m_listener.accept(*client) == sf::Socket::Done) {
+						sf::TcpSocket* pClient = client.get();
 						// add the new client to the clients list
-						m_clients.push_back(client);
+						m_clients.push_back(std::move(client));
 						// add to selector
-						m_selector.add(*client);
+						m_selector.add(*pClient);
+						// add 1 client
+						setNumOfClients(m_clients.size());
 						// call event
-						onClientJoined(*client);
+						onClientJoined(*pClient);
 					}
 					else {
-						delete client;
 						exitThread();
 						return;
 					}
 				}
 			} else {
 				// The listener socket is not ready, test all other sockets (the clients)
-				for (std::list<sf::TcpSocket*>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
+				for (ClientList::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
 					sf::TcpSocket& client = **it;
 					if (m_selector.isReady(client)) {
 						// The client has sent some data, we can receive it
@@ -119,7 +121,7 @@ void ServerThread::runServerThread(const unsigned short port)
 		// check if packet is not empty
 		if (packet.getDataSize() > 0) {
 			// send data to clients
-			for (std::list<sf::TcpSocket*>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
+			for (ClientList::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
 				sf::TcpSocket& client = **it;
 
 				// send message to client
@@ -138,13 +140,16 @@ void ServerThread::runServerThread(const unsigned short port)
 void ServerThread::clear()
 {
 	std::unique_lock<std::shared_mutex> lock(m_mutex);
-	// delete clients
-	for (std::list<sf::TcpSocket*>::iterator it = m_clients.begin(); it != m_clients.end(); ++it)
-		delete *it;
 	m_blockNewConnections = true;
 	m_clients.clear();
 	m_listener.close();
 	m_selector.clear();
+}
+
+void ServerThread::setNumOfClients(int numOfClients)
+{
+	std::unique_lock<std::shared_mutex> lock(m_mutex);
+	m_numOfClients = numOfClients;
 }
 
 

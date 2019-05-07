@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define MATANEL_TESTS
+#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
  //-------------- libs -------------------------
@@ -43,6 +43,7 @@
 #include "RequestsClientThread.h"
 #include "RequestsServerThread.h"
 #include "Graph.h"
+#include "PolygonView.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -52,12 +53,14 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testPolygon();
 void testGraph();
 sf::Color randColor();
 void testGUI();
 void testClientAndServerNetwork();
 void testClientNetwork(const unsigned short port);
 void testServerNetwork(const unsigned short port);
+void testCleanScreen();
 #pragma endregion
 
 // -------------- globals & constants --------------------
@@ -71,7 +74,8 @@ int main()
 
 	try
 	{
-		testGraph();
+		testPolygon();
+		//testGraph();
 		//testClientAndServerNetwork();
 		//testGUI();
 	}
@@ -82,25 +86,65 @@ int main()
 	}
 }
 
+void testPolygon() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "GUI");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+	// create polygon
+	std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window);
+	polygonView->setColor(sf::Color::Black);
+	polygonView->addPoint(sf::Vector2f(0.5f, 0.f));
+	polygonView->addPoint(sf::Vector2f(1.f, 0.5f));
+	polygonView->addPoint(sf::Vector2f(0.5f, 1.f));
+	polygonView->addPoint(sf::Vector2f(0.f, 0.5f));
+
+	mainLayout.addView(polygonView);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
+	}
+}
+
 void testGraph() {
 	// create graph
-	Graph<int> graph;
+	Graph<string> graph;
 
 	// add vertices
 	for (int i = 0; i < 10; i++) {
-		graph.addVertex(i);
+		graph.addVertex("vertex_" + std::to_string(i));
 	}
 
 	// add adjacents
-	for (int i = 0; i < graph.getNumOfVertices()-1; i++) {
-		Graph<int>::Vertex<int>* vertex = graph.getVertex(i);
-		//vertex->addAdjacent(graph.getVertex(i + 1));
+	for (int i = 0; i < graph.getNumOfVertices()-2; i++) {
+		auto vertex = graph.getVertex(i);
+		vertex->addAdjacent(graph.getVertex(i + 1));
+		vertex->addAdjacent(graph.getVertex(i + 1)); // graph ignore duplicate adjs
+		vertex->addAdjacent(graph.getVertex(i + 2));
 	}
 
 	// print graph
 	std::cout << graph.toString() << std::endl;
 	for (int i = 0; i < graph.getNumOfVertices(); i++) {
 		std::cout << "V[" << i << "] = " << graph.getVertex(i)->getValue() << std::endl;
+		std::cout << graph.getVertex(i)->toString() << std::endl;
 	}
 }
 
@@ -114,7 +158,7 @@ void testClientAndServerNetwork() {
 
 	// create clients threads
 	std::vector<std::unique_ptr<std::thread>> clients;
-	int numOfClients = 2;
+	int numOfClients = 3;
 	for (int i = 0; i < numOfClients; i++) {
 		std::unique_ptr<std::thread> clientTheard = std::make_unique<std::thread>(testClientNetwork, port);
 		clientTheard->detach();
@@ -203,13 +247,18 @@ void testServerNetwork(const unsigned short port) {
 	RequestsServerThread serverThread(sendRequests, receiveRequests);
 	serverThread.start(port);
 
+	// wait for 1 client
+	while (serverThread.getNumOfClients() == 0) {
+		std::this_thread::sleep_for(std::chrono::milliseconds(5));
+	}
+
+	LOG("server: i have 1 client");
+
 	// run main thread - "the game"
 	while (true) {
 
 		// block connetions
 		//serverThread.setBlockConnections(true);
-
-		// TODO check number of connected clients	
 
 		// check if have request from client
 		std::unique_ptr<string> clientRequest = receiveRequests.tryPop();
@@ -309,5 +358,31 @@ sf::Color randColor() {
 	return sf::Color(rand() % 0xFF, rand() % 0xFF, rand() % 0xFF);
 }
 
+void testCleanScreen() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
+	}
+}
 
 #endif // MATANEL_TESTS

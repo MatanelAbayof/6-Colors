@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include <list>
+#include <set>
 #include <vector>
+#include <memory>
 
 //---- using section --------
 using std::string;
@@ -13,38 +14,39 @@ template <class T>
 class Graph
 {
 public:
+
 	// vertex of graph
-	template <class T>
 	class Vertex {
 		public:
+			// adjacency list
+			using AdjList = std::set<Graph<T>::Vertex*>;
 			// constructor
 			Vertex(Graph<T>& graph, const T& value, int index) : m_graph(graph), m_index(index) { m_value = std::make_unique<T>(value); }
 			// get adjacency list
-			const std::list<Vertex<T>*>& getAdjacencyList() const { return m_graph.m_adjs[m_index]; }
+			const AdjList& getAdjacencyList() const { return m_adjs; }
 			// add adjacent
-			//void addAdjacent(Vertex<T>* adjVertex) { m_graph.m_adjs[m_index].push_front(adjVertex); }     // TODO add this to adj.      adjVertex->addAdjacent(this);
+			void addAdjacent(Vertex* adjVertex);
 			// get value
 			T& getValue() const { return *m_value; }
-			// get index
-			int getIndex() const { return m_index; }
 			// convert to string
-			//virtual string toString() const;
+			virtual string toString() const;
 		private:
 			// graph
 			Graph<T>& m_graph;
+			// adjacency list
+			AdjList m_adjs;
 			// index of vertex at graph
 			int m_index;
 			// my value
 			std::unique_ptr<T> m_value;
+			// get index
+			int getIndex() const { return m_index; }
 	};
-
-	// adjacency list
-	using AdjList = std::list<Vertex<T>*>;
-
+	
 	// constructor
 	Graph() = default;
 	// get vertex at position
-	Vertex<T>* getVertex(int index) const;
+	Vertex* getVertex(int index) const;
 	// add vertex
 	void addVertex(const T& value);
 	// get number of vertices
@@ -57,18 +59,25 @@ public:
 	// TODO add: remove vertex, for each
 private:
 	// vertices
-	std::vector<std::unique_ptr<Vertex<T>>> m_vertices;
-	// adjacency list
-	std::vector<AdjList> m_adjs;
+	std::vector<std::unique_ptr<Vertex>> m_vertices;
 	// check if have vertex at position
 	bool isHaveVertex(int index) const { return ((index >= 0) && (index < getNumOfVertices())); }
 
-	friend class Vertex<T>;
+friend class Vertex;
 };
 
+template<class T>
+void Graph<T>::addVertex(const T& value)
+{
+	// create new vertex
+	int index = m_vertices.size();
+	std::unique_ptr<Vertex> vertex = std::make_unique<Vertex>(*this, value, index);
+	// add vertex to vector
+	m_vertices.push_back(std::move(vertex));
+}
 
 template<class T>
-Graph<T>::Vertex<T>* Graph<T>::getVertex(int index) const
+typename Graph<T>::Vertex* Graph<T>::getVertex(int index) const
 {
 	if (!isHaveVertex(index))
 		throw std::out_of_range("Cannot find vertex at " + std::to_string(index));
@@ -76,27 +85,28 @@ Graph<T>::Vertex<T>* Graph<T>::getVertex(int index) const
 }
 
 template<class T>
-void Graph<T>::addVertex(const T& value)
-{
-	// create new vertex
-	int index = m_vertices.size();
-	std::unique_ptr<Vertex<T>> vertex = std::make_unique<Vertex<T>>(*this, value, index);
-	// add vertex to vector
-	m_vertices.push_back(std::move(vertex));
-	// add new element to adjacency list
-	AdjList adjs;
-	m_adjs.push_back(adjs);
-}
-
-template<class T>
 void Graph<T>::clear()
 {
 	m_vertices.clear();
-	m_adjs.clear();
 }
 
 template<class T>
 string Graph<T>::toString() const
 {
 	return "Graph: { numOfVertices=" + std::to_string(getNumOfVertices()) + " }"; 
+}
+
+template<class T>
+void Graph<T>::Vertex::addAdjacent(Vertex* adjVertex)
+{
+	// add vertex to my adjacency list 
+	m_adjs.insert(adjVertex);
+	// add my self to adjVertex adjacency list 
+	adjVertex->m_adjs.insert(this);
+}
+
+template<class T>
+inline string Graph<T>::Vertex::toString() const
+{
+	return "Vertex: { index=" + std::to_string(getIndex()) + ", numOfAdjs=" + std::to_string(m_adjs.size()) + " }";
 }
