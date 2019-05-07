@@ -1,6 +1,7 @@
 #pragma once
 //---- include section ------
 #include <string>
+#include <vector>
 #include "Shape.h"
 
 //---- using section --------
@@ -9,12 +10,12 @@ using std::string;
 /*
  * Shape class
  */
-class Polygon :
+class PolygonShape :
 	public Shape
 {
 public:
 	// constructor
-	Polygon(const sf::Color& color = sf::Color::Transparent);
+	PolygonShape(const sf::Color& color = sf::Color::Transparent);
 	// add relative point to polygon
 	void addPoint(const sf::Vector2f& relPoint);
 	// get number of points

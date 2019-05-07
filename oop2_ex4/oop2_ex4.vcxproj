@@ -184,7 +184,7 @@
     <ClCompile Include="matanel_tests.cpp" />
     <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="NetworkException.cpp" />
-    <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="PolygonShape.cpp" />
     <ClCompile Include="PolygonView.cpp" />
     <ClCompile Include="RectUtils.cpp" />
     <ClCompile Include="RequestsClientThread.cpp" />
@@ -228,7 +228,7 @@
     <ClInclude Include="MainScreen.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NetworkException.h" />
-    <ClInclude Include="Polygon.h" />
+    <ClInclude Include="PolygonShape.h" />
     <ClInclude Include="PolygonView.h" />
     <ClInclude Include="RectUtils.h" />
     <ClInclude Include="RelativeLayout.h" />

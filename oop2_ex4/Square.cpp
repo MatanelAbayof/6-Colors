@@ -1,7 +1,7 @@
 #include "Square.h"
 
 
-
+/*
 Square::Square(float width, const sf::Color & color)
 	: Shape(width, width, color)
 {}
@@ -15,3 +15,4 @@ string Square::toString() const
 {
 	return "Square: " + Shape::toString();
 }
+*/

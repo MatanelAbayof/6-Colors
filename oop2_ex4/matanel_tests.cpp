@@ -44,6 +44,7 @@
 #include "RequestsServerThread.h"
 #include "Graph.h"
 #include "PolygonView.h"
+#include "PolygonShape.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -98,7 +99,8 @@ void testPolygon() {
 	mainLayout.getBorder().setSize(1.f);
 
 	// create polygon
-	std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window);
+	std::unique_ptr<PolygonShape> poly = std::make_unique<PolygonShape>(sf::Color::Yellow);
+	std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(poly));
 	polygonView->setColor(sf::Color::Black);
 	polygonView->addPoint(sf::Vector2f(0.5f, 0.f));
 	polygonView->addPoint(sf::Vector2f(1.f, 0.5f));
@@ -106,6 +108,9 @@ void testPolygon() {
 	polygonView->addPoint(sf::Vector2f(0.f, 0.5f));
 
 	mainLayout.addView(polygonView);
+
+	//PolygonShape p1;
+	//
 
 	while (window.isOpen())
 	{
