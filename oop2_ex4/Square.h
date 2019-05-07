@@ -14,7 +14,7 @@ class Square :
 public:
 	const int NUM_OF_EDGES = 4;
 	// constructor
-	Square(const sf::Color& color);
+	explicit Square(const sf::Color& color);
 	//get width
 	virtual float getWidth() const { return getHeight(); }
 	//get height

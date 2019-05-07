@@ -24,7 +24,7 @@ void ColorPanel::initComponents(sf::RenderWindow & window)
 	getBackground().setColor(sf::Color(240, 255, 239));
 
 	//init color panel
-	for (int i = 0; i < COLORS.size(); i++) {
+	for (size_t i = 0; i < COLORS.size(); i++) {
 		std::shared_ptr<ColorButton> cb = std::make_shared<ColorButton>(window, COLORS[i]);
 		m_colorPanel.push_back(cb);
 		addView(cb);

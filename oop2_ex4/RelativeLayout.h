@@ -41,8 +41,8 @@ private:
 template <class ViewType>
 void GUI::RelativeLayout<ViewType>::addView(const std::shared_ptr<ViewType>& view, const sf::FloatRect& relativeBounds)
 {
-	//if (!checkRelativeBounds(relativeBounds))
-	//	throw std::invalid_argument("Relative bounds must be numbers between 0-1");
+	if (!checkRelativeBounds(relativeBounds))
+		throw std::invalid_argument("Relative bounds must be numbers between 0-1");
 
 	ViewGroup<ViewType>::addView(view);
 	m_relativeBounds.push_back(relativeBounds);

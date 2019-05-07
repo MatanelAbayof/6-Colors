@@ -17,7 +17,7 @@ class ColorPanel :
 {
 public:
 	// constructor
-	ColorPanel(sf::RenderWindow& window);
+	explicit ColorPanel(sf::RenderWindow& window);
 	// convert to string
 	virtual string toString() const override;
 	// get button by color

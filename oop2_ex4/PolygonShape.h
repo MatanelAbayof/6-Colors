@@ -15,7 +15,7 @@ class PolygonShape :
 {
 public:
 	// constructor
-	PolygonShape(const sf::Color& color = sf::Color::Transparent);
+	explicit PolygonShape(const sf::Color& color = sf::Color::Transparent);
 	// add relative point to polygon
 	void addPoint(const sf::Vector2f& relPoint);
 	// get number of points

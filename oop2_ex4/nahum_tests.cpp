@@ -63,8 +63,8 @@ int main()
 
 	try
 	{
-		testShape();
-		//testGameMenu();
+		//testShape();
+		testGameMenu();
 		//testGUI();
 	}
 	catch (const std::exception& ex)

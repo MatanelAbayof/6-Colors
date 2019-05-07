@@ -16,7 +16,7 @@ class PolygonView :
 {
 public:
 	// constructor
-	PolygonView(sf::RenderWindow& window, std::unique_ptr<PolygonShape> polygon);
+	explicit PolygonView(sf::RenderWindow& window, std::unique_ptr<PolygonShape> polygon);
 	// add relative point to polygon
 	void addPoint(const sf::Vector2f& relPoint);
 	// set color

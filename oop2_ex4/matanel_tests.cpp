@@ -49,6 +49,7 @@
 #include "Board.h"
 #include "Triangle.h"
 #include "Utilities.h"
+#include "JoinGameScreen.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -58,6 +59,7 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testJoinGameScreen();
 void testBoard();
 void testPolygon();
 void testGraph();
@@ -79,7 +81,8 @@ int main()
 
 	try
 	{
-		testBoard();
+		testJoinGameScreen();
+		//testBoard();
 		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
@@ -89,6 +92,30 @@ int main()
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testJoinGameScreen() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	JoinGameScreen joinGameScreen(window);
+	joinGameScreen.makeRootView();
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			joinGameScreen.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		joinGameScreen.draw();
+		window.display();
 	}
 }
 
@@ -104,7 +131,7 @@ void testBoard() {
 	mainLayout.getBorder().setSize(1.f);
 
 
-	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 30, 20 });
+	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 20, 20 });
 	board->randomizeBoard();
 	mainLayout.addView(board);
 

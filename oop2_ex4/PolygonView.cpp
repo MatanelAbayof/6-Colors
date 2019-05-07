@@ -47,8 +47,8 @@ void PolygonView::updatePolygonShape()
 
 	// update points
 	m_polygonDrawable.setPointCount(m_polygon->getNumOfPoints());
-	for (size_t i = 0; i < m_polygonDrawable.getPointCount(); i++) {
-		const sf::Vector2f& relPoint = m_polygon->getPoint(i);
+	for (size_t i = 0; i < m_polygonDrawable.getPointCount(); ++i) {
+		const sf::Vector2f& relPoint = m_polygon->getPoint(static_cast<int>(i));
 		sf::Vector2f point;
 		point.x = getPosition().x + relPoint.x*float(getSize().x);
 		point.y = getPosition().y + relPoint.y*float(getSize().y);

@@ -13,7 +13,7 @@ class AreaButton :
 {
 public:
 	// constructor
-	AreaButton(sf::RenderWindow& window, const string& text = "", float areaPercent = 0);
+	explicit AreaButton(sf::RenderWindow& window, const string& text = "", float areaPercent = 0);
 	//get area percent
 	float& getAreaPercent();
 	//set areaPercent

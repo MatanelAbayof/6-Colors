@@ -85,7 +85,7 @@ void ServerThread::runServerThread(const unsigned short port)
 						// add to selector
 						m_selector.add(*pClient);
 						// add 1 client
-						setNumOfClients(m_clients.size());
+						setNumOfClients(static_cast<int>(m_clients.size()));
 						// call event
 						onClientJoined(*pClient);
 					}

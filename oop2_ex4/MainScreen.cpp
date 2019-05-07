@@ -1,41 +1,41 @@
 #include "MainScreen.h"
 
-GUI::MainScreen::MainScreen(sf::RenderWindow& window)
-	:BaseScreen(window), m_menuTitle(std::make_shared<TextView>(window, "Six Colors")), 
-	m_createGameBt(std::make_shared<Button>(window, "Create Game")), 
-	m_exitBt(std::make_shared<Button>(window, "Exit Game")), 
-	m_joinGameBt(std::make_shared<Button>(window, "Join Game")), 
-	m_singlePlayerBt(std::make_shared<Button>(window, "Single Player"))
+MainScreen::MainScreen(sf::RenderWindow& window)
+	: GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>(window), m_menuTitle(std::make_shared<GUI::TextView>(window, "Six Colors")),
+		m_createGameBt(std::make_shared<GUI::Button>(window, "Create Game")),
+		m_exitBt(std::make_shared<GUI::Button>(window, "Exit Game")),
+		m_joinGameBt(std::make_shared<GUI::Button>(window, "Join Game")),
+		m_singlePlayerBt(std::make_shared<GUI::Button>(window, "Single Player"))
 {
 	init();
 }
 
-const std::shared_ptr<GUI::Button>& GUI::MainScreen::getSingleBt()
+const std::shared_ptr<GUI::Button>& MainScreen::getSingleBt()
 {
 	return m_singlePlayerBt;
 }
 
-const std::shared_ptr<GUI::Button>& GUI::MainScreen::getCreateBt()
+const std::shared_ptr<GUI::Button>& MainScreen::getCreateBt()
 {
 	return m_createGameBt;
 }
 
-const std::shared_ptr<GUI::Button>& GUI::MainScreen::getJoinBt()
+const std::shared_ptr<GUI::Button>& MainScreen::getJoinBt()
 {
 	return m_joinGameBt;
 }
 
-const std::shared_ptr<GUI::Button>& GUI::MainScreen::getExitleBt()
+const std::shared_ptr<GUI::Button>& MainScreen::getExitleBt()
 {
 	return m_exitBt;
 }
 
-string GUI::MainScreen::toString() const
+string MainScreen::toString() const
 {
-	return "MainScreen: { " + BaseScreen::toString() + " }";
+	return "MainScreen: { " + GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>::toString() + " }";
 }
 
-void GUI::MainScreen::init()
+void MainScreen::init()
 {
 	// init title
 	m_menuTitle->setTextColor(sf::Color::Cyan);
@@ -46,9 +46,6 @@ void GUI::MainScreen::init()
 	m_singlePlayerBt->getBackground().setColor(sf::Color::Green);
 	m_singlePlayerBt->setTextColor(sf::Color::White);
 	m_singlePlayerBt->setTextSize(20.f);
-	m_singlePlayerBt->addClickListener([this](View& view) {
-		getWindow().close();
-	});
 	m_singlePlayerBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});
@@ -61,9 +58,6 @@ void GUI::MainScreen::init()
 	m_createGameBt->getBackground().setColor(sf::Color::Yellow);
 	m_createGameBt->setTextColor(sf::Color::White);
 	m_createGameBt->setTextSize(20.f);
-	m_createGameBt->addClickListener([this](View& view) {
-		getWindow().close();
-	});
 	m_createGameBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});
@@ -76,9 +70,6 @@ void GUI::MainScreen::init()
 	m_joinGameBt->getBackground().setColor(sf::Color::Magenta);
 	m_joinGameBt->setTextColor(sf::Color::White);
 	m_joinGameBt->setTextSize(20.f);
-	m_joinGameBt->addClickListener([this](View& view) {
-		getWindow().close();
-	});
 	m_joinGameBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});
@@ -91,9 +82,6 @@ void GUI::MainScreen::init()
 	m_exitBt->getBackground().setColor(sf::Color::Red);
 	m_exitBt->setTextColor(sf::Color::White);
 	m_exitBt->setTextSize(20.f);
-	m_exitBt->addClickListener([this](View& view) {
-		getWindow().close();
-	});
 	m_exitBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});

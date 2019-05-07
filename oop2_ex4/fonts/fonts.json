@@ -7,6 +7,18 @@
         {
             "name": "ARLRDBD",
             "path": "ARLRDBD.TTF"
+        },
+        {
+            "name": "CURLZ",
+            "path": "CURLZ.TTF"
+        },
+        {
+            "name": "BRLNSDB",
+            "path": "BRLNSDB.TTF"
+        },
+        {
+            "name": "BAUHS93",
+            "path": "BAUHS93.TTF"
         }
     ]
 }

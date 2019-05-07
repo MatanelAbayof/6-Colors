@@ -15,6 +15,8 @@ string GUI::Button::toString() const
 
 void GUI::Button::initComponents()
 {
+	setFont("CURLZ");
+
 	// init sounds at events
 	addEnterListener([](View &view) {
 		SoundManager::getInterface().playSound("bt_hover");
