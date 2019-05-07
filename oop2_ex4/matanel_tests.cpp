@@ -135,7 +135,8 @@ void testGraph() {
 
 	// add vertices
 	for (int i = 0; i < 10; i++) {
-		graph.addVertex("vertex_" + std::to_string(i));
+		auto value = std::make_shared<string>("vertex_" + std::to_string(i));
+		graph.addVertex(value);
 	}
 
 	// add adjacents

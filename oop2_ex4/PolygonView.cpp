@@ -3,12 +3,13 @@
 PolygonView::PolygonView(sf::RenderWindow& window, std::unique_ptr<PolygonShape> polygon)
 	: View(window), m_polygon(std::move(polygon))
 {
+	updatePolygonShape();
 }
 
 void PolygonView::addPoint(const sf::Vector2f& relPoint)
 {
 	m_polygon->addPoint(relPoint);
-	updateComponents();
+	updatePolygonShape();
 }
 
 void PolygonView::setColor(const sf::Color& color)
