@@ -70,7 +70,7 @@ void Triangle::init()
 	case PointingSide::RIGHT:
 		addPoint(sf::Vector2f(1.f, 0.5f));
 		addPoint(sf::Vector2f(0.f, 1.f));
-		addPoint(sf::Vector2f(1.f, 0.f));
+		addPoint(sf::Vector2f(0.f, 0.f));
 		break;
 	}
 }
