@@ -46,6 +46,8 @@
 #include "PolygonView.h"
 #include "PolygonShape.h"
 #include "Square.h"
+#include "Board.h"
+#include "Triangle.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -55,6 +57,7 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testBoard();
 void testPolygon();
 void testGraph();
 sf::Color randColor();
@@ -76,7 +79,8 @@ int main()
 
 	try
 	{
-		testPolygon();
+		testBoard();
+		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
 		//testGUI();
@@ -85,6 +89,43 @@ int main()
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testBoard() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+
+	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 15,16 });
+	board->randomizeBoard();
+	mainLayout.addView(board);
+
+
+	board->addClickListener([](View& view) {
+		std::cout << view.toString() << std::endl;
+	});
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 

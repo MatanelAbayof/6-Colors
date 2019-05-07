@@ -18,13 +18,13 @@ public:
 	// constructor
 	Triangle(const sf::Color& color = sf::Color::Transparent, PointingSide pointingSide = PointingSide::UP);
 	//get width
-	virtual float getWidth();
+	virtual float getWidth() const override;
 	//get height
-	virtual float getHeight();
+	virtual float getHeight() const override;
 	//get num of edge
-	virtual int getNumOfEdges();
+	virtual int getNumOfEdges() const override;
 	// convert to string
-	virtual string toString() const;
+	virtual string toString() const override;
 private:
 	// the side the tringle points to
 	PointingSide m_pointingSide;

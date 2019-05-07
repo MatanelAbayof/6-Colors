@@ -19,6 +19,8 @@ public:
 	Board(sf::RenderWindow& window, const sf::Vector2i& boardSize = { 0,0 });
 	// set board size
 	void setBoardSize(const sf::Vector2i& boardSize);
+	// randomize board
+	void randomizeBoard();
 	// clear board
 	void clear();
 	// get board size

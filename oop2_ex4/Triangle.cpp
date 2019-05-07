@@ -8,7 +8,7 @@ Triangle::Triangle(const sf::Color& color, PointingSide pointingSide)
 	init();
 }
 
-float Triangle::getWidth()
+float Triangle::getWidth() const
 {
 	switch (m_pointingSide)
 	{
@@ -23,7 +23,7 @@ float Triangle::getWidth()
 	return 0.0f;
 }
 
-float Triangle::getHeight()
+float Triangle::getHeight() const
 {
 	switch (m_pointingSide)
 	{
@@ -38,7 +38,7 @@ float Triangle::getHeight()
 	return 0.0f;
 }
 
-int Triangle::getNumOfEdges()
+int Triangle::getNumOfEdges() const
 {
 	return 3;
 }
@@ -54,23 +54,23 @@ void Triangle::init()
 	{
 	case PointingSide::UP:
 		addPoint(sf::Vector2f(0.5f, 0.f));
-		addPoint(sf::Vector2f(1.f, 0.5f));
-		addPoint(sf::Vector2f(0.f, 0.5f));
+		addPoint(sf::Vector2f(1.f, 1.f));
+		addPoint(sf::Vector2f(0.f, 1.f));
 		break;
 	case PointingSide::DOWN:
 		addPoint(sf::Vector2f(0.5f, 1.f));
-		addPoint(sf::Vector2f(0.f, 0.5f));
-		addPoint(sf::Vector2f(1.f, 0.5f));
+		addPoint(sf::Vector2f(0.f, 0.f));
+		addPoint(sf::Vector2f(1.f, 0.f));
 		break;
 	case PointingSide::LEFT:
 		addPoint(sf::Vector2f(0.f, 0.5f));
-		addPoint(sf::Vector2f(0.5f, 0.f));
-		addPoint(sf::Vector2f(0.5f, 1.f));
+		addPoint(sf::Vector2f(1.f, 0.f));
+		addPoint(sf::Vector2f(1.f, 1.f));
 		break;
 	case PointingSide::RIGHT:
 		addPoint(sf::Vector2f(1.f, 0.5f));
-		addPoint(sf::Vector2f(0.5f, 1.f));
-		addPoint(sf::Vector2f(0.5f, 0.f));
+		addPoint(sf::Vector2f(0.f, 1.f));
+		addPoint(sf::Vector2f(1.f, 0.f));
 		break;
 	}
 }

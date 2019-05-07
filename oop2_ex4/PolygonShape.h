@@ -24,6 +24,8 @@ public:
 	const sf::Vector2f& getPoint(int index) const;
 	// get number of edges
 	virtual int getNumOfEdges() const { return getNumOfPoints(); }
+	// convert to string
+	virtual string toString() const override;
 private:
 	// relative points of polygon
 	std::vector<sf::Vector2f> m_relPoints;
