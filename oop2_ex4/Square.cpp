@@ -1,18 +1,20 @@
 #include "Square.h"
 
-
-/*
-Square::Square(float width, const sf::Color & color)
-	: Shape(width, width, color)
-{}
-
-int Square::getNumOfEdges() const
+Square::Square(const sf::Color & color)
+	: PolygonShape(color)
 {
-	return NUM_OF_EDGES;
+	init();
 }
 
 string Square::toString() const
 {
 	return "Square: " + Shape::toString();
 }
-*/
+
+void Square::init()
+{
+	addPoint(sf::Vector2f(0.5f, 0.f));
+	addPoint(sf::Vector2f(1.f, 0.5f));
+	addPoint(sf::Vector2f(0.5f, 1.f));
+	addPoint(sf::Vector2f(0.f, 0.5f));
+}

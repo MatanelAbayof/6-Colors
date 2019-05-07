@@ -39,6 +39,8 @@
 #include "ColorButton.h"
 #include "ColorPanel.h"
 #include "BottomPanel.h"
+#include "PolygonView.h"
+#include "Square.h"
 #pragma endregion
 
 #pragma region Usings
@@ -49,6 +51,7 @@ using namespace GUI;
 #pragma region Declarations
 //-------------- declare functions -------------
 sf::Color randColor();
+void testShape();
 void testGUI();
 void testGameMenu();
 #pragma endregion
@@ -60,13 +63,55 @@ int main()
 
 	try
 	{
-		testGameMenu();
+		testShape();
+		//testGameMenu();
 		//testGUI();
 	}
 	catch (const std::exception& ex)
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testShape() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "GUI");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(3);
+	//mainLayout.setBorder(Border(sf::Color::Blue, 5));
+	mainLayout.getBackground().setColor(sf::Color::Blue);
+
+	std::unique_ptr<Square> sq = std::make_unique<Square>(sf::Color::Yellow);
+	std::cout << sq->toString();
+	std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(sq));
+	mainLayout.addView(polygonView);
+
+	polygonView->addClickListener([&polygonView, &sq](View& view) {
+		std::cout << polygonView->toString();
+	});
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+			if (event.type == sf::Event::MouseMoved) {
+				sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+				sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+				//cout << "m.x=" << worldPos.x << ", m.y=" << worldPos.y << endl;
+			}
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 

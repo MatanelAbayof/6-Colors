@@ -162,6 +162,7 @@
     <ClCompile Include="akiva_tests.cpp" />
     <ClCompile Include="AlertDialog.cpp" />
     <ClCompile Include="AreaButton.cpp" />
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="BottomPanel.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="AlertDialog.h" />
     <ClInclude Include="AreaButton.h" />
     <ClInclude Include="BaseScreen.h" />
+    <ClInclude Include="Board.h" />
     <ClInclude Include="Border.h" />
     <ClInclude Include="BottomPanel.h" />
     <ClInclude Include="Button.h" />
