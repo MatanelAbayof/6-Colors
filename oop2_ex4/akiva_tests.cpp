@@ -36,6 +36,7 @@
 #include "ImageButton.h"
 #include "ErrorDialog.h"
 #include "MainScreen.h"
+#include "WaitingMultiplayerScreen.h"
 #pragma endregion
 
 #pragma region Usings

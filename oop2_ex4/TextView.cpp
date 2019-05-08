@@ -72,6 +72,11 @@ GUI::TextView::TextHAlignment GUI::TextView::getTextHAlignment() const
 	return m_textHAlign;
 }
 
+void GUI::TextView::setTextStyle(sf::Text::Style style)
+{
+	m_text.setStyle(style);
+}
+
 void GUI::TextView::draw()
 {
 	View::draw();

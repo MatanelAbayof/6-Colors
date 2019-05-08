@@ -204,6 +204,7 @@
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="View.cpp" />
+    <ClCompile Include="WaitingMultiplayerScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlertDialog.h" />
@@ -257,6 +258,7 @@
     <ClInclude Include="VerticalLayout.h" />
     <ClInclude Include="View.h" />
     <ClInclude Include="ViewGroup.h" />
+    <ClInclude Include="WaitingMultiplayerScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fonts\fonts.json" />

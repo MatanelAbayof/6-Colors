@@ -41,6 +41,8 @@ public:
 	unsigned int getTextSize() const;
 	// get text horizontal alignment
 	TextHAlignment getTextHAlignment() const;
+	// set text style
+	void setTextStyle(sf::Text::Style style);
 	// draw
 	virtual void draw() override;
 	// convert to string
