@@ -16,7 +16,7 @@ float AreaButton::getAreaPercent()
 void AreaButton::setAreaPercent(float area)
 {
 	if (area < 0.f || area > 100.f)
-		throw std::out_of_range("Area percent " + std::to_string(area) + " cannot be less than zero");
+		throw std::out_of_range("Area percent " + std::to_string(area) + " cannot be less than zero or bigger from 100");
 	m_areaPercent = area;
 	setText(getPreText() + std::to_string(getAreaPercent()) + "%");
 }

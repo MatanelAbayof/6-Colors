@@ -77,7 +77,7 @@ int main()
 		ErrorDialog::show(ex.what());
 	}
 }
-
+/*
 void testBoard() {
 	// create window
 	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
@@ -91,7 +91,7 @@ void testBoard() {
 
 
 	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 20, 20 });
-	board->randomizeBoard();
+//	board->randomizeBoard();
 	mainLayout.addView(board);
 
 
@@ -122,7 +122,7 @@ void testBoard() {
 		window.display();
 	}
 }
-
+*/
 void testShape() {
 	// create window
 	sf::RenderWindow window(sf::VideoMode(1000, 500), "GUI");
