@@ -30,6 +30,8 @@ namespace GUI {
 		virtual void updateComponents() override;
 		// arrange all childrens with same widths
 		void arrangeChildrens();
+		// remove all views
+		virtual void removeAllViews() override;
 	private:
 		// childrens relative widths
 		vector<float> m_relativeWidths;
@@ -73,6 +75,13 @@ void GUI::HorizontalLayout<ViewType>::arrangeChildrens()
 			m_relativeWidths[i] = relativeWidth;
 		updateComponents();
 	}
+}
+
+template<class ViewType>
+void GUI::HorizontalLayout<ViewType>::removeAllViews()
+{
+	ViewGroup<ViewType>::removeAllViews();
+	m_relativeWidths.clear();
 }
 
 template <class ViewType>

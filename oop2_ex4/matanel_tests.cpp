@@ -81,8 +81,8 @@ int main()
 
 	try
 	{
-		testJoinGameScreen();
-		//testBoard();
+		//testJoinGameScreen();
+		testBoard();
 		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
@@ -131,20 +131,31 @@ void testBoard() {
 	mainLayout.getBorder().setSize(1.f);
 
 
-	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 20, 20 });
-	board->randomizeBoard();
+	std::shared_ptr<Board> board = std::make_shared<Board>(window);
+	board->randomizeBoard(sf::Vector2i{ 20, 20 });
 	mainLayout.addView(board);
 
 
 	for (int i = 0; i < board->getNumOfViews(); ++i) {
 		auto& p = board->getView(i);
-		p->addKeyDownListener([&p](sf::Keyboard::Key& key) {
+		p->addKeyDownListener([&p, &board](sf::Keyboard::Key& key) {
 			if(key == sf::Keyboard::A)
-				p->setColor(Utilities::randColor());
+				p->setColor(Utilities::randColor());		
 		});
 	}
 
-	board->addClickListener([](View& view) {
+	board->addKeyDownListener([&board](sf::Keyboard::Key& key) {
+		if (key == sf::Keyboard::S) {
+			sf::Vector2i size = board->getBoardSize();
+			size.x = rand()%10 + 2;
+			size.y = rand()%10 + 2;
+			if (size.y % 2 == 1)
+				size.y++;
+			board->randomizeBoard(size);
+		}
+	});
+
+	board->addClickListener([&board](View& view) {
 		std::cout << view.toString() << std::endl;
 	});
 

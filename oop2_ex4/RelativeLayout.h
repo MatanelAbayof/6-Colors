@@ -28,6 +28,8 @@ public:
 protected:
 	// update components
 	virtual void updateComponents() override;
+	// remove all views
+	virtual void removeAllViews() override;
 private:
 	// relative bounds of children
 	vector<sf::FloatRect> m_relativeBounds;
@@ -80,6 +82,13 @@ void GUI::RelativeLayout<ViewType>::updateComponents()
 			childView->setBound(childBounds);
 		}
 	}
+}
+
+template<class ViewType>
+void GUI::RelativeLayout<ViewType>::removeAllViews()
+{
+	ViewGroup<ViewType>::removeAllViews();
+	m_relativeBounds.clear();
 }
 
 template <class ViewType>

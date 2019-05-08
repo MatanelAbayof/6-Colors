@@ -20,7 +20,7 @@ string JoinGameScreen::toString() const
 void JoinGameScreen::initComponents()
 {
 	// create enter IP text view
-	m_enterIpTv = std::make_shared<GUI::TextView>(getWindow(), "Please enter IP:");
+	m_enterIpTv = std::make_shared<GUI::TextView>(getWindow(), "Please enter an IP:");
 	m_enterIpTv->setTextHAlignment(GUI::TextView::TextHAlignment::CENTER);
 	m_enterIpTv->setTextColor(sf::Color(51, 63, 80));
 	m_enterIpTv->setTextSize(40);

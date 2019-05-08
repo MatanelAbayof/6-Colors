@@ -32,6 +32,8 @@ protected:
 	virtual void updateComponents() override;
 	// arrange childrens with same heights
 	void arrangeChildrens();
+	// remove all views
+	virtual void removeAllViews() override;
 private:
 	// my view relative heights
 	vector<float> m_relativeHeights;
@@ -81,6 +83,13 @@ void GUI::VerticalLayout<ViewType>::arrangeChildrens()
 			m_relativeHeights[i] = relativeHeight;
 		updateComponents();
 	}
+}
+
+template<class ViewType>
+void GUI::VerticalLayout<ViewType>::removeAllViews()
+{
+	ViewGroup<ViewType>::removeAllViews();
+	m_relativeHeights.clear();
 }
 
 template <class ViewType>

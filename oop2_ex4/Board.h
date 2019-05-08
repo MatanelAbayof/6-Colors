@@ -16,15 +16,13 @@ class Board :
 {
 public:
 	// constructor
-	explicit Board(sf::RenderWindow& window, const sf::Vector2i& boardSize = { 0,0 });
-	// set board size
-	void setBoardSize(const sf::Vector2i& boardSize);
+	explicit Board(sf::RenderWindow& window);
 	// randomize board
-	void randomizeBoard();
+	void randomizeBoard(const sf::Vector2i& boardSize);
 	// clear board
 	void clear();
 	// get board size
-	const sf::Vector2i& getboardSize() const { return m_boardSize; }
+	const sf::Vector2i& getBoardSize() const { return m_boardSize; }
 	// add polygon view
 	virtual void addView(const std::shared_ptr<PolygonView>& polygonView, const sf::FloatRect& relativeBounds) override;
 	// get polygons graph
@@ -36,5 +34,11 @@ private:
 	sf::Vector2i m_boardSize;
 	// polygons
 	Graph<PolygonView> m_polygonsGraph;
+	// randomize board edge line
+	void randomizeBoardEdgeLine(bool isFirstLine);
+	// randomize square struct shape
+	void randSquareStructShape(int rowNum, int colNum);
+	// set board size
+	void setBoardSize(const sf::Vector2i& boardSize);
 };
 
