@@ -1,9 +1,16 @@
 #include "ColorPanel.h"
 
+const sf::Color ColorPanel::BLUE_COLOR(sf::Color::Blue), ColorPanel::BLUE_DARK_COLOR(sf::Color(0, 0, 153)),
+                ColorPanel::GREEN_COLOR(sf::Color::Green), ColorPanel::GREEN_DARK_COLOR(sf::Color(0, 102, 0)),
+                ColorPanel::RED_COLOR(sf::Color::Red), ColorPanel::RED_DARK_COLOR(sf::Color(204, 0, 0)),
+                ColorPanel::YELLOW_COLOR(sf::Color::Yellow), ColorPanel::YELLOW_DARK_COLOR(sf::Color(255, 204, 0)),
+                ColorPanel::PURPLE_COLOR(sf::Color(82, 67, 170)), ColorPanel::PURPLE_DARK_COLOR(sf::Color(102, 0, 102)),
+                ColorPanel::ORANGE_COLOR(sf::Color(255, 139, 0)), ColorPanel::ORANGE_DARK_COLOR(sf::Color(255, 153, 0));
+
 // init array
-const std::array<sf::Color, 6> ColorPanel::COLORS = { sf::Color::Blue, sf::Color::Green,
-												      sf::Color::Red, sf::Color::Yellow,
-												      sf::Color(82, 67, 170), sf::Color(255, 139, 0) };
+const std::array<sf::Color, 6> ColorPanel::COLORS = { BLUE_COLOR, GREEN_COLOR,
+													  RED_COLOR, YELLOW_COLOR,
+													  PURPLE_COLOR, ORANGE_COLOR };
 
 ColorPanel::ColorPanel(sf::RenderWindow & window)
 	: HorizontalLayout(window)
