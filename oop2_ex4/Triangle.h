@@ -14,6 +14,8 @@ class Triangle :
 	public PolygonShape
 {
 public:
+	// number of edges
+	static const int NUM_OF_EDGES = 3;
 	// pointing side
 	enum PointingSide { UP, DOWN, LEFT, RIGHT };
 	// constructor

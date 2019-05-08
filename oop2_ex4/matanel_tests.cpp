@@ -84,9 +84,9 @@ void matanel_main()
 
 	try
 	{
-		testGameMenu();
+		//testGameMenu();
 		//testJoinGameScreen();
-		//testBoard();
+		testBoard();
 		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
