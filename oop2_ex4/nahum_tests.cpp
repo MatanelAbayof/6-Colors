@@ -1,7 +1,6 @@
 /*
  * main for tests
  */
-#define NAHUM_TESTS
 #ifdef NAHUM_TESTS
 
 #pragma region Libs
@@ -60,7 +59,7 @@ void testGameMenu();
 #pragma endregion
 
 //--------------  main -------------------------
-int main()
+void nahum_main()
 {
 	std::cout << "Hello Nahum World!\n";
 
@@ -90,8 +89,8 @@ void testBoard() {
 	mainLayout.getBorder().setSize(1.f);
 
 
-	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 20, 20 });
-	board->randomizeBoard();
+	std::shared_ptr<Board> board = std::make_shared<Board>(window);
+	board->randomizeBoard(sf::Vector2i{ 20, 20 });
 	mainLayout.addView(board);
 
 

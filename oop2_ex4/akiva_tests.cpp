@@ -1,7 +1,6 @@
 /*
  * main for tests
  */
-//#define AKIVA_TESTS
 #ifdef AKIVA_TESTS
 
 #pragma region Libs
@@ -51,7 +50,7 @@ void testFirstTime();
 #pragma endregion
 
 //--------------  main -------------------------
-int main()
+void akiva_main()
 {
 	std::cout << "Hello Akiva World!\n";
 

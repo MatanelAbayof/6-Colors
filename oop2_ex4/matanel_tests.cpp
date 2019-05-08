@@ -1,7 +1,6 @@
 /*
  * main for tests
  */
-//#define MATANEL_TESTS
 #ifdef MATANEL_TESTS
 
  //-------------- libs -------------------------
@@ -73,7 +72,7 @@ void testCleanScreen();
 // -------------- globals & constants --------------------
 
 //--------------  main ------------------------
-int main()
+void matanel_main()
 {
     std::cout << "Hello Matanel World!\n";
 	// initialize random seed
