@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define NAHUM_TESTS
+#define NAHUM_TESTS
 #ifdef NAHUM_TESTS
 
 #pragma region Libs
@@ -41,6 +41,8 @@
 #include "BottomPanel.h"
 #include "PolygonView.h"
 #include "Square.h"
+#include "Board.h"
+#include "Utilities.h"
 #pragma endregion
 
 #pragma region Usings
@@ -51,6 +53,7 @@ using namespace GUI;
 #pragma region Declarations
 //-------------- declare functions -------------
 sf::Color randColor();
+void testBoard();
 void testShape();
 void testGUI();
 void testGameMenu();
@@ -63,6 +66,7 @@ int main()
 
 	try
 	{
+		//testBoard();
 		//testShape();
 		testGameMenu();
 		//testGUI();
@@ -71,6 +75,51 @@ int main()
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testBoard() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+
+	std::shared_ptr<Board> board = std::make_shared<Board>(window, sf::Vector2i{ 20, 20 });
+	board->randomizeBoard();
+	mainLayout.addView(board);
+
+
+	for (int i = 0; i < board->getNumOfViews(); ++i) {
+		auto& p = board->getView(i);
+		p->addKeyDownListener([&p](sf::Keyboard::Key& key) {
+			if (key == sf::Keyboard::A)
+				p->setColor(Utilities::randColor());
+		});
+	}
+
+	board->addClickListener([](View& view) {
+		std::cout << view.toString() << std::endl;
+	});
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 
@@ -143,8 +192,8 @@ void testGameMenu() {
 		std::cout << colorButton->toString() << std::endl;
 	});
 	
-	bp->addClickListener([&bp](View& view) {
-		bp->getMyAreaButton()->getAreaPercent()++;
+	bp->addClickListener([&bp](View& view){ 
+		bp->getMyAreaButton()->setAreaPercent(bp->getMyAreaButton()->getAreaPercent() + 3.f);
 		std::cout << bp->toString();
 	});
 	while (window.isOpen())
