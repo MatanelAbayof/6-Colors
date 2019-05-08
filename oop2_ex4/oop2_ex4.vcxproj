@@ -233,6 +233,7 @@
     <ClInclude Include="LoadResourceException.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MainScreen.h" />
+    <ClInclude Include="main_tests.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NetworkException.h" />
     <ClInclude Include="PlayerBase.h" />

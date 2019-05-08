@@ -1,6 +1,7 @@
 /*
  * main for tests
  */
+#include "main_tests.h"
 #ifdef MATANEL_TESTS
 
  //-------------- libs -------------------------

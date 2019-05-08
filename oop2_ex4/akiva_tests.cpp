@@ -1,6 +1,7 @@
 /*
  * main for tests
  */
+#include "main_tests.h"
 #ifdef AKIVA_TESTS
 
 #pragma region Libs
