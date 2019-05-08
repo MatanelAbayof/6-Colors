@@ -15,6 +15,20 @@ void ColorButton::setColor(const sf::Color& color)
 	getBackground().setColor(m_color);
 }
 
+void ColorButton::enable()
+{
+	Button::enable();
+	setText("");
+	getBackground().setColor(m_color);
+}
+
+void ColorButton::disable()
+{
+	Button::disable();
+	setText("X");
+	getBackground().setColor(m_color);
+}
+
 string ColorButton::toString() const
 {
 	return "ColorButton: { " + Button::toString() + ", Color: " + std::to_string(m_color.toInteger()) + " }";
@@ -23,6 +37,8 @@ string ColorButton::toString() const
 void ColorButton::init(const sf::Color& color)
 {
 	setColor(color);
+	setTextColor(sf::Color(116, 0, 0));
+	setTextSize(50);
 
 	//make dark color
 	addEnterListener([color](View &view) {

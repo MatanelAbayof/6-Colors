@@ -50,6 +50,8 @@
 #include "Triangle.h"
 #include "Utilities.h"
 #include "JoinGameScreen.h"
+#include "BottomPanel.h"
+#include "GameMenu.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -59,6 +61,7 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testGameMenu();
 void testJoinGameScreen();
 void testBoard();
 void testPolygon();
@@ -81,8 +84,9 @@ void matanel_main()
 
 	try
 	{
+		testGameMenu();
 		//testJoinGameScreen();
-		testBoard();
+		//testBoard();
 		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
@@ -428,6 +432,70 @@ void testGUI() {
 	}
 
 
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+			if (event.type == sf::Event::MouseMoved) {
+				sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+				sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+				//cout << "m.x=" << worldPos.x << ", m.y=" << worldPos.y << endl;
+			}
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
+	}
+}
+
+void testGameMenu() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "GUI");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(3);
+	//mainLayout.setBorder(Border(sf::Color::Blue, 5));
+	mainLayout.getBackground().setColor(sf::Color::Blue);
+
+	// add edit text
+	std::shared_ptr<GameMenu> et = std::make_shared<GameMenu>(window);
+	std::shared_ptr<BottomPanel> bp = std::make_shared<BottomPanel>(window);
+	mainLayout.addView(et);
+	mainLayout.addView(bp);
+	std::shared_ptr<ColorPanel> cp = bp->getColorPanel();
+	const sf::Color color = sf::Color::Black;
+	for (auto c : ColorPanel::COLORS) {
+		std::shared_ptr<ColorButton> cb = cp->getColorButton(c);
+		std::cout << cb->toString() << std::endl;
+		cb->addClickListener([](View& view) {
+			view.disable();
+		});
+	}
+
+	cp->addClickColorListener([](std::shared_ptr<ColorButton> colorButton) {
+		std::cout << colorButton->toString() << std::endl;
+	});
+
+	bp->addKeyDownListener([cp](sf::Keyboard::Key& key) {
+		if (key == sf::Keyboard::A) {
+			for (auto c : ColorPanel::COLORS) {
+				std::shared_ptr<ColorButton> cb = cp->getColorButton(c);
+				cb->enable();
+			}
+		}		
+	});
+	bp->addClickListener([&bp](View& view) {
+		bp->getMyAreaButton()->setAreaPercent(bp->getMyAreaButton()->getAreaPercent() + 3.f);
+		std::cout << bp->toString();
+	});
 	while (window.isOpen())
 	{
 		sf::Event event;

@@ -19,6 +19,10 @@ public:
 	const sf::Color& getColor() const { return m_color; }
 	// set color
 	void setColor(const sf::Color& color);
+	// enable
+	virtual void enable() override;
+	// enable
+	virtual void disable() override;
 	// convert to string
 	virtual string toString() const override;
 private:

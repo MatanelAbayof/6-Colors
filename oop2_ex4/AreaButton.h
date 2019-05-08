@@ -15,19 +15,19 @@ public:
 	// constructor
 	AreaButton(sf::RenderWindow& window, float areaPercent = 0);
 	//get area percent
-	float getAreaPercent();
+	float getAreaPercent() const;
 	//set pre text
-	void setPreText(const string& text) { m_preText.setString(text); }
-	string getPreText() { return m_preText.getString(); }
+	void setPreText(const string& text) { m_preText = text; }
+	const string& getPreText() const { return m_preText; }
 	//set areaPercent
 	void setAreaPercent(float area);
 	// convert to string
-	virtual string toString() const;
+	virtual string toString() const override;
 private:
 	//init
 	void init();
 	//pre text
-	sf::Text m_preText;
+	string m_preText;
 	// quantity of area in percent
 	float m_areaPercent;
 };
