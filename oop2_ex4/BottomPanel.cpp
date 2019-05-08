@@ -1,5 +1,5 @@
 #include "BottomPanel.h"
-
+#include <iomanip>
 
 BottomPanel::BottomPanel(sf::RenderWindow & window)
 	: HorizontalLayout(window)
@@ -24,8 +24,12 @@ void BottomPanel::initComponents(sf::RenderWindow & window)
 	m_myArea = std::make_shared<AreaButton>(window);
 	m_rivalArea = std::make_shared<AreaButton>(window);
 
-	m_myArea->setText("My " + m_myArea->getText());
-	m_rivalArea->setText("Rival " + m_rivalArea->getText());
+	//init text
+	m_myArea->setPreText("My " + m_myArea->getPreText());
+	m_rivalArea->setPreText("Rival " + m_rivalArea->getPreText());
+	m_myArea->setText(m_myArea->getPreText() + std::to_string(m_myArea->getAreaPercent()) + "%");
+	m_rivalArea->setText(m_rivalArea->getPreText() + std::to_string(m_myArea->getAreaPercent()) + "%");
+	
 	//init button
 	initButton(m_myArea);
 	initColorPanel(m_colorPanel);
