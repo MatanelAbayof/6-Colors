@@ -1,12 +1,35 @@
 {
     "textures": [
         {
-            "name": "life",
-            "path": "life.png"
+            "name": "easy",
+            "path": "baby.png"
         },
         {
-            "name": "wall",
-            "path": "wall.png"
+            "name": "colors",
+            "path": "colors.png"
+        },
+        {
+            "name": "lose",
+            "path": "cry.png"
+        },
+        {
+            "name": "win",
+            "path": "win.png"
+        },
+        {
+            "name": "regular",
+            "path": "regular_person.png"
+        },
+        {
+            "name": "super",
+            "path": "super.png"
+        },
+        {
+            "name": "load",
+            "path": "load.png",
+            "numOfRows": 8,
+            "numOfCols": 5,
+            "numOfImages": 36
         }
     ]
 }

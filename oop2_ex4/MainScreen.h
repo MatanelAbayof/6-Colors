@@ -19,11 +19,11 @@ public:
 	explicit MainScreen(sf::RenderWindow& window);
 	// destructor
 	~MainScreen() = default;
-	//get certin button
-	const std::shared_ptr<GUI::Button>& getSingleBt();
-	const std::shared_ptr<GUI::Button>& getCreateBt();
-	const std::shared_ptr<GUI::Button>& getJoinBt();
-	const std::shared_ptr<GUI::Button>& getExitleBt();
+	// get certin button
+	const std::shared_ptr<GUI::Button>& getSingleBt() const { return m_singlePlayerBt; }
+	const std::shared_ptr<GUI::Button>& getCreateBt() const { return m_createGameBt; }
+	const std::shared_ptr<GUI::Button>& getJoinBt() const { return m_joinGameBt; }
+	const std::shared_ptr<GUI::Button>& getExitleBt() const { return m_exitBt; }
 	// convert to string
 	virtual string toString() const override;
 private:

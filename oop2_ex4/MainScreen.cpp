@@ -10,26 +10,6 @@ MainScreen::MainScreen(sf::RenderWindow& window)
 	init();
 }
 
-const std::shared_ptr<GUI::Button>& MainScreen::getSingleBt()
-{
-	return m_singlePlayerBt;
-}
-
-const std::shared_ptr<GUI::Button>& MainScreen::getCreateBt()
-{
-	return m_createGameBt;
-}
-
-const std::shared_ptr<GUI::Button>& MainScreen::getJoinBt()
-{
-	return m_joinGameBt;
-}
-
-const std::shared_ptr<GUI::Button>& MainScreen::getExitleBt()
-{
-	return m_exitBt;
-}
-
 string MainScreen::toString() const
 {
 	return "MainScreen: { " + GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>::toString() + " }";
@@ -38,7 +18,7 @@ string MainScreen::toString() const
 void MainScreen::init()
 {
 	// init title
-	m_menuTitle->setTextSize(30.f);	
+	m_menuTitle->setTextSize(30);	
 	m_menuTitle->setTextColor(sf::Color(244, 226, 63));
 	m_menuTitle->setTextStyle(sf::Text::Style::Underlined);
 	m_menuTitle->setFont("BRLNSDB");
@@ -46,7 +26,7 @@ void MainScreen::init()
 
 	// init start game button
 	m_singlePlayerBt->getBackground().setColor(sf::Color::Green);
-	m_singlePlayerBt->setTextSize(20.f);
+	m_singlePlayerBt->setTextSize(20);
 	m_singlePlayerBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});
@@ -58,7 +38,7 @@ void MainScreen::init()
 
 	// init create game button
 	m_createGameBt->getBackground().setColor(sf::Color::Yellow);
-	m_createGameBt->setTextSize(20.f);
+	m_createGameBt->setTextSize(20);
 	m_createGameBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});
@@ -70,7 +50,7 @@ void MainScreen::init()
 
 	// init start game button
 	m_joinGameBt->getBackground().setColor(sf::Color::Magenta);
-	m_joinGameBt->setTextSize(20.f);
+	m_joinGameBt->setTextSize(20);
 	m_joinGameBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});
@@ -82,7 +62,7 @@ void MainScreen::init()
 
 	// init exit game button
 	m_exitBt->getBackground().setColor(sf::Color::Red);
-	m_exitBt->setTextSize(20.f);
+	m_exitBt->setTextSize(20);
 	m_exitBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});

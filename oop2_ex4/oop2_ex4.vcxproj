@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="akiva_tests.cpp" />
     <ClCompile Include="AlertDialog.cpp" />
+    <ClCompile Include="AnimationView.cpp" />
     <ClCompile Include="AreaButton.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Border.cpp" />
@@ -201,6 +202,7 @@
     <ClCompile Include="TextureInfo.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TextView.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="View.cpp" />
@@ -208,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlertDialog.h" />
+    <ClInclude Include="AnimationView.h" />
     <ClInclude Include="AreaButton.h" />
     <ClInclude Include="BaseScreen.h" />
     <ClInclude Include="Board.h" />
@@ -253,6 +256,7 @@
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextView.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="VerticalLayout.h" />

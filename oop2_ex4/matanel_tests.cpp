@@ -52,6 +52,7 @@
 #include "JoinGameScreen.h"
 #include "BottomPanel.h"
 #include "GameMenu.h"
+#include "AnimationView.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -86,11 +87,11 @@ void matanel_main()
 	{
 		//testGameMenu();
 		//testJoinGameScreen();
-		testBoard();
+		//testBoard();
 		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
-		//testGUI();
+		testGUI();
 	}
 	catch (const std::exception& ex)
 	{
@@ -413,23 +414,11 @@ void testGUI() {
 	et->startRecordText();
 	mainLayout.addView(et);
 
-	mainLayout.addKeyDownListener([&mainLayout, &window, &et](auto key) {
-		if (key == sf::Keyboard::Key::A) {
-			mainLayout.addView(std::make_shared<TextView>(window, et->getText()));
-		}
-	});
-	for (int i = 0; i < 3; i++) {
-		// add image view
-		std::shared_ptr<ImageButton> ib = std::make_shared<ImageButton>(window);
-		ib->setText("text of image button");
-		ib->getImage().setTexture("life");
-		ib->getBackground().setColor(sf::Color::Yellow);
-		//	ib.setBorder(Border(sf::Color::Green, 1));
-		ib->addClickListener(View::ClickHandler::Listener([et, &mainLayout, &window](View& view) {
-
-		}));
-		mainLayout.addView(ib);
-	}
+	// add animation view
+	std::shared_ptr<AnimationView> av = std::make_shared<AnimationView>(window);
+	av->setAnimation("load");
+	av->setAnimationFrequency(50);
+	mainLayout.addView(av);
 
 
 	while (window.isOpen())
