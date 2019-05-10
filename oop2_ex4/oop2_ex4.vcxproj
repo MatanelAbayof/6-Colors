@@ -168,6 +168,7 @@
     <ClCompile Include="BottomPanel.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="ChooseAIModeScreen.cpp" />
     <ClCompile Include="ClientThread.cpp" />
     <ClCompile Include="ColorButton.cpp" />
     <ClCompile Include="ColorPanel.cpp" />
@@ -181,6 +182,7 @@
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="INetworkThread.cpp" />
     <ClCompile Include="JoinGameScreen.cpp" />
+    <ClCompile Include="LevelDifficultyButton.cpp" />
     <ClCompile Include="LoadResourceException.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MainScreen.cpp" />
@@ -218,6 +220,7 @@
     <ClInclude Include="BottomPanel.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="ChooseAIModeScreen.h" />
     <ClInclude Include="ClientThread.h" />
     <ClInclude Include="ColorButton.h" />
     <ClInclude Include="ColorPanel.h" />
@@ -234,6 +237,7 @@
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="INetworkThread.h" />
     <ClInclude Include="JoinGameScreen.h" />
+    <ClInclude Include="LevelDifficultyButton.h" />
     <ClInclude Include="LoadResourceException.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MainScreen.h" />

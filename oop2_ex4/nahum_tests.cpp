@@ -43,6 +43,7 @@
 #include "Square.h"
 #include "Board.h"
 #include "Utilities.h"
+#include "ChooseAIModeScreen.h"
 #pragma endregion
 
 #pragma region Usings
@@ -57,6 +58,7 @@ void testBoard();
 void testShape();
 void testGUI();
 void testGameMenu();
+void testChooseScreen();
 #pragma endregion
 
 //--------------  main -------------------------
@@ -66,7 +68,8 @@ void nahum_main()
 
 	try
 	{
-		testBoard();
+		testChooseScreen();
+		//testBoard();
 		//testShape();
 		//testGameMenu();
 		//testGUI();
@@ -75,6 +78,41 @@ void nahum_main()
 	{
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
+	}
+}
+
+void testChooseScreen() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+	std::shared_ptr<ChooseAIModeScreen> cm = std::make_shared<ChooseAIModeScreen>(window);
+	mainLayout.addView(cm);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+			if (event.type == sf::Event::MouseMoved) {
+				sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+				sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+				//cout << "m.x=" << worldPos.x << ", m.y=" << worldPos.y << endl;
+			}
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
 	}
 }
 
