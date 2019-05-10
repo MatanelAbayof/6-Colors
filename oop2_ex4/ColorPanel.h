@@ -30,10 +30,10 @@ public:
 	// array of colors
 	static const std::array<sf::Color, 6> COLORS;
 protected:
-	//init
+	// init
 	void initComponents(sf::RenderWindow& window);
 private:
-	//color panel
+	// color panel
 	std::vector<std::shared_ptr<ColorButton>> m_colorPanel;
 };
 

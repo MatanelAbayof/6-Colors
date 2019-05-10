@@ -15,16 +15,16 @@ class GameMenu :
 public:
 	// constructor
 	explicit GameMenu(sf::RenderWindow& window);
-	//get restart button
+	// get restart button
 	const std::shared_ptr<GUI::Button>& getRestartButton() const { return m_restart; }
-	//get exit button
+	// get exit button
 	const std::shared_ptr<GUI::Button>& getExitButton() const { return m_exit; }
 	// convert to string
 	virtual string toString() const;
 protected:
-	//init
+	// init
 	void initComponents(sf::RenderWindow& window);
-	//init button
+	// init button
 	void initButton(std::shared_ptr<GUI::Button> bt);
 private:
 	std::shared_ptr<GUI::Button> m_restart, m_exit;

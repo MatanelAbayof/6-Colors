@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-#define NAHUM_TESTS
+#include "main_tests.h"
 #ifdef NAHUM_TESTS
 
 #pragma region Libs
@@ -60,7 +60,7 @@ void testGameMenu();
 #pragma endregion
 
 //--------------  main -------------------------
-int main()
+void nahum_main()
 {
 	std::cout << "Hello Nahum World!\n";
 

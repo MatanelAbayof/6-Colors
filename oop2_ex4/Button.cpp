@@ -16,6 +16,7 @@ string GUI::Button::toString() const
 void GUI::Button::initComponents()
 {
 	setFont("CURLZ");
+	setTextStyle(sf::Text::Style::Bold);
 
 	// init sounds at events
 	addEnterListener([](View &view) {

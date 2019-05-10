@@ -1,7 +1,7 @@
 /*
  * main for tests
  */
-//#define AKIVA_TESTS
+#include "main_tests.h"
 #ifdef AKIVA_TESTS
 
 #pragma region Libs
@@ -36,6 +36,7 @@
 #include "ImageButton.h"
 #include "ErrorDialog.h"
 #include "MainScreen.h"
+#include "WaitingMultiplayerScreen.h"
 #pragma endregion
 
 #pragma region Usings
@@ -51,7 +52,7 @@ void testFirstTime();
 #pragma endregion
 
 //--------------  main -------------------------
-int main()
+void akiva_main()
 {
 	std::cout << "Hello Akiva World!\n";
 

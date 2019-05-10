@@ -11,7 +11,8 @@ void Board::setBoardSize(const sf::Vector2i& boardSize)
 {
 	// check board size
 	if (boardSize.x <= 0 || boardSize.y <= 0 || boardSize.y%2 != 0)
-		throw std::length_error("Board size {x=" + std::to_string(boardSize.x) + ", y=" + std::to_string(boardSize.y) + "} must be with possitive numbers and y is even number");
+		throw std::length_error("Board size {x=" + std::to_string(boardSize.x) + ", y=" + 
+			                    std::to_string(boardSize.y) + "} must be with possitive numbers and y is even number");
 
 	clear();
 	m_boardSize = boardSize;
@@ -61,7 +62,7 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)                       
 			addView(rightTrigView, sf::FloatRect(0.f, float(rowNum-1)*shapeHeight, shapeWidth / 2.f, 2.f*shapeHeight));
 		}
 		
-	
+		// add shapes in line
 		for (int colNum = (rowNum % 2 == 0) ? 0 : 1; colNum < m_boardSize.x; ++colNum) {
 			randSquareStructShape(rowNum, colNum);
 		}
@@ -137,14 +138,14 @@ void Board::randSquareStructShape(int rowNum, int colNum)
 		std::shared_ptr<PolygonView> downTrigView = std::make_shared<PolygonView>(getWindow(), std::move(downTrig));
 		sf::FloatRect upTrigBounds, downTrigBounds;
 		if (rowNum % 2 == 0) {
-			downTrigBounds.left = upTrigBounds.left = float(2 * colNum) / (2.f*m_boardSize.x);
+			downTrigBounds.left = upTrigBounds.left = float(colNum)*shapeWidth;
 		}
 		else
-			downTrigBounds.left = upTrigBounds.left = float(2 * colNum - 1) / (2.f*m_boardSize.x);
+			downTrigBounds.left = upTrigBounds.left = (float(colNum) - 0.5f)*shapeWidth;
 		upTrigBounds.top = float(rowNum - 1) / (m_boardSize.y);
-		downTrigBounds.top = upTrigBounds.top + 1.f / m_boardSize.y;
-		upTrigBounds.width = downTrigBounds.width = 1.f / m_boardSize.x;
-		upTrigBounds.height = downTrigBounds.height = 1.f / m_boardSize.y;
+		downTrigBounds.top = upTrigBounds.top + shapeHeight;
+		upTrigBounds.width = downTrigBounds.width = shapeWidth;
+		upTrigBounds.height = downTrigBounds.height = shapeHeight;
 		addView(upTrigView, upTrigBounds);
 		addView(downTrigView, downTrigBounds);
 	} break;
@@ -155,16 +156,16 @@ void Board::randSquareStructShape(int rowNum, int colNum)
 		std::shared_ptr<PolygonView> rightTrigView = std::make_shared<PolygonView>(getWindow(), std::move(rightTrig));
 		sf::FloatRect leftTrigBounds, rightTrigBounds;
 		if (rowNum % 2 == 0) {
-			leftTrigBounds.left = float(2 * colNum) / (2.f*m_boardSize.x);
-			rightTrigBounds.left = leftTrigBounds.left + (1.f / (2.f*m_boardSize.x));
+			leftTrigBounds.left = float(colNum)*shapeWidth;
+			rightTrigBounds.left = leftTrigBounds.left + shapeWidth/2.f;
 		}
 		else {
-			leftTrigBounds.left = float(2 * colNum - 1) / (2.f*m_boardSize.x);
-			rightTrigBounds.left = leftTrigBounds.left + (1.f / (2.f*m_boardSize.x));
+			leftTrigBounds.left = (float(colNum) - 0.5f)*shapeWidth;
+			rightTrigBounds.left = leftTrigBounds.left + shapeWidth/2.f;
 		}
-		leftTrigBounds.top = rightTrigBounds.top = float(rowNum - 1) / (m_boardSize.y);
-		leftTrigBounds.width = rightTrigBounds.width = 1.f / (2.f*m_boardSize.x);
-		leftTrigBounds.height = rightTrigBounds.height = 2.f / m_boardSize.y;
+		leftTrigBounds.top = rightTrigBounds.top = float(rowNum - 1)*shapeHeight;
+		leftTrigBounds.width = rightTrigBounds.width = shapeWidth/2.f;
+		leftTrigBounds.height = rightTrigBounds.height = 2.f*shapeHeight;
 		addView(leftTrigView, leftTrigBounds);
 		addView(rightTrigView, rightTrigBounds);
 	} break;

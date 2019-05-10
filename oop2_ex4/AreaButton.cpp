@@ -8,7 +8,7 @@ AreaButton::AreaButton(sf::RenderWindow& window, float areaPercent)
 	init();
 }
 
-float AreaButton::getAreaPercent()
+float AreaButton::getAreaPercent() const
 {
 	return m_areaPercent;
 }

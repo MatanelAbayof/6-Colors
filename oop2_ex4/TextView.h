@@ -5,7 +5,6 @@
 
 //---- using section --------
 using std::string;
-using sf::Text;
 
 namespace GUI {
 /*
@@ -41,6 +40,10 @@ public:
 	unsigned int getTextSize() const;
 	// get text horizontal alignment
 	TextHAlignment getTextHAlignment() const;
+	// set text style (use with sf::Text::Style)
+	void setTextStyle(sf::Uint32 style);
+	// get text style
+	sf::Uint32 getTextStyle() const { return m_text.getStyle(); }
 	// draw
 	virtual void draw() override;
 	// convert to string
@@ -50,7 +53,7 @@ protected:
 	virtual void updateComponents() override;
 private:
 	// text object
-	Text m_text;
+	sf::Text m_text;
 	// text color
 	sf::Color m_textColor;
 	// text horizonal alignment
