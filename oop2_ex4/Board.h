@@ -42,7 +42,7 @@ private:
 	// polygons
 	Graph<PolygonView> m_polygonsGraph;
 	// randomize board edge line
-	void randomizeBoardEdgeLine(bool isFirstLine);
+	void randomizeBoardEdgeLine(Matrix<SquareStructInfo>& shapesMatrix, bool isFirstLine);
 	// randomize square struct shape
 	void randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const Cell& cell);
 	// set adjs at graph
