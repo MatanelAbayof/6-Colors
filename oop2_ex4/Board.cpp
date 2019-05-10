@@ -81,7 +81,7 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)                       
 			std::unique_ptr<PolygonShape> leftTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::LEFT);
 			std::shared_ptr<PolygonView> leftTrigView = std::make_shared<PolygonView>(getWindow(), std::move(leftTrig));
 			addView(leftTrigView, sf::FloatRect((float(m_boardSize.x) - 0.5f)*shapeWidth, float(rowNum - 1)*shapeHeight, shapeWidth / 2.f, 2.f*shapeHeight));
-			shapesMatrix[Cell(rowNum, shapesMatrix.getNumOfRows()-1)].m_vertices.push_back(m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - 1));
+			shapesMatrix[Cell(rowNum, shapesMatrix.getNumOfCols()-1)].m_vertices.push_back(m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - 1));
 		}
 		
 	}
@@ -201,21 +201,34 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 
 void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 {
-	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows(); ++rowNum) {
-		for (int colNum = 1; colNum < shapesMatrix.getNumOfCols(); ++colNum) {
+	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows()-1; ++rowNum) {
+		for (int colNum = 1; colNum < shapesMatrix.getNumOfCols()-2; ++colNum) {
 			Cell cell(rowNum, colNum);
 			SquareStructInfo& ssi = shapesMatrix[cell];
 
+			// add adjs
 			switch (ssi.m_squareStruct)
 			{
-				case Utilities::SquareStruct::SQUARE: {
+				case Utilities::SquareStruct::SQUARE: { // TODO need add 4 adjs here
+					SquareStructInfo* adjSsi = &shapesMatrix[Cell(rowNum - 1, colNum - 1)];
 
+					switch (adjSsi->m_squareStruct) {
+						case Utilities::SquareStruct::SQUARE: {
+							ssi.m_vertices[0]->addAdjacent(adjSsi->m_vertices[0]);
+						} break;
+						case Utilities::SquareStruct::UP_DOWN_TRIG: {
+							// TODO
+						} break;
+						case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
+							// TODO
+						} break;
+					}					
 				} break;
 				case Utilities::SquareStruct::UP_DOWN_TRIG: {
-
+					// TODO
 				} break;
 				case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
-
+					// TODO
 				} break;
 			}
 		}
