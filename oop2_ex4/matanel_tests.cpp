@@ -87,11 +87,11 @@ void matanel_main()
 	{
 		//testGameMenu();
 		//testJoinGameScreen();
-		//testBoard();
+		testBoard();
 		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
-		testGUI();
+		//testGUI();
 	}
 	catch (const std::exception& ex)
 	{

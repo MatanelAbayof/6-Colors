@@ -5,6 +5,8 @@
 #include "RelativeLayout.h"
 #include "Graph.h"
 #include "PolygonView.h"
+#include "Matrix.h"
+#include "Utilities.h"
 //---- using section --------
 using std::string;
 
@@ -30,6 +32,11 @@ public:
 	// convert to string
 	virtual string toString() const override;
 private:
+	// square struct info
+	struct SquareStructInfo {
+		Utilities::SquareStruct m_squareStruct;
+		std::vector<Graph<PolygonView>::Vertex*> m_vertices;
+	};
 	// board size (number of shapes)
 	sf::Vector2i m_boardSize;
 	// polygons
@@ -37,8 +44,11 @@ private:
 	// randomize board edge line
 	void randomizeBoardEdgeLine(bool isFirstLine);
 	// randomize square struct shape
-	void randSquareStructShape(int rowNum, int colNum);
+	void randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const Cell& cell);
+	// set adjs at graph
+	void setAdjs(Matrix<SquareStructInfo>& shapesMatrix);
 	// set board size
 	void setBoardSize(const sf::Vector2i& boardSize);
+	
 };
 
