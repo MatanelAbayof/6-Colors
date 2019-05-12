@@ -202,14 +202,14 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 #include<iostream>
 void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 {
-	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows() - 2; ++rowNum) {
+	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows(); ++rowNum) {
 		std::cout << "r=" << rowNum << ": ";
 		/*int numOfCol;
 		if (rowNum % 2 == 1)
 			numOfCol = shapesMatrix.getNumOfCols()- 1;
 		else
 			numOfCol = shapesMatrix.getNumOfCols();*/
-		for (int colNum = ((rowNum % 2 == 0) ? 0 : 1); colNum < ((rowNum%2 == 0) ? shapesMatrix.getNumOfCols()-1 : shapesMatrix.getNumOfCols()-1); ++colNum) {
+		for (int colNum = ((rowNum % 2 == 0) ? 0 : 1); colNum < shapesMatrix.getNumOfCols() - 1; ++colNum) {
 			std::cout << colNum << " ";
 			Cell cell(rowNum, colNum);
 			SquareStructInfo& ssi = shapesMatrix[cell];
@@ -306,34 +306,39 @@ void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 			}
 		}
 	}
-	/*for (int colNum = 1; colNum < shapesMatrix.getNumOfCols() - 1; ++colNum) {
-		Cell cell(shapesMatrix.getNumOfCols() - 1, colNum);
-		SquareStructInfo& ssi = shapesMatrix[cell];
-		SquareStructInfo* adjSsi = &shapesMatrix[Cell(shapesMatrix.getNumOfCols() - 2 , colNum - 1)];
+	
 
-		switch (adjSsi->m_squareStruct) {
-		case Utilities::SquareStruct::SQUARE: {
-			ssi.m_vertices[0]->addAdjacent(adjSsi->m_vertices[0]);
-		} break;
-		case Utilities::SquareStruct::UP_DOWN_TRIG: {
-			ssi.m_vertices[0]->addAdjacent(adjSsi->m_vertices[1]);
-		} break;
-		case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
-			ssi.m_vertices[0]->addAdjacent(adjSsi->m_vertices[1]);
-		} break;
-		}
-		 adjSsi = &shapesMatrix[Cell(shapesMatrix.getNumOfRows() - 2, colNum)];
+	// fill edges
+	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows() - 1; rowNum += 2) {
+		std::cout << "er=" << rowNum << " ";
+		SquareStructInfo& lSsi = shapesMatrix[Cell(rowNum, 0)];
+		SquareStructInfo* abRightSsi = &shapesMatrix[Cell(rowNum - 1, 0)];
 
-		switch (adjSsi->m_squareStruct) {
-		case Utilities::SquareStruct::SQUARE: {
-			ssi.m_vertices[0]->addAdjacent(adjSsi->m_vertices[0]);
-		} break;
-		case Utilities::SquareStruct::UP_DOWN_TRIG: {
-			ssi.m_vertices[0]->addAdjacent(adjSsi->m_vertices[1]);
-		} break;
-		case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
-			ssi.m_vertices[0]->addAdjacent(adjSsi->m_vertices[0]);
-		} break;
+		switch (abRightSsi->m_squareStruct) {
+			case Utilities::SquareStruct::SQUARE: {
+				lSsi.m_vertices[0]->addAdjacent(abRightSsi->m_vertices[0]);
+			} break;
+			case Utilities::SquareStruct::UP_DOWN_TRIG: {
+				lSsi.m_vertices[0]->addAdjacent(abRightSsi->m_vertices[1]);
+			} break;
+			case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
+				lSsi.m_vertices[0]->addAdjacent(abRightSsi->m_vertices[0]);
+			} break;
 		}
-	}*/
+
+		SquareStructInfo& rSsi = shapesMatrix[Cell(rowNum, shapesMatrix.getNumOfCols()-1)];
+		SquareStructInfo* abLeftSsi = &shapesMatrix[Cell(rowNum - 1, shapesMatrix.getNumOfCols() - 2)];
+
+		switch (abLeftSsi->m_squareStruct) {
+			case Utilities::SquareStruct::SQUARE: {
+				rSsi.m_vertices[0]->addAdjacent(abLeftSsi->m_vertices[0]);
+			} break;
+			case Utilities::SquareStruct::UP_DOWN_TRIG: {
+				rSsi.m_vertices[0]->addAdjacent(abLeftSsi->m_vertices[1]);
+			} break;
+			case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
+				rSsi.m_vertices[0]->addAdjacent(abLeftSsi->m_vertices[1]);
+			} break;
+		}
+	}
 }

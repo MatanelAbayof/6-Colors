@@ -137,7 +137,7 @@ void testBoard() {
 
 
 	std::shared_ptr<Board> board = std::make_shared<Board>(window);
-	board->randomizeBoard(sf::Vector2i{ 16, 16 });
+	board->randomizeBoard(sf::Vector2i{ 4, 4 });
 	mainLayout.addView(board);
 
 
