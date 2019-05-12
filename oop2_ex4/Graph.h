@@ -103,6 +103,10 @@ void Graph<T>::Vertex::addAdjacent(Vertex* adjVertex)
 	m_adjs.insert(adjVertex);
 	// add my self to adjVertex adjacency list 
 	adjVertex->m_adjs.insert(this);
+
+	if (adjVertex->m_adjs.size() == 5) {
+		int d = 5;
+	}
 }
 
 template<class T>

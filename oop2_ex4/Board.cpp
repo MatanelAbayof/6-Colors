@@ -201,13 +201,13 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 
 void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 {
-	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows()-1; ++rowNum) {
-		/*int numOfCol;
+	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows() - 1; ++rowNum) {
+		int numOfCol;
 		if (rowNum % 2 == 1)
-			numOfCol = shapesMatrix.getNumOfCols();
+			numOfCol = shapesMatrix.getNumOfCols()- 1;
 		else
-			numOfCol = shapesMatrix.getNumOfCols() - 1;*/
-		for (int colNum = (rowNum%2 == 0) ? 0 : 1; colNum < shapesMatrix.getNumOfCols() - 1; ++colNum) {
+			numOfCol = shapesMatrix.getNumOfCols();
+		for (int colNum = (rowNum%2 == 0) ? 0 : 1; colNum < numOfCol - 1; ++colNum) {
 			Cell cell(rowNum, colNum);
 			SquareStructInfo& ssi = shapesMatrix[cell];
 
