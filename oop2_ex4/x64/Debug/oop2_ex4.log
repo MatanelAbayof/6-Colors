@@ -1,2 +1,7 @@
-﻿  Board.cpp
+﻿  GameScreen.cpp
+d:\development\cpp\projects\oop_course\oop2_ex4\oop2_ex4\oop2_ex4\gamescreen.cpp(20): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
   oop2_ex4.vcxproj -> D:\Development\Cpp\Projects\oop_course\oop2_ex4\oop2_ex4\x64\Debug\oop2_ex4.exe

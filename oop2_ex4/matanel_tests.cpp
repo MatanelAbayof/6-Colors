@@ -53,6 +53,7 @@
 #include "BottomPanel.h"
 #include "GameMenu.h"
 #include "AnimationView.h"
+#include "GameController.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -62,6 +63,7 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testGameController();
 void testGameMenu();
 void testJoinGameScreen();
 void testBoard();
@@ -85,9 +87,10 @@ void matanel_main()
 
 	try
 	{
+		testGameController();
 		//testGameMenu();
 		//testJoinGameScreen();
-		testBoard();
+		//testBoard();
 		//testPolygon();
 		//testGraph();
 		//testClientAndServerNetwork();
@@ -98,6 +101,11 @@ void matanel_main()
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
 	}
+}
+
+void testGameController() {
+	GameController gameController;
+	gameController.run();
 }
 
 void testJoinGameScreen() {
@@ -137,7 +145,7 @@ void testBoard() {
 
 
 	std::shared_ptr<Board> board = std::make_shared<Board>(window);
-	board->randomizeBoard(sf::Vector2i{ 4, 4 });
+	board->randomizeBoard(sf::Vector2i{ 70, 80 });
 	mainLayout.addView(board);
 
 

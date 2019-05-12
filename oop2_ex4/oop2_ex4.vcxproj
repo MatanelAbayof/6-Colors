@@ -176,7 +176,9 @@
     <ClCompile Include="ErrorDialog.cpp" />
     <ClCompile Include="example_class.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameMenu.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="ImageButton.cpp" />
     <ClCompile Include="ImageTexture.cpp" />
     <ClCompile Include="ImageView.cpp" />
@@ -228,7 +230,9 @@
     <ClInclude Include="ErrorDialog.h" />
     <ClInclude Include="example_class.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="GameController.h" />
     <ClInclude Include="GameMenu.h" />
+    <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="IHandler.h" />
