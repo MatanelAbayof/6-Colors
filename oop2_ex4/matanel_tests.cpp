@@ -137,7 +137,7 @@ void testBoard() {
 
 
 	std::shared_ptr<Board> board = std::make_shared<Board>(window);
-	board->randomizeBoard(sf::Vector2i{ 8, 8 });
+	board->randomizeBoard(sf::Vector2i{ 16, 16 });
 	mainLayout.addView(board);
 
 
@@ -159,6 +159,8 @@ void testBoard() {
 			board->randomizeBoard(size);
 		}
 	});
+
+	
 	// print graph
 	std::cout << board->getPolygonsGraph().toString() << std::endl;
 	for (int i = 0; i < board->getPolygonsGraph().getNumOfVertices(); i++) {

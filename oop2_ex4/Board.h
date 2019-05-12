@@ -36,6 +36,8 @@ private:
 	struct SquareStructInfo {
 		Utilities::SquareStruct m_squareStruct;
 		std::vector<Graph<PolygonView>::Vertex*> m_vertices;
+
+		SquareStructInfo() : m_squareStruct(Utilities::SquareStruct::SQUARE) {}
 	};
 	// board size (number of shapes)
 	sf::Vector2i m_boardSize;
