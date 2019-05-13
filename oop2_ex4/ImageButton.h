@@ -21,8 +21,14 @@ public:
 	explicit ImageButton(sf::RenderWindow& window, const string& text = "");
 	// get image
 	ImageTexture& getImage();
+	// set font
+	void setFont(const string& fontName) { m_text->setFont(fontName); }
 	// set text
 	void setText(const string& text);
+	// set text size
+	void setTextSize(unsigned int textSize) { m_text->setTextSize(textSize); }
+	// get text size
+	unsigned int getTextSize() const { return m_text->getTextSize(); }
 	// get text
 	string getText() const;
 	// set text colot

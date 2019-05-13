@@ -19,7 +19,7 @@ void WaitingMultiplayerScreen::init()
 {
 	// init waiting to client title
 	m_waitingToClientTv->setTextColor(sf::Color::Cyan);
-	m_waitingToClientTv->setTextSize(30.f);
+	m_waitingToClientTv->setTextSize(30);
 	m_waitingToClientTv->setTextColor(sf::Color::Black);
 	m_waitingToClientTv->setTextStyle(sf::Text::Style::Underlined);
 	m_waitingToClientTv->setFont("BRLNSDB");
@@ -27,7 +27,7 @@ void WaitingMultiplayerScreen::init()
 
 	// init my ip title 
 	m_myIpTv->setTextColor(sf::Color::Cyan);
-	m_myIpTv->setTextSize(30.f);
+	m_myIpTv->setTextSize(30);
 	m_myIpTv->setTextColor(sf::Color::Black);
 	m_myIpTv->setTextStyle(sf::Text::Style::Bold);
 	m_myIpTv->setFont("BAUHS93");
@@ -36,7 +36,7 @@ void WaitingMultiplayerScreen::init()
 	// init start game button
 	m_startBt->getBackground().setColor(sf::Color::Green);
 	m_startBt->setTextColor(sf::Color::White);
-	m_startBt->setTextSize(20.f);
+	m_startBt->setTextSize(20);
 	m_startBt->setTextStyle(sf::Text::Style::Bold);
 	m_startBt->addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));

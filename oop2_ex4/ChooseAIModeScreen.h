@@ -17,8 +17,8 @@ class ChooseAIModeScreen :
 	public GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>
 {
 public:
-	//constractor
-	ChooseAIModeScreen(sf::RenderWindow& window);
+	// constructor
+	explicit ChooseAIModeScreen(sf::RenderWindow& window);
 	// destructor
 	virtual ~ChooseAIModeScreen() = default;
 	// get buttons

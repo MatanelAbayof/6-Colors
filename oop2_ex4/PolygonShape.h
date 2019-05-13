@@ -15,7 +15,7 @@ class PolygonShape :
 {
 public:
 	// constructor
-	explicit PolygonShape(const sf::Color& color = sf::Color::Transparent);
+	PolygonShape();
 	// add relative point to polygon
 	void addPoint(const sf::Vector2f& relPoint);
 	// get number of points
@@ -34,4 +34,3 @@ private:
 	// check if is number in [0, 1]
 	bool isRelativeNum(float num) const { return ((num >= 0.f) && (num <= 1.f)); }
 };
-

@@ -12,10 +12,9 @@ string GameScreen::toString() const
 {
 	return "GameScreen: { " + BSGameScreen::toString() + " }";
 }
-
 void GameScreen::init()
 {
-	addView(m_gameMenu, sf::FloatRect(0.f, 0.f, 1.f, 0.15f));
-	addView(m_board, sf::FloatRect(0.05f, 0.17f, 0.9f, 0.65f));
-	addView(m_bottomPanel, sf::FloatRect(0.f, 0.85, 1.f, 0.15f));
+	addView(m_gameMenu, sf::FloatRect(0.f, 0.f, 1.f, 0.05f));
+	addView(m_board, sf::FloatRect(0.01f, 0.06f, 0.98f, 0.83f));
+	addView(m_bottomPanel, sf::FloatRect(0.f, 0.9f, 1.f, 0.1f));
 }

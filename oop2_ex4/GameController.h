@@ -25,5 +25,7 @@ private:
 	void runChooseModeAIScreen(sf::RenderWindow& window);
 	// run game screen
 	void runGameScreen(sf::RenderWindow& window);
+	// run join screen
+	void runJoinScreen(sf::RenderWindow& window);
 };
 

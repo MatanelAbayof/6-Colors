@@ -1,6 +1,5 @@
 #include "ColorButton.h"
 
-
 ColorButton::ColorButton(sf::RenderWindow& window, const sf::Color& color)
 	: Button(window)
 {
@@ -40,7 +39,7 @@ void ColorButton::init(const sf::Color& color)
 	setTextColor(sf::Color(116, 0, 0));
 	setTextSize(50);
 
-	//make dark color
+	// make dark color when mouse entered
 	addEnterListener([color](View &view) {
 		sf::Color c;
 		if (color.r > 70)
@@ -58,7 +57,7 @@ void ColorButton::init(const sf::Color& color)
 		view.getBackground().setColor(c);
 	});
 
-	//return to regular color
+	// return to regular color
 	addLeaveListener([color](View &view) {
 		view.getBackground().setColor(color);
 	});

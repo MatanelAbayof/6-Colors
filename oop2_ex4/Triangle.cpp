@@ -1,9 +1,7 @@
 #include "Triangle.h"
 
-
-
-Triangle::Triangle(const sf::Color& color, PointingSide pointingSide)
-	:PolygonShape(color), m_pointingSide(pointingSide)
+Triangle::Triangle(PointingSide pointingSide)
+	:PolygonShape(), m_pointingSide(pointingSide)
 {
 	init();
 }
@@ -36,11 +34,6 @@ float Triangle::getHeight() const
 	}
 	// for compiler
 	return 0.0f;
-}
-
-int Triangle::getNumOfEdges() const
-{
-	return NUM_OF_EDGES;
 }
 
 string Triangle::toString() const

@@ -72,4 +72,3 @@ void MainScreen::init()
 	m_exitBt->setTextColor(sf::Color::Black);
 	addView(m_exitBt, sf::FloatRect(2.f / 5.f, 0.85f, 1.f / 5.f, 0.10f));
 }
-

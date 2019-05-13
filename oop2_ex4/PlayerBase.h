@@ -14,12 +14,12 @@ using std::string;
 class PlayerBase
 {
 public:
-	// when a player wnt to select a color
+	// when a player want to select a color
 	virtual sf::Color selectColor() = 0;
 	// get player name
-	const string& getName() const;
+	const string& getName() const { return m_name; }
 	// set player name
-	void setName(const string& name);
+	void setName(const string& name) { m_name = name;  }
 	// check if the player is ready to play
 	virtual bool isReadyToPlay() = 0;
 	// convert to string
@@ -27,9 +27,9 @@ public:
 private:
 	// constructor
 	PlayerBase();
-	// destructor
-	~PlayerBase();
+	// name
 	string m_name;
+	// list of filled shapes
 	std::unordered_set<Shape*> m_filldsShapes;
 };
 

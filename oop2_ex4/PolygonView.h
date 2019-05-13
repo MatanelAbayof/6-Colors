@@ -22,7 +22,7 @@ public:
 	// set color
 	void setColor(const sf::Color& color);
 	// get color
-	const sf::Color& getColor() const { return m_polygon->getColor(); }
+	const sf::Color& getColor() const { return m_polygonDrawable.getFillColor(); }
 	// draw in window
 	virtual void draw() override;
 	// convert to string

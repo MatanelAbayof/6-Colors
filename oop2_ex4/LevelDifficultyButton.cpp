@@ -12,7 +12,7 @@ string LevelDifficultyButton::toString() const
 	return "LevelDifficultyButton: { " + ImageButton::toString() + " }";
 }
 
-void LevelDifficultyButton::setLevel(LevelDifficulty level)
+void LevelDifficultyButton::setLevelButton(LevelDifficulty level)
 {
 	switch (level) {
 	case STUPID: {
@@ -46,6 +46,8 @@ void LevelDifficultyButton::setLevel(LevelDifficulty level)
 void LevelDifficultyButton::init()
 {
 	setTextColor(sf::Color::Black);
+	setFont("CURLZ");
+	setTextSize(30);
 	addEnterListener([this](View& view) {
 		view.getBackground().setColor(sf::Color(255, 255, 255, 128));
 	});

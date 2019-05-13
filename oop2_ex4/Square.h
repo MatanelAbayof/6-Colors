@@ -15,7 +15,7 @@ public:
 	// number of edges
 	static const int NUM_OF_EDGES = 4;
 	// constructor
-	explicit Square(const sf::Color& color);
+	Square();
 	// get width
 	virtual float getWidth() const { return getHeight(); }
 	// get height

@@ -17,8 +17,8 @@ class ColorPanel :
 {
 public:
 	// buttons background colors
-	static const sf::Color BLUE_COLOR, BLUE_DARK_COLOR, GREEN_COLOR, GREEN_DARK_COLOR, RED_COLOR, RED_DARK_COLOR,
-		                   YELLOW_COLOR, YELLOW_DARK_COLOR, PURPLE_COLOR, PURPLE_DARK_COLOR, ORANGE_COLOR, ORANGE_DARK_COLOR;
+	static const sf::Color BLUE_COLOR, GREEN_COLOR, RED_COLOR,
+		                   YELLOW_COLOR, PURPLE_COLOR, ORANGE_COLOR;
 	// constructor
 	explicit ColorPanel(sf::RenderWindow& window);
 	// convert to string

@@ -21,7 +21,7 @@ public:
 	// constructor
 	explicit GameScreen(sf::RenderWindow& window);
 	// destructor
-	~GameScreen() = default;
+	virtual ~GameScreen() = default;
 	const std::shared_ptr<GameMenu>& getGameMenu() const { return m_gameMenu; }
 	const std::shared_ptr<Board>& getBoard() const { return m_board; }
 	const std::shared_ptr<BottomPanel>& getBottomPanel() const { return m_bottomPanel; }
