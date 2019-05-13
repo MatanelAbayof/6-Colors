@@ -19,6 +19,8 @@ class WaitingMultiplayerScreen :
 public:
 	// constructor
 	explicit WaitingMultiplayerScreen(sf::RenderWindow& window);
+	// get load animation
+	const std::shared_ptr<GUI::AnimationView>& getLoadAnimation() const { return m_loadAv; };
 	// get start button
 	const std::shared_ptr<GUI::Button>& getStartButton() const { return m_startBt; }
 private:

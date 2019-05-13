@@ -14,6 +14,8 @@ using std::string;
 class INetworkThread
 {
 public:
+	// defualt port of network
+	static const unsigned short DEFUAT_PORT = 30123;
 	// wait time in millis
 	static const sf::Int32 WAIT_TIME;
 	// state of thread

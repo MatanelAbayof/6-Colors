@@ -29,6 +29,8 @@ public:
 protected:
 	// constructor
 	ClientThread();
+	// destructor
+	virtual ~ClientThread() = default;
 	// build packet to send. if packet is empty so client will not send nothing
 	virtual void buildPacket(sf::Packet& packet) = 0;
 	// event when packet received from server
