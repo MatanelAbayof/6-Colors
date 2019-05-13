@@ -21,6 +21,8 @@ public:
 	virtual string toString() const override;
 	// set level difficulty
 	void setLevelButton(LevelDifficulty level);
+	// get level difficulty
+	LevelDifficulty getLevelDifficulty() const { return m_levelDiff; }
 private:
 	// init
 	void init();

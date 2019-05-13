@@ -24,11 +24,13 @@ public:
 	// get buttons
 	const std::shared_ptr<LevelDifficultyButton>& getStupidAIbt() const { return m_stupidAIBt; }
 	const std::shared_ptr<LevelDifficultyButton>& getRegularAIbt() const { return m_regularAIBt; }
-	const std::shared_ptr<LevelDifficultyButton>& getDuperAIbt() const { return m_superAIBt; }
+	const std::shared_ptr<LevelDifficultyButton>& getSuperAIbt() const { return m_superAIBt; }
+	// add level click listener
+	void addLevelClickListener(std::function<void(std::shared_ptr<LevelDifficultyButton>)> onClickBT);
 	// convert to string
 	virtual string toString() const override;
 private:
-	// waiting and IP signs
+	// level button
 	std::shared_ptr<LevelDifficultyButton> m_stupidAIBt, m_regularAIBt, m_superAIBt;
 	// init Component
 	void initComponents();

@@ -41,8 +41,19 @@ void GameController::runMainScreen(sf::RenderWindow& window)
 void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 {
 	ChooseAIModeScreen chooseAIMScreen(window);
-	chooseAIMScreen.getDuperAIbt()->addClickListener([this](GUI::View& view) {
-		runGameScreen(view.getWindow());
+	chooseAIMScreen.addLevelClickListener([this](std::shared_ptr<LevelDifficultyButton> levelDiffBt) {
+		switch (levelDiffBt->getLevelDifficulty())
+		{
+			case LevelDifficultyButton::LevelDifficulty::STUPID: {
+				runGameScreen(levelDiffBt->getWindow()); // TODO remove this line
+			} break;
+			case LevelDifficultyButton::LevelDifficulty::REGULAR: {
+				// TODO
+			} break;
+			case LevelDifficultyButton::LevelDifficulty::SUPER: {
+				// TODO
+			} break;
+		}
 	});
 	chooseAIMScreen.run();
 }

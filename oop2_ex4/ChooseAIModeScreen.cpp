@@ -12,6 +12,19 @@ ChooseAIModeScreen::ChooseAIModeScreen(sf::RenderWindow& window)
 	initComponents();
 }
 
+void ChooseAIModeScreen::addLevelClickListener(std::function<void(std::shared_ptr<LevelDifficultyButton>)> onClickBT)
+{
+	m_stupidAIBt->addClickListener([onClickBT, this](View& view) {
+		onClickBT(this->m_stupidAIBt);
+	});
+	m_regularAIBt->addClickListener([onClickBT, this](View& view) {
+		onClickBT(this->m_regularAIBt);
+	});
+	m_superAIBt->addClickListener([onClickBT, this](View& view) {
+		onClickBT(this->m_superAIBt);
+	});
+}
+
 string ChooseAIModeScreen::toString() const
 {
 	return "ChooseAIModeScreen: { " + BaseScreen::toString() + " }";
