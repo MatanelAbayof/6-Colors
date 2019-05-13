@@ -2,6 +2,7 @@
 //---- include section ------
 #include <string>
 #include "View.h"
+#include "Timer.h"
 
 //---- using section --------
 using std::string;
@@ -21,19 +22,46 @@ namespace GUI {
 		bool isClosed() const { return m_closeFlag; }
 		// run the screen
 		void run();
+		// run the screen and listen to updates with timer
+		void run(Timer& timer);
 		// convert to string
 		virtual string toString() const override { return "BaseScreen: { " + ViewType::toString() + " }"; }
 	protected:
+		// close flag
+		bool m_closeFlag;
 		// constructor
 		explicit BaseScreen(sf::RenderWindow& window);
 		// destructor
-		virtual ~BaseScreen() {}
-		// close flag
-		bool m_closeFlag;
+		virtual ~BaseScreen() {}		
+		// run the screen and listen to updates with timer
+		void run(Timer* timer);
 	};
 
 	template<class ViewType>
 	void BaseScreen<ViewType>::run()
+	{
+		run(nullptr); // run without timer
+	}
+
+	template<class ViewType>
+	void BaseScreen<ViewType>::run(Timer& timer)
+	{
+		run(&timer);
+	}
+
+	template<class ViewType>
+	BaseScreen<ViewType>::BaseScreen(sf::RenderWindow& window)
+		: ViewType(window), m_closeFlag(false)
+	{
+		ViewType::getBackground().setColor(sf::Color(146, 205, 255));
+		ViewType::makeRootView();
+		ViewType::addKeyDownListener([this](sf::Keyboard::Key& key) {
+			if(key == sf::Keyboard::Escape)
+				close();
+		});
+	}
+	template<class ViewType>
+	void BaseScreen<ViewType>::run(Timer* timer)
 	{
 		while (ViewType::getWindow().isOpen() && !isClosed())
 		{
@@ -48,18 +76,10 @@ namespace GUI {
 			ViewType::getWindow().clear();
 			ViewType::draw();
 			ViewType::getWindow().display();
-		}
-	}
 
-	template<class ViewType>
-	BaseScreen<ViewType>::BaseScreen(sf::RenderWindow& window)
-		: ViewType(window), m_closeFlag(false)
-	{
-		ViewType::getBackground().setColor(sf::Color(146, 205, 255));
-		ViewType::makeRootView();
-		ViewType::addKeyDownListener([this](sf::Keyboard::Key& key) {
-			if(key == sf::Keyboard::Escape)
-				close();
-		});
+			// update timer if have
+			if (timer != nullptr)
+				timer->checkTimer();
+		}
 	}
 }

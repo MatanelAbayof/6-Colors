@@ -3,6 +3,10 @@
 #include "ChooseAIModeScreen.h"
 #include "GameScreen.h"
 #include "JoinGameScreen.h"
+#include "WaitingMultiplayerScreen.h"
+#include "RequestsClientThread.h"
+#include "RequestsServerThread.h"
+#include "Timer.h"
 
 GameController::GameController()
 { }
@@ -27,7 +31,7 @@ void GameController::runMainScreen(sf::RenderWindow& window)
 		runChooseModeAIScreen(view.getWindow());
 	});
 	mainScreen.getCreateBt()->addClickListener([this](GUI::View& view) {
-		// TODO run waiting screen
+		runWaitMultScreen(view.getWindow());
 	});
 	mainScreen.getJoinBt()->addClickListener([this](GUI::View& view) {
 		runJoinScreen(view.getWindow());
@@ -66,6 +70,7 @@ void GameController::runGameScreen(sf::RenderWindow& window)
 		gameScreen.close();
 	});
 	gameScreen.getGameMenu()->getRestartButton()->addClickListener([&gameScreen](GUI::View& view) {
+		// TODO restart game here
 		sf::Vector2i size = gameScreen.getBoard()->getBoardSize();
 		size.x = rand() % 10 + 2;
 		size.y = rand() % 10 + 2;
@@ -78,9 +83,65 @@ void GameController::runGameScreen(sf::RenderWindow& window)
 
 void GameController::runJoinScreen(sf::RenderWindow& window)
 {
-	JoinGameScreen joinGameScreen(window);
-	joinGameScreen.getConnectButton()->addClickListener([this](GUI::View& view) {
-		// TODO 
+	// timer for screen updates
+	Timer screenUpdatesTimer;
+
+	// create requests queues
+	RequestsQueue<string> sendRequests, receiveRequests;
+
+	// create client thread
+	RequestsClientThread clientThread(sendRequests, receiveRequests);
+
+	screenUpdatesTimer.start(30, [&clientThread]() {
+		// check if client connected
+		if (!clientThread.isConnectedToServer()) {
+			// TODO run game screen
+		}
 	});
-	joinGameScreen.run();
+
+	// create screen
+	JoinGameScreen joinGameScreen(window);
+	joinGameScreen.getConnectButton()->addClickListener([this, &clientThread, &joinGameScreen](GUI::View& view) {
+		// disable button
+		view.disable();
+		view.getBackground().setColor(sf::Color(170, 170, 170));
+		// connect to server
+		sf::IpAddress serverIpAddress(joinGameScreen.getIpEditText()->getText());
+		clientThread.start(serverIpAddress, INetworkThread::DEFUAT_PORT);
+	});
+	joinGameScreen.run(screenUpdatesTimer);
+	
+	clientThread.stop();
+}
+
+void GameController::runWaitMultScreen(sf::RenderWindow& window)
+{
+	// timer for screen updates
+	Timer screenUpdatesTimer;
+
+	// create network requests queues
+	RequestsQueue<string> sendRequests, receiveRequests;
+
+	// create server
+	RequestsServerThread serverThread(sendRequests, receiveRequests);
+	serverThread.start(INetworkThread::DEFUAT_PORT);
+
+	// create screen
+	WaitingMultiplayerScreen waitMultScreen(window);
+
+	screenUpdatesTimer.start(30, [&serverThread, &waitMultScreen]() {
+		// check if client connected
+		if (serverThread.getNumOfClients() == 1) {
+			waitMultScreen.getLoadAnimation()->hide();
+			waitMultScreen.getStartButton()->enable();
+		}
+	});
+
+	waitMultScreen.getStartButton()->addClickListener([](GUI::View& view) {
+		// TODO open game screen
+	});
+	waitMultScreen.run(screenUpdatesTimer);
+	
+	// stop server thread
+	serverThread.stop();
 }

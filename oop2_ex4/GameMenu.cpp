@@ -23,6 +23,10 @@ void GameMenu::initComponents(sf::RenderWindow& window)
 	
 	m_restartBt->getBackground().setColor(sf::Color::Blue);
 	m_exitBt->getBackground().setColor(sf::Color::Red);
+
+	m_turnTv->setFont("BAUHS93");
+	m_turnTv->setTextSize(23);
+
 	// init buttons
 	initButton(m_restartBt);
 	initButton(m_exitBt);

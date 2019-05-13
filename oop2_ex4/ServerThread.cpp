@@ -9,7 +9,7 @@ ServerThread::ServerThread()
 
 ServerThread::~ServerThread()
 {
-	clear();
+	stop();
 }
 
 void ServerThread::start(const unsigned short port)
