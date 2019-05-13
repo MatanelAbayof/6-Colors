@@ -33,12 +33,12 @@ void Board::addView(const std::shared_ptr<PolygonView>& polygonView, const sf::F
 
 string Board::toString() const
 {
-	return "Board: { graph=" + m_polygonsGraph.toString() + ", boardSize={ rows=" + std::to_string(m_boardSize.x) + ", " +
+	return "Board: { graph=" + m_polygonsGraph.toString() + ", boardSize={ rows=" + std::to_string(m_boardSize.x) + ", cols=" +
 		std::to_string(m_boardSize.y) + ", " + RelativeLayout<PolygonView>::toString() + " }";
 }
 
 
-void Board::randomizeBoard(const sf::Vector2i& boardSize)                                          // TODO must set adjs!!!!
+void Board::randomizeBoard(const sf::Vector2i& boardSize)
 {
 	// set board size
 	setBoardSize(boardSize);
@@ -91,6 +91,7 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)                       
 	// add trigs in bottom (last row)
 	randomizeBoardEdgeLine(shapesMatrix, false);
 
+	// set adjs at graph
 	setAdjs(shapesMatrix);
 }
 
@@ -207,18 +208,10 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 	}
 }
 
-#include<iostream>
 void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 {
 	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows(); ++rowNum) {
-		std::cout << "r=" << rowNum << ": ";
-		/*int numOfCol;
-		if (rowNum % 2 == 1)
-			numOfCol = shapesMatrix.getNumOfCols()- 1;
-		else
-			numOfCol = shapesMatrix.getNumOfCols();*/
 		for (int colNum = ((rowNum % 2 == 0) ? 0 : 1); colNum < shapesMatrix.getNumOfCols() - 1; ++colNum) {
-			std::cout << colNum << " ";
 			Cell cell(rowNum, colNum);
 			SquareStructInfo& ssi = shapesMatrix[cell];
 
@@ -318,7 +311,6 @@ void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 
 	// fill edges
 	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows() - 1; rowNum += 2) {
-		std::cout << "er=" << rowNum << " ";
 		SquareStructInfo& lSsi = shapesMatrix[Cell(rowNum, 0)];
 		SquareStructInfo* abRightSsi = &shapesMatrix[Cell(rowNum - 1, 0)];
 

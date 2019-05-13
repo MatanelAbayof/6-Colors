@@ -3,6 +3,7 @@
 #include "ChooseAIModeScreen.h"
 #include "GameScreen.h"
 #include "JoinGameScreen.h"
+#include "WaitingMultiplayerScreen.h"
 
 GameController::GameController()
 { }
@@ -27,7 +28,7 @@ void GameController::runMainScreen(sf::RenderWindow& window)
 		runChooseModeAIScreen(view.getWindow());
 	});
 	mainScreen.getCreateBt()->addClickListener([this](GUI::View& view) {
-		// TODO run waiting screen
+		runWaitMultScreen(view.getWindow());
 	});
 	mainScreen.getJoinBt()->addClickListener([this](GUI::View& view) {
 		runJoinScreen(view.getWindow());
@@ -66,6 +67,7 @@ void GameController::runGameScreen(sf::RenderWindow& window)
 		gameScreen.close();
 	});
 	gameScreen.getGameMenu()->getRestartButton()->addClickListener([&gameScreen](GUI::View& view) {
+		// TODO restart game here
 		sf::Vector2i size = gameScreen.getBoard()->getBoardSize();
 		size.x = rand() % 10 + 2;
 		size.y = rand() % 10 + 2;
@@ -80,7 +82,16 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 {
 	JoinGameScreen joinGameScreen(window);
 	joinGameScreen.getConnectButton()->addClickListener([this](GUI::View& view) {
-		// TODO 
+		// TODO open game screen
 	});
 	joinGameScreen.run();
+}
+
+void GameController::runWaitMultScreen(sf::RenderWindow& window)
+{
+	WaitingMultiplayerScreen waitMultScreen(window);
+	waitMultScreen.getStartButton()->addClickListener([](GUI::View& view) {
+		// TODO open game screen
+	});
+	waitMultScreen.run();
 }

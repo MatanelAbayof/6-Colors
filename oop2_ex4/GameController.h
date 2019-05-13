@@ -27,5 +27,7 @@ private:
 	void runGameScreen(sf::RenderWindow& window);
 	// run join screen
 	void runJoinScreen(sf::RenderWindow& window);
+	// run waiting multiplayer screen
+	void runWaitMultScreen(sf::RenderWindow& window);
 };
 

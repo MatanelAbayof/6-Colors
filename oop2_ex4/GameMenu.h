@@ -25,14 +25,14 @@ public:
 	// convert to string
 	virtual string toString() const override;
 protected:
-	// init
+	// init components
 	void initComponents(sf::RenderWindow& window);
 	// init button
 	void initButton(std::shared_ptr<GUI::Button> bt);
 private:
+	// buttons
 	std::shared_ptr<GUI::Button> m_restartBt, m_exitBt;
 	// turn button
 	std::shared_ptr<GUI::TextView> m_turnTv;
-
 };
 

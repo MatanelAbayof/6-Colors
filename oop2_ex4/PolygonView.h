@@ -10,7 +10,6 @@ using std::string;
 /*
  * PolygonView class
  */
- 
 class PolygonView :
 	public GUI::View
 {
