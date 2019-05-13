@@ -171,6 +171,7 @@
     <ClCompile Include="ChooseAIModeScreen.cpp" />
     <ClCompile Include="ClientThread.cpp" />
     <ClCompile Include="ColorButton.cpp" />
+    <ClCompile Include="ColoringAlgorithm.cpp" />
     <ClCompile Include="ColorPanel.cpp" />
     <ClCompile Include="EditText.cpp" />
     <ClCompile Include="ErrorDialog.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="ChooseAIModeScreen.h" />
     <ClInclude Include="ClientThread.h" />
     <ClInclude Include="ColorButton.h" />
+    <ClInclude Include="ColoringAlgorithm.h" />
     <ClInclude Include="ColorPanel.h" />
     <ClInclude Include="EditText.h" />
     <ClInclude Include="ErrorDialog.h" />
