@@ -11,6 +11,7 @@
 #include "PlayerAIStupid.h"
 #include "UserPlayer.h"
 #include "ColoringAlgorithm.h"
+#include "AreaButton.h"
 
 GameController::GameController()
 { }
@@ -112,7 +113,6 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 	// set board
 	gameScreen.getBoard()->randomizeBoard(Board::DEFAULT_BOARD_SIZE);
 	gameScreen.getGameMenu()->getTurnButton()->setText(userPlayer->getName() + " turn");
-
 	Graph<PolygonView>& graph = gameScreen.getBoard()->getPolygonsGraph();
 
 	// connect to game
@@ -139,6 +139,11 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				gameScreen.getBottomPanel()->getColorPanel()->disable();
 				isFirstPlayerTurn = false;
 				gameScreen.getGameMenu()->getTurnButton()->setText(otherPlayer->getName() + " turn");
+				
+				// update area percent
+				std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
+				myAreaBT->updateAreaPercent(userPlayer->getPlayerVertices().size(), gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices());
+				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
 			}
 		}
 		else {
@@ -150,6 +155,11 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 					gameScreen.getBottomPanel()->getColorPanel()->enable();
 					isFirstPlayerTurn = true;
 					gameScreen.getGameMenu()->getTurnButton()->setText(userPlayer->getName() + " turn");
+					
+					// update area percent
+					std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
+					rivalAreaBT->updateAreaPercent(otherPlayer->getPlayerVertices().size(), gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices());
+					rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 				}
 			}
 		}
