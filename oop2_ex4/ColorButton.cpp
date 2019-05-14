@@ -35,6 +35,8 @@ string ColorButton::toString() const
 
 void ColorButton::init(const sf::Color& color)
 {
+	getBorder().setColor(sf::Color::Black);
+	getBorder().setSize(1.f);
 	setColor(color);
 	setTextColor(sf::Color(116, 0, 0));
 	setTextSize(50);

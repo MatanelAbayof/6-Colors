@@ -27,6 +27,10 @@ private:
 	void runChooseModeAIScreen(sf::RenderWindow& window);
 	// run game screen
 	void runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players);
+	// create game
+	void createGame(GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players);
+	// play game
+	void playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players);
 	// run join screen
 	void runJoinScreen(sf::RenderWindow& window);
 	// run waiting multiplayer screen

@@ -5,6 +5,9 @@
 #include "Matrix.h"
 #include "Logger.h"
 
+// init
+const sf::Vector2i Board::DEFAULT_BOARD_SIZE{ 10,10 };
+
 Board::Board(sf::RenderWindow& window)
 	: RelativeLayout<PolygonView>(window)
 { }
@@ -64,7 +67,7 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)
 	LOG("randomizeBoard");
 	// add shapes exclude last row
 	for (int rowNum = 1; rowNum < m_boardSize.y; ++rowNum) {
-
+		LOG("newRow");
 		if (rowNum%2 == 1) {
 			// add Triangle in left side
 			std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Triangle::PointingSide::RIGHT);
