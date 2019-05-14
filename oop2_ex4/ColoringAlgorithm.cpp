@@ -4,8 +4,7 @@
 
 
 
-ColoringAlgorithm::ColoringAlgorithm(Graph<PolygonView>& polygonsGraph)
-	:m_polygonsGraph(polygonsGraph)
+ColoringAlgorithm::ColoringAlgorithm()
 {
 }
 
@@ -21,15 +20,18 @@ void ColoringAlgorithm::colorGraph(VertexSet& playerVertex, VertexSet& borderVer
 	}
 
 	// add new vertices
+	auto tempBorderVertex = borderVertex;
 	for (auto vertex : borderVertex) {
-		addAdj(playerVertex, borderVertex, vertex);
+		addAdj(playerVertex, tempBorderVertex, vertex);
 	}
+	borderVertex = tempBorderVertex;
 }
 
 void ColoringAlgorithm::addAdj(VertexSet& playerVertex, VertexSet& borderVertex, PlayerBase::GraphVertex vertex)
 {
 	// check if the vertix still nedds to be in border vetices
 	bool throwFromBorder = true;
+
 	for (auto adj : vertex->getAdjacencyList()) {
 		// check if it's the same color
 		if (adj->getValue().getColor() == vertex->getValue().getColor()) {
@@ -41,14 +43,17 @@ void ColoringAlgorithm::addAdj(VertexSet& playerVertex, VertexSet& borderVertex,
 				addAdj(playerVertex, borderVertex, adj);
 			}
 		}
+
 		// vertix is still relevant to border
 		else {
 			throwFromBorder = false;
 		}
 	}
+
 	if (throwFromBorder) {
 		borderVertex.erase(vertex);
 	}
+
 }
 
 string ColoringAlgorithm::toString() const

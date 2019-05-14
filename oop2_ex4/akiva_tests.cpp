@@ -37,6 +37,10 @@
 #include "ErrorDialog.h"
 #include "MainScreen.h"
 #include "WaitingMultiplayerScreen.h"
+#include "Board.h"
+#include "Utilities.h"
+#include "ColoringAlgorithm.h"
+#include "ColorPanel.h"
 #pragma endregion
 
 #pragma region Usings
@@ -46,6 +50,7 @@ using namespace GUI;
 
 #pragma region Declarations
 //-------------- declare functions -------------
+void testBoard();
 sf::Color randColor();
 void testGUI();
 void testFirstTime();
@@ -58,6 +63,7 @@ void akiva_main()
 
 	try
 	{
+		testBoard();
 		testFirstTime();
 		//testGUI();
 	}
@@ -67,6 +73,71 @@ void akiva_main()
 		ErrorDialog::show(ex.what()); 
 	}
 }
+
+void testBoard() {
+	// create window
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
+
+	// create root view
+	VerticalLayout<> mainLayout(window);
+	mainLayout.makeRootView();
+	mainLayout.getBackground().setColor(sf::Color::White);
+	mainLayout.getBorder().setColor(sf::Color::Blue);
+	mainLayout.getBorder().setSize(1.f);
+
+
+	std::shared_ptr<Board> board = std::make_shared<Board>(window);
+	board->randomizeBoard(sf::Vector2i{ 8, 8 });
+	mainLayout.addView(board);
+
+
+	for (int i = 0; i < board->getNumOfViews(); ++i) {
+		auto& p = board->getView(i);
+		p->addKeyDownListener([&p, &board](sf::Keyboard::Key& key) {
+			if (key == sf::Keyboard::A)
+				p->setColor(Utilities::randColor());
+		});
+	}
+	ColoringAlgorithm::VertexSet vs1 = { board->getPolygonsGraph().getVertex(0) };
+	ColoringAlgorithm::VertexSet vs2 = vs1;
+	ColoringAlgorithm algo;
+
+	board->addKeyDownListener([&board,&vs1,&vs2,&algo](sf::Keyboard::Key& key) {
+		if (key == sf::Keyboard::S) {
+			int colorI;
+			std::cin >> colorI;
+			algo.colorGraph(vs1, vs2, ColorPanel::COLORS[colorI]);
+		}
+	});
+
+
+	// print graph
+	std::cout << board->getPolygonsGraph().toString() << std::endl;
+	for (int i = 0; i < board->getPolygonsGraph().getNumOfVertices(); i++) {
+		std::cout << "V[" << i << "] = " << board->getPolygonsGraph().getVertex(i)->getValue().toString() << std::endl;
+		std::cout << board->getPolygonsGraph().getVertex(i)->toString() << std::endl;
+	}
+
+	board->addClickListener([&board](View& view) {
+		//std::cout << view.toString() << std::endl;
+	});
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			mainLayout.handleEvent(event);
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		mainLayout.draw();
+		window.display();
+	}
+}
+
 
 void testFirstTime() {
 	// create window
