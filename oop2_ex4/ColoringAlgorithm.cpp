@@ -2,8 +2,7 @@
 
 
 
-
-
+/*
 ColoringAlgorithm::ColoringAlgorithm(Graph<PolygonView>& polygonsGraph)
 	:m_polygonsGraph(polygonsGraph)
 {
@@ -54,4 +53,4 @@ void ColoringAlgorithm::addAdj(VertexSet& playerVertex, VertexSet& borderVertex,
 string ColoringAlgorithm::toString() const
 {
 	return "Coloring Algorithm";
-}
+}*/

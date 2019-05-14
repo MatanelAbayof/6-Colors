@@ -1,1 +1,60 @@
-﻿
+﻿  akiva_tests.cpp
+  AlertDialog.cpp
+  AnimationView.cpp
+  AreaButton.cpp
+  Board.cpp
+  Border.cpp
+  BottomPanel.cpp
+  Button.cpp
+  Cell.cpp
+  ChooseAIModeScreen.cpp
+  ClientThread.cpp
+  ColorButton.cpp
+  ColoringAlgorithm.cpp
+  ColorPanel.cpp
+  EditText.cpp
+  ErrorDialog.cpp
+  example_class.cpp
+  FontManager.cpp
+  GameController.cpp
+  GameMenu.cpp
+  Generating Code...
+  Compiling...
+  GameScreen.cpp
+  ImageButton.cpp
+  ImageTexture.cpp
+  ImageView.cpp
+  INetworkThread.cpp
+  JoinGameScreen.cpp
+  LevelDifficultyButton.cpp
+  LoadResourceException.cpp
+  Logger.cpp
+  MainScreen.cpp
+  main_tests.cpp
+  matanel_tests.cpp
+  nahum_tests.cpp
+  NetworkException.cpp
+  PlayerBase.cpp
+  PolygonShape.cpp
+  PolygonView.cpp
+  RectUtils.cpp
+  RequestsClientThread.cpp
+  RequestsServerThread.cpp
+  Generating Code...
+  Compiling...
+  ResourceLoader.cpp
+  ServerThread.cpp
+  Shape.cpp
+  SoundManager.cpp
+  Square.cpp
+  TextureInfo.cpp
+  TextureManager.cpp
+  TextView.cpp
+  Timer.cpp
+  Triangle.cpp
+  UserPlayer.cpp
+  Utilities.cpp
+  View.cpp
+  WaitingMultiplayerScreen.cpp
+  Generating Code...
+  oop2_ex4.vcxproj -> C:\Users\נחום\source\repos\oop2_ex4\x64\Debug\oop2_ex4.exe
