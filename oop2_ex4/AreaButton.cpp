@@ -1,6 +1,5 @@
 #include "AreaButton.h"
 
-
 AreaButton::AreaButton(sf::RenderWindow& window, float areaPercent)
 	: TextView(window)
 {
@@ -29,6 +28,5 @@ string AreaButton::toString() const
 void AreaButton::init()
 {
 	setPreText("Area:\n" );
-	//setText(getPreText() + std::to_string(getAreaPercent()) + "%");
-	setTextSize(40);
+	setTextSize(37);
 }

@@ -34,10 +34,12 @@ public:
 private:
 	// square struct info
 	struct SquareStructInfo {
-		Utilities::SquareStruct m_squareStruct;
-		std::vector<Graph<PolygonView>::Vertex*> m_vertices;
-
+		// constructor
 		SquareStructInfo() : m_squareStruct(Utilities::SquareStruct::SQUARE) {}
+		// square struct type
+		Utilities::SquareStruct m_squareStruct;
+		// list of vertices
+		std::vector<Graph<PolygonView>::Vertex*> m_vertices;
 	};
 	// board size (number of shapes)
 	sf::Vector2i m_boardSize;
@@ -51,6 +53,5 @@ private:
 	void setAdjs(Matrix<SquareStructInfo>& shapesMatrix);
 	// set board size
 	void setBoardSize(const sf::Vector2i& boardSize);
-	
 };
 

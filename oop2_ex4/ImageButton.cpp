@@ -56,8 +56,8 @@ void GUI::ImageButton::initComponents(sf::RenderWindow& window, const string& te
 	// set buttons border
 	Border buttonBorder(sf::Color::Black, 1);
 
-	addView(m_image, 0.6f);
-	addView(m_text, 0.4f);
+	addView(m_image, 0.4f);
+	addView(m_text, 0.6f);
 
 	// init sounds at events
 	addEnterListener(View::EnterHandler::Listener([](View& view) {

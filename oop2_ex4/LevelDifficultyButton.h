@@ -19,8 +19,10 @@ public:
 	explicit LevelDifficultyButton(sf::RenderWindow& window, const string& text = "");
 	//convert to string
 	virtual string toString() const override;
-	//
-	void setLevel(LevelDifficulty level);
+	// set level difficulty
+	void setLevelButton(LevelDifficulty level);
+	// get level difficulty
+	LevelDifficulty getLevelDifficulty() const { return m_levelDiff; }
 private:
 	// init
 	void init();

@@ -53,6 +53,7 @@
 #include "BottomPanel.h"
 #include "GameMenu.h"
 #include "AnimationView.h"
+#include "GameController.h"
 #pragma endregion
 
 //-------------- using section -----------------
@@ -62,10 +63,10 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testGameController();
 void testGameMenu();
 void testJoinGameScreen();
 void testBoard();
-void testPolygon();
 void testGraph();
 void testGUI();
 void testClientAndServerNetwork();
@@ -85,10 +86,10 @@ void matanel_main()
 
 	try
 	{
+		testGameController();
 		//testGameMenu();
 		//testJoinGameScreen();
-		testBoard();
-		//testPolygon();
+		//testBoard();
 		//testGraph();
 		//testClientAndServerNetwork();
 		//testGUI();
@@ -98,6 +99,11 @@ void matanel_main()
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
 	}
+}
+
+void testGameController() {
+	GameController gameController;
+	gameController.run();
 }
 
 void testJoinGameScreen() {
@@ -137,7 +143,7 @@ void testBoard() {
 
 
 	std::shared_ptr<Board> board = std::make_shared<Board>(window);
-	board->randomizeBoard(sf::Vector2i{ 30, 36 });
+	board->randomizeBoard(sf::Vector2i{ 70, 80 });
 	mainLayout.addView(board);
 
 
@@ -171,48 +177,6 @@ void testBoard() {
 	board->addClickListener([&board](View& view) {
 		//std::cout << view.toString() << std::endl;
 	});
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			mainLayout.handleEvent(event);
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-
-		window.clear();
-		mainLayout.draw();
-		window.display();
-	}
-}
-
-void testPolygon() {
-	// create window
-	sf::RenderWindow window(sf::VideoMode(1000, 500), "GUI");
-
-	// create root view
-	VerticalLayout<> mainLayout(window);
-	mainLayout.makeRootView();
-	mainLayout.getBackground().setColor(sf::Color::White);
-	mainLayout.getBorder().setColor(sf::Color::Blue);
-	mainLayout.getBorder().setSize(1.f);
-
-
-	for (int i = 0; i < 3; i++) {
-		// create polygon
-		std::unique_ptr<PolygonShape> poly = std::make_unique<Square>(sf::Color::Yellow);
-		std::shared_ptr<PolygonView> polygonView = std::make_shared<PolygonView>(window, std::move(poly));		
-		polygonView->addClickListener([polygonView](View& view) {
-			polygonView->setColor(Utilities::randColor());
-		});
-		mainLayout.addView(polygonView);
-	}
-	
-	
-	//PolygonShape p1;
-	//
 
 	while (window.isOpen())
 	{

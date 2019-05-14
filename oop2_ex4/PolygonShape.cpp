@@ -1,7 +1,7 @@
 #include "PolygonShape.h"
 
-PolygonShape::PolygonShape(const sf::Color& color)
-	: Shape(color)
+PolygonShape::PolygonShape()
+	: Shape()
 { }
 
 void PolygonShape::addPoint(const sf::Vector2f& relPoint)

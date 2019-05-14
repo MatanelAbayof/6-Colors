@@ -16,8 +16,7 @@ void PolygonView::addPoint(const sf::Vector2f& relPoint)
 
 void PolygonView::setColor(const sf::Color& color)
 {
-	m_polygon->setColor(color);
-	m_polygonDrawable.setFillColor(m_polygon->getColor()); // update color
+	m_polygonDrawable.setFillColor(color);
 }
 
 void PolygonView::draw()
@@ -43,8 +42,6 @@ void PolygonView::updateComponents()
 
 void PolygonView::updatePolygonShape()
 {
-	m_polygonDrawable.setFillColor(m_polygon->getColor()); // update color
-
 	// update points
 	m_polygonDrawable.setPointCount(m_polygon->getNumOfPoints());
 	for (size_t i = 0; i < m_polygonDrawable.getPointCount(); ++i) {

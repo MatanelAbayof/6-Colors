@@ -33,12 +33,12 @@ void Board::addView(const std::shared_ptr<PolygonView>& polygonView, const sf::F
 
 string Board::toString() const
 {
-	return "Board: { graph=" + m_polygonsGraph.toString() + ", boardSize={ rows=" + std::to_string(m_boardSize.x) + ", " +
+	return "Board: { graph=" + m_polygonsGraph.toString() + ", boardSize={ rows=" + std::to_string(m_boardSize.x) + ", cols=" +
 		std::to_string(m_boardSize.y) + ", " + RelativeLayout<PolygonView>::toString() + " }";
 }
 
 
-void Board::randomizeBoard(const sf::Vector2i& boardSize)                                          // TODO must set adjs!!!!
+void Board::randomizeBoard(const sf::Vector2i& boardSize)
 {
 	// set board size
 	setBoardSize(boardSize);
@@ -62,8 +62,9 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)                       
 
 		if (rowNum%2 == 1) {
 			// add Triangle in left side
-			std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::RIGHT);
+			std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Triangle::PointingSide::RIGHT);
 			std::shared_ptr<PolygonView> rightTrigView = std::make_shared<PolygonView>(getWindow(), std::move(rightTrig));
+			rightTrigView->setColor(Utilities::randColor());
 			// add to board
 			addView(rightTrigView, sf::FloatRect(0.f, float(rowNum-1)*shapeHeight, shapeWidth / 2.f, 2.f*shapeHeight));
 			shapesMatrix[Cell(rowNum, 0)].m_vertices.push_back(m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - 1));
@@ -78,8 +79,9 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)                       
 		// add Triangle in right side
 		if (rowNum % 2 == 1) {
 			// add Triangle in left side
-			std::unique_ptr<PolygonShape> leftTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::LEFT);
+			std::unique_ptr<PolygonShape> leftTrig = std::make_unique<Triangle>(Triangle::PointingSide::LEFT);
 			std::shared_ptr<PolygonView> leftTrigView = std::make_shared<PolygonView>(getWindow(), std::move(leftTrig));
+			leftTrigView->setColor(Utilities::randColor());
 			addView(leftTrigView, sf::FloatRect((float(m_boardSize.x) - 0.5f)*shapeWidth, float(rowNum - 1)*shapeHeight, shapeWidth / 2.f, 2.f*shapeHeight));
 			shapesMatrix[Cell(rowNum, shapesMatrix.getNumOfCols()-1)].m_vertices.push_back(m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - 1));
 		}
@@ -89,6 +91,7 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)                       
 	// add trigs in bottom (last row)
 	randomizeBoardEdgeLine(shapesMatrix, false);
 
+	// set adjs at graph
 	setAdjs(shapesMatrix);
 }
 
@@ -115,8 +118,9 @@ void Board::randomizeBoardEdgeLine(Matrix<SquareStructInfo>& shapesMatrix, bool 
 
 	for (int colNum = 0; colNum < m_boardSize.x; ++colNum) {
 		Cell cell(rowNum, colNum);
-		std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(Utilities::randColor(), trigSide);
+		std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(trigSide);
 		std::shared_ptr<PolygonView> downTrigView = std::make_shared<PolygonView>(getWindow(), std::move(downTrig));
+		downTrigView->setColor(Utilities::randColor());
 		sf::FloatRect downTrigBounds(float(colNum) * shapeWidth, trigsY, shapeWidth, shapeHeight);
 		addView(downTrigView, downTrigBounds);
 		shapesMatrix[cell].m_vertices.push_back(m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - 1));
@@ -135,8 +139,9 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 	switch (squareStruct)
 	{
 		case Utilities::SquareStruct::SQUARE: {
-			std::unique_ptr<PolygonShape> square = std::make_unique<Square>(Utilities::randColor());
+			std::unique_ptr<PolygonShape> square = std::make_unique<Square>();
 			std::shared_ptr<PolygonView> squareView = std::make_shared<PolygonView>(getWindow(), std::move(square));
+			squareView->setColor(Utilities::randColor());
 			sf::FloatRect squareBounds;
 			if (cell.getRowNum() % 2 == 0)
 				squareBounds.left = float(cell.getColNum())*shapeWidth;
@@ -151,10 +156,12 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 		} break;
 		case Utilities::SquareStruct::UP_DOWN_TRIG: {
 
-			std::unique_ptr<PolygonShape> upTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::UP);
+			std::unique_ptr<PolygonShape> upTrig = std::make_unique<Triangle>(Triangle::PointingSide::UP);
 			std::shared_ptr<PolygonView> upTrigView = std::make_shared<PolygonView>(getWindow(), std::move(upTrig));
-			std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::DOWN);
+			upTrigView->setColor(Utilities::randColor());
+			std::unique_ptr<PolygonShape> downTrig = std::make_unique<Triangle>(Triangle::PointingSide::DOWN);
 			std::shared_ptr<PolygonView> downTrigView = std::make_shared<PolygonView>(getWindow(), std::move(downTrig));
+			downTrigView->setColor(Utilities::randColor());
 			sf::FloatRect upTrigBounds, downTrigBounds;
 			if (cell.getRowNum() % 2 == 0) {
 				downTrigBounds.left = upTrigBounds.left = float(cell.getColNum())*shapeWidth;
@@ -173,10 +180,12 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 			shapesMatrix[cell].m_vertices.push_back(m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - 1));
 		} break;
 		case Utilities::SquareStruct::LEFT_RIGHT_TRIG: {
-			std::unique_ptr<PolygonShape> leftTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::LEFT);
+			std::unique_ptr<PolygonShape> leftTrig = std::make_unique<Triangle>(Triangle::PointingSide::LEFT);
 			std::shared_ptr<PolygonView> leftTrigView = std::make_shared<PolygonView>(getWindow(), std::move(leftTrig));
-			std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Utilities::randColor(), Triangle::PointingSide::RIGHT);
+			leftTrigView->setColor(Utilities::randColor());
+			std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Triangle::PointingSide::RIGHT);
 			std::shared_ptr<PolygonView> rightTrigView = std::make_shared<PolygonView>(getWindow(), std::move(rightTrig));
+			rightTrigView->setColor(Utilities::randColor());
 			sf::FloatRect leftTrigBounds, rightTrigBounds;
 			if (cell.getRowNum() % 2 == 0) {
 				leftTrigBounds.left = float(cell.getColNum())*shapeWidth;
@@ -199,18 +208,10 @@ void Board::randSquareStructShape(Matrix<SquareStructInfo>& shapesMatrix, const 
 	}
 }
 
-#include<iostream>
 void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 {
 	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows(); ++rowNum) {
-		std::cout << "r=" << rowNum << ": ";
-		/*int numOfCol;
-		if (rowNum % 2 == 1)
-			numOfCol = shapesMatrix.getNumOfCols()- 1;
-		else
-			numOfCol = shapesMatrix.getNumOfCols();*/
 		for (int colNum = ((rowNum % 2 == 0) ? 0 : 1); colNum < shapesMatrix.getNumOfCols() - 1; ++colNum) {
-			std::cout << colNum << " ";
 			Cell cell(rowNum, colNum);
 			SquareStructInfo& ssi = shapesMatrix[cell];
 
@@ -310,7 +311,6 @@ void Board::setAdjs(Matrix<SquareStructInfo>& shapesMatrix)
 
 	// fill edges
 	for (int rowNum = 1; rowNum < shapesMatrix.getNumOfRows() - 1; rowNum += 2) {
-		std::cout << "er=" << rowNum << " ";
 		SquareStructInfo& lSsi = shapesMatrix[Cell(rowNum, 0)];
 		SquareStructInfo* abRightSsi = &shapesMatrix[Cell(rowNum - 1, 0)];
 
