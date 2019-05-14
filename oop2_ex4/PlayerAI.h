@@ -14,7 +14,7 @@ class PlayerAI :
 {
 public:
 	PlayerAI() = default;
-	virtual bool isReadyToPlay() override { return true; }
+	virtual bool isReadyToPlay() const override { return true; }
 	// convert to string
-	virtual string toString() const { return "Player AI : {" + PlayerBase::toString() + "}"; }
+	virtual string toString() const override { return "Player AI: { " + PlayerBase::toString() + "}"; }
 };

@@ -3,14 +3,13 @@
 
 
 UserPlayer::UserPlayer()
-	: PlayerBase()
-{
-}
+	: PlayerBase(), m_selected(false)
+{ }
 
 sf::Color UserPlayer::selectColor()
 {
 	if (!isReadyToPlay())
-		throw std::exception("cannot select color");
+		throw std::logic_error("Cannot select color");
 
 	// now i didnt selcted
 	m_selected = false;
@@ -19,9 +18,15 @@ sf::Color UserPlayer::selectColor()
 }
 
 
+void UserPlayer::connectToGame(GameScreen* gameScreen)
+{
+	PlayerBase::connectToGame(gameScreen);
+	init();
+}
+
 string UserPlayer::toString() const
 {
-	return "UserPlayer: {" + PlayerBase::toString() + " }";
+	return "UserPlayer: { " + PlayerBase::toString() + " }";
 }
 
 void UserPlayer::init()

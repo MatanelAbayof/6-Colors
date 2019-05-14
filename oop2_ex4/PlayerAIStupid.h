@@ -11,14 +11,14 @@ using std::string;
 /*
  * PlayerAIStupid class
  */
-class PlayerAIStupid:
-	PlayerAI
+class PlayerAIStupid :
+	public PlayerAI
 {
 public:
 	// constructor
 	PlayerAIStupid() = default;
 	virtual sf::Color selectColor() override;
 	// convert to string
-	virtual string toString() const;
+	virtual string toString() const override;
 };
 

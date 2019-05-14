@@ -22,12 +22,20 @@ public:
 	virtual sf::Color selectColor() = 0;
 	// get player name
 	const string& getName() const { return m_name; }
+	// set game screen
+	virtual void connectToGame(GameScreen* gameScreen) { m_gameScreen = gameScreen; }
 	// get game screen
-	const std::shared_ptr<GameScreen>& getGameScreen() const { return m_gameScreen; }
+	GameScreen* getGameScreen();
+	// get list of the player vertices
+	std::unordered_set<GraphVertex>& getPlayerVertices() { return m_playerVertices; }
+	// get list of border vertices
+	std::unordered_set<GraphVertex>& getBorderVertices() { return m_borderVertices; }
 	// set player name
 	void setName(const string& name) { m_name = name; }
+	// set start vertex
+	void setStartVertex(GraphVertex vertex);
 	// check if the player is ready to play
-	virtual bool isReadyToPlay() = 0;
+	virtual bool isReadyToPlay() const = 0;
 	// convert to string
 	virtual string toString() const;
 protected:
@@ -36,11 +44,11 @@ protected:
 private:
 	// player name
 	string m_name;
-	// list of the player vertexs
-	std::unordered_set<GraphVertex> m_playerVertexs;
-	// list of border vertexs
-	std::unordered_set<GraphVertex> m_borderVertexs;
+	// list of the player vertices
+	std::unordered_set<GraphVertex> m_playerVertices;
+	// list of border vertices
+	std::unordered_set<GraphVertex> m_borderVertices;
 	//gmae screen
-	std::shared_ptr<GameScreen> m_gameScreen;
+	GameScreen* m_gameScreen;
 };
 

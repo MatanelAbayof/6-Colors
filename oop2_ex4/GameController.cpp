@@ -8,6 +8,9 @@
 #include "RequestsServerThread.h"
 #include "Timer.h"
 #include "Logger.h"
+#include "PlayerAIStupid.h"
+#include "UserPlayer.h"
+#include "ColoringAlgorithm.h"
 
 GameController::GameController()
 { }
@@ -49,16 +52,14 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 	chooseAIMScreen.addLevelClickListener([this](std::shared_ptr<LevelDifficultyButton> levelDiffBt) {
 
 		// create players
-		std::vector<std::shared_ptr<PlayerBase>> players;            // TODO
-		//std::shared_ptr<UserPlayer> userPlayer = std::make_shared<UserPlayer>();
-		//players.push_back(userPlayer);
+		std::vector<std::shared_ptr<PlayerBase>> players;
+		players.push_back(std::make_shared<UserPlayer>());
 		std::shared_ptr<PlayerBase> aiPlayer;
 
 		switch (levelDiffBt->getLevelDifficulty())
 		{
 			case LevelDifficultyButton::LevelDifficulty::STUPID: {
-				//aiPlayer = std::make_shared<StupidAIPlayer>();
-				
+				aiPlayer = std::make_shared<PlayerAIStupid>();	
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::REGULAR: {
 				//aiPlayer = std::make_shared<RegularAIPlayer>();
@@ -67,16 +68,59 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 				//aiPlayer = std::make_shared<SuperAIPlayer>();
 			} break;
 		}
-		//players.push_back(aiPlayer);
-		runGameScreen(levelDiffBt->getWindow(), players); // TODO remove this line
+		players.push_back(aiPlayer);
+		runGameScreen(levelDiffBt->getWindow(), players);
 	});
 	chooseAIMScreen.run();
 }
 
 void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players)
 {
+	bool isFirstPlayerTurn = true;
+
+	ColoringAlgorithm colorAlgo;
+
+
+
+	// timer for screen updates
+	Timer screenUpdatesTimer;
+
+	std::shared_ptr<PlayerBase> userPlayer = players[0], otherPlayer = players[1];
+	
 	GameScreen gameScreen(window);
 	gameScreen.getBoard()->randomizeBoard({ 8,8 }); // TODO: remove this line
+
+	for (auto player : players)
+		player->connectToGame(&gameScreen);
+
+	Graph<PolygonView>& graph = gameScreen.getBoard()->getPolygonsGraph();
+	userPlayer->setStartVertex(graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x));
+	otherPlayer->setStartVertex(graph.getVertex(gameScreen.getBoard()->getBoardSize().x-1));
+
+	screenUpdatesTimer.start(30, [&]() {
+		if (isFirstPlayerTurn) {
+			if (userPlayer->isReadyToPlay()) {
+				sf::Color selectedColor = userPlayer->selectColor();
+				colorAlgo.colorGraph(userPlayer->getPlayerVertices(), userPlayer->getBorderVertices(), selectedColor);
+
+				gameScreen.getBottomPanel()->getColorPanel()->disable();
+				isFirstPlayerTurn = false;
+			}
+		}
+		else {
+			if (otherPlayer->isReadyToPlay()) {
+				if (otherPlayer->isReadyToPlay()) {
+					sf::Color selectedColor = otherPlayer->selectColor();
+					colorAlgo.colorGraph(otherPlayer->getPlayerVertices(), otherPlayer->getBorderVertices(), selectedColor);
+					LOG(std::to_string(selectedColor.toInteger()));
+					gameScreen.getBottomPanel()->getColorPanel()->enable();
+					isFirstPlayerTurn = true;
+				}
+			}
+		}
+	});
+
+	
 	gameScreen.getGameMenu()->getExitButton()->addClickListener([&gameScreen](GUI::View& view) {
 		gameScreen.close();
 	});
@@ -89,7 +133,7 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 			size.y++;
 		gameScreen.getBoard()->randomizeBoard(size);
 	});
-	gameScreen.run();
+	gameScreen.run(screenUpdatesTimer);
 }
 
 void GameController::runJoinScreen(sf::RenderWindow& window)

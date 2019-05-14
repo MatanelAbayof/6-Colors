@@ -7,5 +7,5 @@ sf::Color PlayerAIStupid::selectColor()
 
 string PlayerAIStupid::toString() const
 {
-	return "PlayerAIStupid: {" + PlayerAI::toString() + "}";
+	return "PlayerAIStupid: { " + PlayerAI::toString() + " }";
 }
