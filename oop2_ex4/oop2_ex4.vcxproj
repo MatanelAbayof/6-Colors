@@ -210,6 +210,7 @@
     <ClCompile Include="TextView.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="UserPlayer.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="View.cpp" />
     <ClCompile Include="WaitingMultiplayerScreen.cpp" />
@@ -271,6 +272,7 @@
     <ClInclude Include="TextView.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Triangle.h" />
+    <ClInclude Include="UserPlayer.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="VerticalLayout.h" />
     <ClInclude Include="View.h" />
