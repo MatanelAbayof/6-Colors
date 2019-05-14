@@ -78,18 +78,20 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 {
 	bool isFirstPlayerTurn = true;
 
+	// the color algorithm
 	ColoringAlgorithm colorAlgo;
-
-
 
 	// timer for screen updates
 	Timer screenUpdatesTimer;
 
+	// the players
 	std::shared_ptr<PlayerBase> userPlayer = players[0], otherPlayer = players[1];
 	
+	// create game screen
 	GameScreen gameScreen(window);
 	gameScreen.getBoard()->randomizeBoard({ 8,8 });
 
+	// connect to game
 	userPlayer->connectToGame(&gameScreen, otherPlayer);
 	otherPlayer->connectToGame(&gameScreen, userPlayer);	
 
