@@ -33,13 +33,15 @@ public:
 	// set player name
 	void setName(const string& name) { m_name = name; }
 	// set start vertex
-	void setStartVertex(GraphVertex vertex);
+	virtual void setStartVertex(GraphVertex vertex);
 	// get last color
 	const sf::Color& getLastColor() const { return m_lastColor; }
 	// get forbidden colors
 	std::vector<sf::Color> getForbiddenColors() const;
-	// on other player played
-	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) {}
+	// event on other player played
+	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) = 0;
+	// event on player played
+	virtual void onPlayerPlayed(const sf::Color& selectedColor) = 0;
 	// check if the player is ready to play
 	virtual bool isReadyToPlay() const = 0;
 	// get rival player

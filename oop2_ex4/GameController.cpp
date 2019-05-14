@@ -89,15 +89,17 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	
 	// create game screen
 	GameScreen gameScreen(window);
-	gameScreen.getBoard()->randomizeBoard({ 8,8 });
+	gameScreen.getBoard()->randomizeBoard({ 20,20 });
+
+	gameScreen.getGameMenu()->getTurnButton()->setText(userPlayer->getName() + " turn");
 
 	// connect to game
 	userPlayer->connectToGame(&gameScreen, otherPlayer);
 	otherPlayer->connectToGame(&gameScreen, userPlayer);	
 
 	Graph<PolygonView>& graph = gameScreen.getBoard()->getPolygonsGraph();
+	otherPlayer->setStartVertex(graph.getVertex(gameScreen.getBoard()->getBoardSize().x - 1));
 	userPlayer->setStartVertex(graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x));
-	otherPlayer->setStartVertex(graph.getVertex(gameScreen.getBoard()->getBoardSize().x-1));
 
 	screenUpdatesTimer.start(30, [&]() {
 		if (isFirstPlayerTurn) {
@@ -107,6 +109,7 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 
 				gameScreen.getBottomPanel()->getColorPanel()->disable();
 				isFirstPlayerTurn = false;
+				gameScreen.getGameMenu()->getTurnButton()->setText(otherPlayer->getName() + " turn");
 			}
 		}
 		else {
@@ -114,9 +117,9 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 				if (otherPlayer->isReadyToPlay()) {
 					sf::Color selectedColor = otherPlayer->selectColor();
 					colorAlgo.colorGraph(otherPlayer->getPlayerVertices(), otherPlayer->getBorderVertices(), selectedColor);
-					LOG(std::to_string(selectedColor.toInteger()));
 					gameScreen.getBottomPanel()->getColorPanel()->enable();
 					isFirstPlayerTurn = true;
+					gameScreen.getGameMenu()->getTurnButton()->setText(userPlayer->getName() + " turn");
 				}
 			}
 		}

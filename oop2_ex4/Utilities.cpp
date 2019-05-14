@@ -9,6 +9,18 @@ sf::Color Utilities::randColor()
 	return ColorPanel::COLORS[index];
 }
 
+sf::Color Utilities::randColor(const std::vector<sf::Color>& forbiddenColors)
+{
+	sf::Color randColor;
+	while (true) {
+		randColor = Utilities::randColor();
+		auto it = std::find(forbiddenColors.begin(), forbiddenColors.end(), randColor);
+		if (it == forbiddenColors.end())
+			break;
+	}
+	return randColor;
+}
+
 Utilities::SquareStruct Utilities::randSquareStruct()
 {
 	int squareStructIndex = rand() % NUM_SQUARE_STRUCTS;

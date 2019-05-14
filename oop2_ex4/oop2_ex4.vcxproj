@@ -193,6 +193,7 @@
     <ClCompile Include="matanel_tests.cpp" />
     <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="NetworkException.cpp" />
+    <ClCompile Include="PlayerAI.cpp" />
     <ClCompile Include="PlayerAIStupid.cpp" />
     <ClCompile Include="PlayerBase.cpp" />
     <ClCompile Include="PolygonShape.cpp" />

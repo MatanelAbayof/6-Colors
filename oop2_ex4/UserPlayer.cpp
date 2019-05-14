@@ -4,20 +4,18 @@
 
 UserPlayer::UserPlayer()
 	: PlayerBase(), m_selected(false)
-{ }
+{
+	setName("User");
+}
 
 sf::Color UserPlayer::selectColor()
 {
 	if (!isReadyToPlay())
-		throw std::logic_error("Cannot select color");
-
-	// now i didnt selcted
-	m_selected = false;
-		
+		throw std::logic_error("Cannot select color");		
 	sf::Color selectedColor = getLastColor();
 	//setLastColor(selectedColor);
 	getRivalPlayer()->onOtherPlayerPlayed(selectedColor);
-
+	onPlayerPlayed(selectedColor);
 	return selectedColor;
 }
 
@@ -30,18 +28,13 @@ void UserPlayer::connectToGame(GameScreen* gameScreen, const std::shared_ptr<Pla
 
 void UserPlayer::onOtherPlayerPlayed(const sf::Color& selectedColor)
 {
-	const std::shared_ptr<ColorPanel>& colorPanel = getGameScreen()->getBottomPanel()->getColorPanel();
+	updateForbiddenColors();
+}
 
-	auto forbiddenColors = getForbiddenColors();
-	for (auto color : ColorPanel::COLORS) {
-		auto it = std::find(forbiddenColors.begin(), forbiddenColors.end(), color);
-		if(it != forbiddenColors.end()) {
-			colorPanel->getColorButton(color)->disable();
-		}
-		else {
-			colorPanel->getColorButton(color)->enable();
-		}
-	}
+void UserPlayer::setStartVertex(GraphVertex vertex)
+{
+	PlayerBase::setStartVertex(vertex);
+	updateForbiddenColors();
 }
 
 string UserPlayer::toString() const
@@ -55,5 +48,18 @@ void UserPlayer::init()
 		setLastColor(colorBT->getColor());
 		this->m_selected = true;
 	});
+}
+
+void UserPlayer::updateForbiddenColors()
+{
+	const std::shared_ptr<ColorPanel>& colorPanel = getGameScreen()->getBottomPanel()->getColorPanel();
+	std::vector<sf::Color> forbiddenColors = getForbiddenColors();
+	for (const sf::Color& color : ColorPanel::COLORS) {
+		auto it = std::find(forbiddenColors.begin(), forbiddenColors.end(), color);
+		if (it != forbiddenColors.end())
+			colorPanel->getColorButton(color)->disable();
+		else
+			colorPanel->getColorButton(color)->enable();
+	}
 }
 
