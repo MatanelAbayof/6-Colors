@@ -2,8 +2,11 @@
 
 sf::Color PlayerAIStupid::selectColor()
 {
-	sf::Color selectedColor = Utilities::randColor();
+	if (!isReadyToPlay())
+		throw std::logic_error("Cannot select color");
+	sf::Color selectedColor = Utilities::randColor(getForbiddenColors());
 	setLastColor(selectedColor);
+	onPlayerPlayed(selectedColor);
 	getRivalPlayer()->onOtherPlayerPlayed(selectedColor);
 	return selectedColor;
 }

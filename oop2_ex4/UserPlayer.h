@@ -23,6 +23,10 @@ public:
 	virtual void connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer) override;
 	// on other player played
 	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor);
+	// event on player played
+	virtual void onPlayerPlayed(const sf::Color& selectedColor) override { m_selected = false; }
+	// set start vertex
+	virtual void setStartVertex(GraphVertex vertex);
 	// convert to string
 	virtual string toString() const override;
 private:
@@ -30,5 +34,7 @@ private:
 	bool m_selected;
 	// init
 	void init();
+	// update forbidden colors in color panel
+	void updateForbiddenColors();
 };
 

@@ -18,6 +18,7 @@ namespace Utilities {
 	};
 	// random color from colors in ColorPanel
 	sf::Color randColor();
+	sf::Color randColor(const std::vector<sf::Color>& forbiddenColors);
 	//rand square struct
 	SquareStruct randSquareStruct();
 	// convert key code to string

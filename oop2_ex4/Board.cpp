@@ -3,6 +3,7 @@
 #include "Square.h"
 #include "Utilities.h"
 #include "Matrix.h"
+#include "Logger.h"
 
 Board::Board(sf::RenderWindow& window)
 	: RelativeLayout<PolygonView>(window)
@@ -54,9 +55,13 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)
 	float shapeWidth = 1.f / float(m_boardSize.x);
 	float shapeHeight = 1.f / float(m_boardSize.y);
 
+	LOG("randomizeBoardEdgeLine");
+
 	// add top triangles (first row)
 	randomizeBoardEdgeLine(shapesMatrix, true);
 
+
+	LOG("randomizeBoard");
 	// add shapes exclude last row
 	for (int rowNum = 1; rowNum < m_boardSize.y; ++rowNum) {
 
@@ -87,10 +92,10 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)
 		}
 		
 	}
-
+	LOG("randomizeBoardEdgeLine");
 	// add trigs in bottom (last row)
 	randomizeBoardEdgeLine(shapesMatrix, false);
-
+	LOG("setAdjs");
 	// set adjs at graph
 	setAdjs(shapesMatrix);
 }

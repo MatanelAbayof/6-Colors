@@ -193,7 +193,7 @@
     <ClCompile Include="matanel_tests.cpp" />
     <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="NetworkException.cpp" />
-    <ClCompile Include="PlayerAIRegular.cpp" />
+    <ClCompile Include="PlayerAI.cpp" />
     <ClCompile Include="PlayerAIStupid.cpp" />
     <ClCompile Include="PlayerBase.cpp" />
     <ClCompile Include="PolygonShape.cpp" />
@@ -206,6 +206,7 @@
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Square.cpp" />
+    <ClCompile Include="StopWatch.cpp" />
     <ClCompile Include="TextureInfo.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TextView.cpp" />
@@ -254,7 +255,6 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NetworkException.h" />
     <ClInclude Include="PlayerAI.h" />
-    <ClInclude Include="PlayerAIRegular.h" />
     <ClInclude Include="PlayerAIStupid.h" />
     <ClInclude Include="PlayerBase.h" />
     <ClInclude Include="PolygonShape.h" />
@@ -269,6 +269,7 @@
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Square.h" />
+    <ClInclude Include="StopWatch.h" />
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextView.h" />
