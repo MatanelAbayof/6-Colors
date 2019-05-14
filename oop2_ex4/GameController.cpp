@@ -116,7 +116,7 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 		joinGameScreen.setAsConnecting();
 		// connect to server
 		sf::IpAddress serverIpAddress(joinGameScreen.getIpEditText()->getText());
-		clientThread.start(serverIpAddress, INetworkThread::DEFUAT_PORT);
+		clientThread.start(serverIpAddress, INetworkThread::DEFAULT_PORT);
 	});
 	joinGameScreen.run(screenUpdatesTimer);
 	
@@ -136,7 +136,7 @@ void GameController::runWaitMultScreen(sf::RenderWindow& window)
 
 	// create server
 	RequestsServerThread serverThread(sendRequests, receiveRequests);
-	serverThread.start(INetworkThread::DEFUAT_PORT);
+	serverThread.start(INetworkThread::DEFAULT_PORT);
 
 	// create screen
 	WaitingMultiplayerScreen waitMultScreen(window);
