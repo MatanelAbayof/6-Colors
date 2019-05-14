@@ -7,9 +7,20 @@ const sf::Color JoinGameScreen::ENTERED_CONNECT_BT_COLOR(1, 137, 63),
 	            JoinGameScreen::DISABLED_CONNECT_BT_COLOR(170, 170, 170);
 
 JoinGameScreen::JoinGameScreen(sf::RenderWindow& window)
-	: JoinGameBaseScreen(window)
+	: JoinGameBaseScreen(window),
+	   m_loadAv(std::make_shared<GUI::AnimationView>(window))
 {
 	initComponents();
+}
+
+void JoinGameScreen::setAsConnecting()
+{
+	m_enterIpTv->setText("Connecting to other player...");
+	m_ipEt->stopRecordText();
+	m_ipEt->hide();
+	m_connectBt->disable();
+	m_connectBt->getBackground().setColor(sf::Color(170, 170, 170));
+	m_loadAv->show();	
 }
 
 string JoinGameScreen::toString() const
@@ -33,6 +44,12 @@ void JoinGameScreen::initComponents()
 	m_ipEt->setFont("BAUHS93");
 	m_ipEt->setTextSize(35);
 	addView(m_ipEt, sf::FloatRect(0.1f, 0.12f, 0.8f, 0.3f));
+
+	// init load animation view
+	m_loadAv->setAnimation("load");
+	m_loadAv->hide();
+	m_loadAv->setAnimationFrequency(30);
+	addView(m_loadAv, sf::FloatRect(3.f / 8.f, 0.35f, 2.f / 8.f, 3.f / 8.f));
 
 	// create connect button
 	m_connectBt = std::make_shared<GUI::Button>(getWindow(), "Connect");

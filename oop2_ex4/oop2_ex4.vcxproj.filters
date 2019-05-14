@@ -174,7 +174,7 @@
     <ClCompile Include="ColoringAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserPlayer.cpp">
+    <ClCompile Include="PlayerAIStupid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -356,7 +356,10 @@
     <ClInclude Include="ColoringAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserPlayer.h">
+    <ClInclude Include="PlayerAI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAIStupid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

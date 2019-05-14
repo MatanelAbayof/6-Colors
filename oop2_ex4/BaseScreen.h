@@ -77,7 +77,7 @@ namespace GUI {
 			ViewType::draw();
 			ViewType::getWindow().display();
 
-			// update timer if have
+			// update timer if needed
 			if (timer != nullptr)
 				timer->checkTimer();
 		}

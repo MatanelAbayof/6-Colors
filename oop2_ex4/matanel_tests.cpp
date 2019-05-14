@@ -86,6 +86,8 @@ void matanel_main()
 
 	try
 	{
+		//testServerNetwork(30123);
+		//testClientNetwork(12345);
 		testGameController();
 		//testGameMenu();
 		//testJoinGameScreen();
@@ -230,7 +232,7 @@ void testClientAndServerNetwork() {
 
 	// create clients threads
 	std::vector<std::unique_ptr<std::thread>> clients;
-	int numOfClients = 3;
+	int numOfClients = 1;
 	for (int i = 0; i < numOfClients; i++) {
 		std::unique_ptr<std::thread> clientTheard = std::make_unique<std::thread>(testClientNetwork, port);
 		clientTheard->detach();
@@ -249,7 +251,8 @@ void testClientNetwork(const unsigned short port) {
 	string clientPreText = "client " + clientTheardId;
 
 	// server IP address
-	string serverIpAddressStr = sf::IpAddress::getLocalAddress().toString();
+	//string serverIpAddressStr = sf::IpAddress::getLocalAddress().toString();
+	string serverIpAddressStr = "192.168.1.38";
 	sf::IpAddress serverIpAddress(serverIpAddressStr);
 
 
