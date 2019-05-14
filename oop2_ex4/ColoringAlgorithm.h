@@ -17,7 +17,7 @@ class ColoringAlgorithm
 public:
 	using VertexSet = std::unordered_set<PlayerBase::GraphVertex>;
 	// constructor
-	ColoringAlgorithm(Graph<PolygonView>& polygonsGraph);
+	ColoringAlgorithm();
 	// destructor
 	~ColoringAlgorithm();
 	// color the graph
@@ -25,7 +25,7 @@ public:
 	// convert to string
 	virtual string toString() const;
 private:
-	Graph<PolygonView> m_polygonsGraph;
+	//Graph<PolygonView> m_polygonsGraph;
 	// add adjacent vertixes
 	void addAdj(VertexSet& playerVertex, VertexSet& borderVertex, PlayerBase::GraphVertex vertex);
 };
