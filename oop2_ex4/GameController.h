@@ -2,6 +2,8 @@
 //---- include section ------
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "PlayerBase.h"
+#include <memory>
 
 //---- using section --------
 using std::string;
@@ -24,7 +26,7 @@ private:
 	// run chose mode AI screen
 	void runChooseModeAIScreen(sf::RenderWindow& window);
 	// run game screen
-	void runGameScreen(sf::RenderWindow& window);
+	void runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players);
 	// run join screen
 	void runJoinScreen(sf::RenderWindow& window);
 	// run waiting multiplayer screen

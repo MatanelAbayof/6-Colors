@@ -1,7 +1,7 @@
 #include "ColoringAlgorithm.h"
 
 
-
+/*
 
 
 ColoringAlgorithm::ColoringAlgorithm(Graph<PolygonView>& polygonsGraph)
@@ -54,4 +54,4 @@ void ColoringAlgorithm::addAdj(VertexSet& playerVertex, VertexSet& borderVertex,
 string ColoringAlgorithm::toString() const
 {
 	return "Coloring Algorithm";
-}
+}*/

@@ -7,6 +7,7 @@
 #include "Button.h"
 #include "TextView.h"
 #include "EditText.h"
+#include "AnimationView.h"
 
 //---- using section --------
 using std::string;
@@ -22,10 +23,16 @@ public:
 	explicit JoinGameScreen(sf::RenderWindow& window);
 	// destructor
 	virtual ~JoinGameScreen() = default;
+	// get enter IP edit text
+	const std::shared_ptr<GUI::TextView>& getEnterIpEditText() const { return m_enterIpTv; }
 	// get IP edit text
 	const std::shared_ptr<GUI::EditText>& getIpEditText() const { return m_ipEt; }
 	// get connect button
 	const std::shared_ptr<GUI::Button>& getConnectButton() const { return m_connectBt; }
+	// get load animation
+	const std::shared_ptr<GUI::AnimationView>& getLoadAnimation() const { return m_loadAv; };
+	// set as connecting
+	void setAsConnecting();
 	// convert to string
 	virtual string toString() const override;
 private:
@@ -37,6 +44,8 @@ private:
 	std::shared_ptr<GUI::EditText> m_ipEt;
 	// connect button
 	std::shared_ptr<GUI::Button> m_connectBt;
+	// load animation
+	std::shared_ptr<GUI::AnimationView> m_loadAv;
 	// init components
 	void initComponents();
 	// check if ipv4 is legal

@@ -19,10 +19,16 @@ class WaitingMultiplayerScreen :
 public:
 	// constructor
 	explicit WaitingMultiplayerScreen(sf::RenderWindow& window);
+	// get waiting message
+	const std::shared_ptr<GUI::TextView>& getWaitMessageTv() const { return m_waitingToClientTv; };
+	// get IP address
+	const std::shared_ptr<GUI::TextView>& getIPTv() const { return m_myIpTv; };
 	// get load animation
 	const std::shared_ptr<GUI::AnimationView>& getLoadAnimation() const { return m_loadAv; };
 	// get start button
 	const std::shared_ptr<GUI::Button>& getStartButton() const { return m_startBt; }
+	// set as ready to play
+	void setReadyToPlay();
 private:
 	// waiting and IP signs
 	std::shared_ptr<GUI::TextView> m_waitingToClientTv, m_myIpTv;

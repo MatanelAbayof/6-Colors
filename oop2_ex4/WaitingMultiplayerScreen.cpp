@@ -11,6 +11,15 @@ WaitingMultiplayerScreen::WaitingMultiplayerScreen(sf::RenderWindow& window)
 	init();
 }
 
+void WaitingMultiplayerScreen::setReadyToPlay()
+{
+	m_waitingToClientTv->setText("Other player connected!");
+	m_loadAv->hide();
+	m_startBt->enable();
+	m_startBt->getBackground().setColor(sf::Color(sf::Color::Green));
+	m_myIpTv->hide();	
+}
+
 void WaitingMultiplayerScreen::init()
 {
 	// init waiting to client title
