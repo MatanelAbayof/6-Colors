@@ -23,7 +23,7 @@ public:
 	// get player name
 	const string& getName() const { return m_name; }
 	// set game screen
-	virtual void connectToGame(GameScreen* gameScreen) { m_gameScreen = gameScreen; }
+	virtual void connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer);
 	// get game screen
 	GameScreen* getGameScreen();
 	// get list of the player vertices
@@ -34,21 +34,35 @@ public:
 	void setName(const string& name) { m_name = name; }
 	// set start vertex
 	void setStartVertex(GraphVertex vertex);
+	// get last color
+	const sf::Color& getLastColor() const { return m_lastColor; }
+	// get forbidden colors
+	std::vector<sf::Color> getForbiddenColors() const;
+	// on other player played
+	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) {}
 	// check if the player is ready to play
 	virtual bool isReadyToPlay() const = 0;
+	// get rival player
+	const std::shared_ptr<PlayerBase>& getRivalPlayer() const { return m_rivalPlayer; }
 	// convert to string
 	virtual string toString() const;
 protected:
 	// constructor
 	PlayerBase();
+	// set last color
+	void setLastColor(sf::Color lastColor) { m_lastColor = lastColor; };
 private:
+	// last color
+	sf::Color m_lastColor;
 	// player name
 	string m_name;
 	// list of the player vertices
 	std::unordered_set<GraphVertex> m_playerVertices;
 	// list of border vertices
 	std::unordered_set<GraphVertex> m_borderVertices;
-	//gmae screen
+	//game screen
 	GameScreen* m_gameScreen;
+	// rival player
+	std::shared_ptr<PlayerBase> m_rivalPlayer;
 };
 

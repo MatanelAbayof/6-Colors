@@ -88,10 +88,10 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	std::shared_ptr<PlayerBase> userPlayer = players[0], otherPlayer = players[1];
 	
 	GameScreen gameScreen(window);
-	gameScreen.getBoard()->randomizeBoard({ 8,8 }); // TODO: remove this line
+	gameScreen.getBoard()->randomizeBoard({ 8,8 });
 
-	for (auto player : players)
-		player->connectToGame(&gameScreen);
+	userPlayer->connectToGame(&gameScreen, otherPlayer);
+	otherPlayer->connectToGame(&gameScreen, userPlayer);	
 
 	Graph<PolygonView>& graph = gameScreen.getBoard()->getPolygonsGraph();
 	userPlayer->setStartVertex(graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x));

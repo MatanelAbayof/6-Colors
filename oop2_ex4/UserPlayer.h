@@ -20,12 +20,12 @@ public:
 	// check if the player is ready to play
 	virtual bool isReadyToPlay() const override { return m_selected; }
 	// connect to game
-	virtual void connectToGame(GameScreen* gameScreen) override;
+	virtual void connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer) override;
+	// on other player played
+	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor);
 	// convert to string
-	virtual string toString() const;
+	virtual string toString() const override;
 private:
-	// my selected color
-	sf::Color m_selectedColor;
 	// if selected
 	bool m_selected;
 	// init

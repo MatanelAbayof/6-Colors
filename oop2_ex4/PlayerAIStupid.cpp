@@ -2,7 +2,10 @@
 
 sf::Color PlayerAIStupid::selectColor()
 {
-	return Utilities::randColor();
+	sf::Color selectedColor = Utilities::randColor();
+	setLastColor(selectedColor);
+	getRivalPlayer()->onOtherPlayerPlayed(selectedColor);
+	return selectedColor;
 }
 
 string PlayerAIStupid::toString() const

@@ -1,5 +1,5 @@
 #include "UserPlayer.h"
-
+#include <algorithm>    // std::find
 
 
 UserPlayer::UserPlayer()
@@ -14,14 +14,34 @@ sf::Color UserPlayer::selectColor()
 	// now i didnt selcted
 	m_selected = false;
 		
-	return m_selectedColor;
+	sf::Color selectedColor = getLastColor();
+	//setLastColor(selectedColor);
+	getRivalPlayer()->onOtherPlayerPlayed(selectedColor);
+
+	return selectedColor;
 }
 
 
-void UserPlayer::connectToGame(GameScreen* gameScreen)
+void UserPlayer::connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer)
 {
-	PlayerBase::connectToGame(gameScreen);
+	PlayerBase::connectToGame(gameScreen, rivalPlayer);
 	init();
+}
+
+void UserPlayer::onOtherPlayerPlayed(const sf::Color& selectedColor)
+{
+	const std::shared_ptr<ColorPanel>& colorPanel = getGameScreen()->getBottomPanel()->getColorPanel();
+
+	auto forbiddenColors = getForbiddenColors();
+	for (auto color : ColorPanel::COLORS) {
+		auto it = std::find(forbiddenColors.begin(), forbiddenColors.end(), color);
+		if(it != forbiddenColors.end()) {
+			colorPanel->getColorButton(color)->disable();
+		}
+		else {
+			colorPanel->getColorButton(color)->enable();
+		}
+	}
 }
 
 string UserPlayer::toString() const
@@ -32,7 +52,7 @@ string UserPlayer::toString() const
 void UserPlayer::init()
 {
 	getGameScreen()->getBottomPanel()->getColorPanel()->addClickColorListener([this](std::shared_ptr<ColorButton> colorBT) {
-		this->m_selectedColor = colorBT->getColor();
+		setLastColor(colorBT->getColor());
 		this->m_selected = true;
 	});
 }
