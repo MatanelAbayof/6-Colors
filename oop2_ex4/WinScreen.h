@@ -20,9 +20,9 @@ class WinScreen
 public:
 	// constructor
 	explicit WinScreen(sf::RenderWindow& window);
-	//get buttons
-	const std::shared_ptr<GUI::TextView>& getGameMenu() const { return m_titleTv; }
-	const std::shared_ptr<GUI::Button>& getBottomPanel() const { return m_backMenuBt; }
+	// get buttons
+	const std::shared_ptr<GUI::TextView>& getTitleTV() const { return m_titleTv; }
+	const std::shared_ptr<GUI::Button>& getBackToMenuBT() const { return m_backMenuBt; }
 	// destructor
 	virtual ~WinScreen() = default;
 	// convert to string
