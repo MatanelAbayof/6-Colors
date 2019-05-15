@@ -29,8 +29,11 @@ public:
 	// convert to string
 	virtual string toString() const override;
 private:
+	// title text view
 	std::shared_ptr<GUI::TextView> m_titleTv;
+	// lose image view
 	std::shared_ptr<GUI::ImageView> m_loseImage;
+	// back to menu button
 	std::shared_ptr<GUI::Button> m_backMenuBt;
 	// init
 	void init();

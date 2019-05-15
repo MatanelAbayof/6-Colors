@@ -24,6 +24,8 @@ namespace GUI {
 		void run();
 		// run the screen and listen to updates with timer
 		void run(Timer& timer);
+		// destructor
+		virtual ~BaseScreen() = default;
 		// convert to string
 		virtual string toString() const override { return "BaseScreen: { " + ViewType::toString() + " }"; }
 	protected:
@@ -31,8 +33,6 @@ namespace GUI {
 		bool m_closeFlag;
 		// constructor
 		explicit BaseScreen(sf::RenderWindow& window);
-		// destructor
-		virtual ~BaseScreen() {}		
 		// run the screen and listen to updates with timer
 		void run(Timer* timer);
 	};

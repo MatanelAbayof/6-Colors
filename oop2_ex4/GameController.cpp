@@ -160,6 +160,9 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				if (myAreaBT->getAreaPercent() >= 20.f) {
 					gameScreen.close();
 					WinScreen winScreen(gameScreen.getWindow());
+					winScreen.getBackToMenuBT()->addClickListener([&winScreen](GUI::View& view) {
+						winScreen.close();
+					});
 					winScreen.run();
 				}
 			}
