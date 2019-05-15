@@ -63,10 +63,10 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 				aiPlayer = std::make_shared<PlayerAIStupid>();	
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::REGULAR: {
-				//aiPlayer = std::make_shared<RegularAIPlayer>();
+				// TODO aiPlayer = std::make_shared<RegularAIPlayer>();
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::SUPER: {
-				//aiPlayer = std::make_shared<SuperAIPlayer>();
+				// TODO aiPlayer = std::make_shared<SuperAIPlayer>();
 			} break;
 		}
 		players.push_back(aiPlayer);
@@ -122,7 +122,8 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 	userPlayer->setStartVertex(graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x));
 }
 
-void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players)
+void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players) 
+// TODO need to get who play first
 {
 	// the players
 	std::shared_ptr<PlayerBase>& userPlayer = players[0], &otherPlayer = players[1];
@@ -142,7 +143,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				
 				// update area percent
 				std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
-				myAreaBT->updateAreaPercent(userPlayer->getPlayerVertices().size(), gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices());
+				myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
 			}
 		}
@@ -158,7 +159,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 					
 					// update area percent
 					std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
-					rivalAreaBT->updateAreaPercent(otherPlayer->getPlayerVertices().size(), gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices());
+					rivalAreaBT->updateAreaPercent(static_cast<int>(otherPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 					rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 				}
 			}
@@ -170,6 +171,8 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 {
 	// timer for screen updates
 	Timer screenUpdatesTimer;
+
+	// TODO create server player
 
 	// create requests queues
 	RequestsQueue<string> sendRequests, receiveRequests;
@@ -201,6 +204,8 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 void GameController::runWaitMultScreen(sf::RenderWindow& window)
 {
 	bool gameIsReady = false;
+
+	// TODO create client player
 
 	// timer for screen updates
 	Timer screenUpdatesTimer;

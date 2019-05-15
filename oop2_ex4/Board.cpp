@@ -3,14 +3,15 @@
 #include "Square.h"
 #include "Utilities.h"
 #include "Matrix.h"
-#include "Logger.h"
 
 // init
 const sf::Vector2i Board::DEFAULT_BOARD_SIZE{ 50,50 };
 
 Board::Board(sf::RenderWindow& window)
 	: RelativeLayout<PolygonView>(window)
-{ }
+{
+	disable();
+}
 
 void Board::setBoardSize(const sf::Vector2i& boardSize)
 {
@@ -58,16 +59,11 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)
 	float shapeWidth = 1.f / float(m_boardSize.x);
 	float shapeHeight = 1.f / float(m_boardSize.y);
 
-	LOG("randomizeBoardEdgeLine");
-
 	// add top triangles (first row)
 	randomizeBoardEdgeLine(shapesMatrix, true);
 
-
-	LOG("randomizeBoard");
 	// add shapes exclude last row
 	for (int rowNum = 1; rowNum < m_boardSize.y; ++rowNum) {
-		LOG("newRow");
 		if (rowNum%2 == 1) {
 			// add Triangle in left side
 			std::unique_ptr<PolygonShape> rightTrig = std::make_unique<Triangle>(Triangle::PointingSide::RIGHT);
@@ -95,10 +91,8 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)
 		}
 		
 	}
-	LOG("randomizeBoardEdgeLine");
 	// add trigs in bottom (last row)
 	randomizeBoardEdgeLine(shapesMatrix, false);
-	LOG("setAdjs");
 	// set adjs at graph
 	setAdjs(shapesMatrix);
 }
