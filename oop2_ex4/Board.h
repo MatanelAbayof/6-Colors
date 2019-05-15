@@ -17,6 +17,8 @@ class Board :
 	public GUI::RelativeLayout<PolygonView>
 {
 public:
+	// default board size
+	static const sf::Vector2i DEFAULT_BOARD_SIZE;
 	// constructor
 	explicit Board(sf::RenderWindow& window);
 	// randomize board

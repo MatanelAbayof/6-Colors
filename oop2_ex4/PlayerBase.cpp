@@ -32,6 +32,12 @@ std::vector<sf::Color> PlayerBase::getForbiddenColors() const
 	return forbiddenColors;
 }
 
+void PlayerBase::clean()
+{
+	m_playerVertices.clear();
+	m_borderVertices.clear();
+}
+
 string PlayerBase::toString() const
 {
 	return "PlayerBase: { name=" + m_name + " }";

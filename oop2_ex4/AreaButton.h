@@ -21,6 +21,8 @@ public:
 	const string& getPreText() const { return m_preText; }
 	//set areaPercent
 	void setAreaPercent(float area);
+	// update area percent
+	void updateAreaPercent(int MyShape, int numOfAllshapes);
 	// convert to string
 	virtual string toString() const override;
 private:

@@ -46,8 +46,8 @@ void WaitingMultiplayerScreen::init()
 
 	// init start game button
 	m_startBt->getBackground().setColor(sf::Color(170, 170, 170));
-	m_startBt->setTextSize(20);
-	m_startBt->setTextColor(sf::Color::Black);
+	m_startBt->setTextSize(22);
+	m_startBt->setTextColor(sf::Color::White);
 	m_startBt->setTextStyle(sf::Text::Style::Bold);
 	m_startBt->disable();
 	m_startBt->addEnterListener([this](View& view) {

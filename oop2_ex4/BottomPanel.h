@@ -21,9 +21,9 @@ public:
 	// get color panel
 	const std::shared_ptr<ColorPanel>& getColorPanel() const { return m_colorPanel; }
 	//get my arae button
-	const std::shared_ptr<AreaButton>& getMyAreaButton() const { return m_myArea; }
+	std::shared_ptr<AreaButton>& getMyAreaButton() { return m_myArea; }
 	//get rival arae button
-	const std::shared_ptr<AreaButton>& getRivalAreaButton() const { return m_rivalArea; }
+	std::shared_ptr<AreaButton>& getRivalAreaButton() { return m_rivalArea; }
 	// convert to string
 	virtual string toString() const override;
 protected:
