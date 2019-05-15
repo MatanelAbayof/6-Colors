@@ -6,7 +6,7 @@
 #include "Logger.h"
 
 // init
-const sf::Vector2i Board::DEFAULT_BOARD_SIZE{ 10,10 };
+const sf::Vector2i Board::DEFAULT_BOARD_SIZE{ 50,50 };
 
 Board::Board(sf::RenderWindow& window)
 	: RelativeLayout<PolygonView>(window)
