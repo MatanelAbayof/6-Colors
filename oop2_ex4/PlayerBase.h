@@ -43,8 +43,10 @@ public:
 	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) = 0;
 	// event on player played
 	virtual void onPlayerPlayed(const sf::Color& selectedColor) = 0;
+	// check if the player is ready to game
+	virtual bool isReadyToGame() const = 0;
 	// check if the player is ready to play
-	virtual bool isReadyToPlay() const = 0;
+	virtual bool isReadyToPlay() = 0;
 	// get rival player
 	const std::shared_ptr<PlayerBase>& getRivalPlayer() const { return m_rivalPlayer; }
 	// clean
@@ -55,7 +57,7 @@ protected:
 	// constructor
 	PlayerBase();
 	// set last color
-	void setLastColor(sf::Color lastColor) { m_lastColor = lastColor; };
+	void setLastColor(const sf::Color& lastColor) { m_lastColor = lastColor; };
 private:
 	// last color
 	sf::Color m_lastColor;

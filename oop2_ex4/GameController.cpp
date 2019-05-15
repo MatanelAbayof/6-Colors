@@ -88,6 +88,20 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	// create game screen
 	GameScreen gameScreen(window);
 
+	
+
+	// wait until players are ready
+	gameScreen.getBottomPanel()->disable();
+	gameScreen.getGameMenu()->getRestartButton()->disable();
+	screenUpdatesTimer.start(30, [&gameScreen, &userPlayer, &otherPlayer]() {
+		if (userPlayer->isReadyToGame() && otherPlayer->isReadyToGame())
+			gameScreen.close();
+	});
+	gameScreen.run(screenUpdatesTimer);
+	gameScreen.getBottomPanel()->enable();
+	gameScreen.getGameMenu()->getRestartButton()->enable();
+	gameScreen.open();
+
 	// create and play game
 	createGame(gameScreen, players);
 	playGame(screenUpdatesTimer, gameScreen, players);
@@ -205,7 +219,7 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 	// TODO create server player
 
 	// create requests queues
-	RequestsQueue<string> sendRequests, receiveRequests;
+	RequestsQueue<int> sendRequests, receiveRequests;
 
 	// create client thread
 	RequestsClientThread clientThread(sendRequests, receiveRequests);
@@ -241,7 +255,7 @@ void GameController::runWaitMultScreen(sf::RenderWindow& window)
 	Timer screenUpdatesTimer;
 
 	// create network requests queues
-	RequestsQueue<string> sendRequests, receiveRequests;
+	RequestsQueue<int> sendRequests, receiveRequests;
 
 	// create server
 	RequestsServerThread serverThread(sendRequests, receiveRequests);

@@ -169,6 +169,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ChooseAIModeScreen.cpp" />
+    <ClCompile Include="ClientPlayer.cpp" />
     <ClCompile Include="ClientThread.cpp" />
     <ClCompile Include="ColorButton.cpp" />
     <ClCompile Include="ColoringAlgorithm.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="ChooseAIModeScreen.h" />
+    <ClInclude Include="ClientPlayer.h" />
     <ClInclude Include="ClientThread.h" />
     <ClInclude Include="ColorButton.h" />
     <ClInclude Include="ColoringAlgorithm.h" />

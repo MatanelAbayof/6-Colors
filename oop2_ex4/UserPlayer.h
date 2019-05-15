@@ -18,7 +18,9 @@ public:
 	// when a player want to select a color
 	virtual sf::Color selectColor() override;
 	// check if the player is ready to play
-	virtual bool isReadyToPlay() const override { return m_selected; }
+	virtual bool isReadyToPlay() override { return m_selected; }
+	// check if the player is ready to game
+	virtual bool isReadyToGame() const override { return true; }
 	// connect to game
 	virtual void connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer) override;
 	// on other player played

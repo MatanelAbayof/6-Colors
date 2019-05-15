@@ -2,8 +2,8 @@
 #include "RequestsClientThread.h"
 #include "Logger.h"
 
-RequestsClientThread::RequestsClientThread(RequestsQueue<string>& sendRequests,
-	                                       RequestsQueue<string>& receiveRequests)
+RequestsClientThread::RequestsClientThread(RequestsQueue<int>& sendRequests,
+	                                       RequestsQueue<int>& receiveRequests)
 	: ClientThread(), m_sendRequests(sendRequests), m_receiveRequests(receiveRequests)
 { }
 
@@ -16,7 +16,7 @@ string RequestsClientThread::toString() const
 void RequestsClientThread::buildPacket(sf::Packet& packet)
 {
 	// try get packet from send requests
-	std::unique_ptr<string> request = m_sendRequests.tryPop();
+	std::unique_ptr<int> request = m_sendRequests.tryPop();
 	if (request != nullptr) {
 		packet << *request;	
 	}
@@ -25,7 +25,7 @@ void RequestsClientThread::buildPacket(sf::Packet& packet)
 void RequestsClientThread::onPacketReceived(const sf::TcpSocket& socket, sf::Packet& packet)
 {
 	// parse packet
-	string message;
+	int message;
 	packet >> message;
 
 	// add new request
