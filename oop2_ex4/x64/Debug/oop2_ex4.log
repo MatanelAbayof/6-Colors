@@ -1,4 +1,1 @@
-﻿  GameController.cpp
-c:\users\נחום\source\repos\oop2_ex4\oop2_ex4\gamecontroller.cpp(146): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\נחום\source\repos\oop2_ex4\oop2_ex4\gamecontroller.cpp(160): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  oop2_ex4.vcxproj -> C:\Users\נחום\source\repos\oop2_ex4\x64\Debug\oop2_ex4.exe
+﻿

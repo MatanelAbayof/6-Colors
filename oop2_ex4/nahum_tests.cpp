@@ -44,6 +44,7 @@
 #include "Board.h"
 #include "Utilities.h"
 #include "ChooseAIModeScreen.h"
+#include "winScreen.h"
 #pragma endregion
 
 #pragma region Usings
@@ -92,8 +93,8 @@ void testChooseScreen() {
 	mainLayout.getBorder().setColor(sf::Color::Blue);
 	mainLayout.getBorder().setSize(1.f);
 
-	std::shared_ptr<ChooseAIModeScreen> cm = std::make_shared<ChooseAIModeScreen>(window);
-	mainLayout.addView(cm);
+	std::shared_ptr<winScreen> ws = std::make_shared<winScreen>(window);
+	mainLayout.addView(ws);
 
 	while (window.isOpen())
 	{
@@ -115,7 +116,7 @@ void testChooseScreen() {
 		window.display();
 	}
 }
-
+/*
 void testBoard() {
 	// create window
 	sf::RenderWindow window(sf::VideoMode(1000, 500), "Screen");
@@ -344,6 +345,5 @@ void testGUI() {
 sf::Color randColor() {
 	return sf::Color(rand() % 0xFF, rand() % 0xFF, rand() % 0xFF);
 }
-
-
+*/
 #endif // NAHUM_TESTS
