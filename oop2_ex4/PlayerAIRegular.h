@@ -4,6 +4,7 @@
 #include "PlayerAI.h"
 #include "ColorPanel.h"
 #include <unordered_map>
+#include <SFML/Graphics.hpp>
 
 //---- using section --------
 using std::string;
