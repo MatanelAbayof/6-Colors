@@ -12,6 +12,7 @@
 #include "UserPlayer.h"
 #include "ColoringAlgorithm.h"
 #include "AreaButton.h"
+#include "winScreen.h"
 
 GameController::GameController()
 { }
@@ -145,6 +146,13 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
 				myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
+				if (myAreaBT->getAreaPercent() >= 20.f) {
+					gameScreen.close();
+					WinScreen winScreen(gameScreen.getWindow());
+					winScreen.run();
+				}
+					
+
 			}
 		}
 		else {
