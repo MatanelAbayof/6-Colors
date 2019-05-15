@@ -21,9 +21,9 @@ public:
 	// constructor
 	explicit LoseScreen(sf::RenderWindow& window);
 	//get buttons
-	const std::shared_ptr<GUI::TextView>& getGameMenu() const { return m_titleTv; }
-	const std::shared_ptr<GUI::ImageView>& getBoard() const { return m_loseImage; }
-	const std::shared_ptr<GUI::Button>& getBottomPanel() const { return m_backMenuBt; }
+	const std::shared_ptr<GUI::TextView>& getTitleTV() const { return m_titleTv; }
+	const std::shared_ptr<GUI::ImageView>& getLoseImage() const { return m_loseImage; }
+	const std::shared_ptr<GUI::Button>& getBackToMenuBT() const { return m_backMenuBt; }
 	// destructor
 	virtual ~LoseScreen() = default;
 	// convert to string

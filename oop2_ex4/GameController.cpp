@@ -12,7 +12,8 @@
 #include "UserPlayer.h"
 #include "ColoringAlgorithm.h"
 #include "AreaButton.h"
-#include "winScreen.h"
+#include "WinScreen.h"
+#include "LoseScreen.h"
 
 GameController::GameController()
 { }
@@ -121,6 +122,14 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 	otherPlayer->connectToGame(&gameScreen, userPlayer);	
 	otherPlayer->setStartVertex(graph.getVertex(gameScreen.getBoard()->getBoardSize().x - 1));
 	userPlayer->setStartVertex(graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x));
+
+	// update area percent
+	std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
+	myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
+	myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
+	std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
+	rivalAreaBT->updateAreaPercent(static_cast<int>(otherPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
+	rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 }
 
 void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players) 
@@ -146,13 +155,13 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
 				myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
+
+				// check if user win
 				if (myAreaBT->getAreaPercent() >= 20.f) {
 					gameScreen.close();
 					WinScreen winScreen(gameScreen.getWindow());
 					winScreen.run();
 				}
-					
-
 			}
 		}
 		else {
@@ -169,6 +178,16 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 					std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
 					rivalAreaBT->updateAreaPercent(static_cast<int>(otherPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 					rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
+
+					// check if user lose
+					if (rivalAreaBT->getAreaPercent() >= 20.f) {
+						gameScreen.close();
+						LoseScreen loseScreen(gameScreen.getWindow());
+						loseScreen.getBackToMenuBT()->addClickListener([&loseScreen](GUI::View& view) {
+							loseScreen.close();
+						});
+						loseScreen.run();
+					}
 				}
 			}
 		}

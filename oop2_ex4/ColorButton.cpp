@@ -40,6 +40,7 @@ void ColorButton::init(const sf::Color& color)
 	setColor(color);
 	setTextColor(sf::Color(116, 0, 0));
 	setTextSize(50);
+	setFont("david");
 
 	// make dark color when mouse entered
 	addEnterListener([color](View &view) {

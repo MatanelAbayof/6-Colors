@@ -2,7 +2,6 @@
 
 WinScreen::WinScreen(sf::RenderWindow & window)
 	: BSWinScreen(window), m_titleTv(std::make_shared<GUI::TextView>(window, "You win!!!")),
-	//m_winImage(std::make_shared<GUI::ImageView>(window)),
 	m_backMenuBt(std::make_shared<GUI::Button>(window, "Back to menu"))
 {
 	init();
@@ -14,11 +13,10 @@ string WinScreen::toString() const
 }
 
 void WinScreen::init()
-{
-	//m_winImage->getImage().setTexture("win");
-	
+{	
 	getBackground().setTexture("win");
 
+	// init title
 	m_titleTv->setTextColor(sf::Color(0, 102, 0));
 	m_titleTv->setTextSize(70);
 	m_titleTv->getBackground().setColor(sf::Color::Transparent);

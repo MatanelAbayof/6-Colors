@@ -19,6 +19,14 @@
         {
             "name": "BAUHS93",
             "path": "BAUHS93.TTF"
+        },
+        {
+            "name": "BERNHC",
+            "path": "BERNHC.TTF"
+        },
+        {
+            "name": "david",
+            "path": "davidbd.ttf"
         }
     ]
 }

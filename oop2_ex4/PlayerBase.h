@@ -17,12 +17,13 @@ using std::string;
 class PlayerBase
 {
 public:
+	// vertex of graph
 	using GraphVertex = Graph<PolygonView>::Vertex*;
 	// when a player want to select a color
 	virtual sf::Color selectColor() = 0;
 	// get player name
 	const string& getName() const { return m_name; }
-	// set game screen
+	// connect to game screen
 	virtual void connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer);
 	// get game screen
 	GameScreen* getGameScreen();
@@ -69,4 +70,3 @@ private:
 	// rival player
 	std::shared_ptr<PlayerBase> m_rivalPlayer;
 };
-
