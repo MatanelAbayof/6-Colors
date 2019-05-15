@@ -9,32 +9,31 @@
 
 //---- using section --------
 using std::string;
-using BSWinScreen = GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>;
+using BSLoseScreen = GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>;
 
 /*
- * winScreen class
+ * LoseScreen class
  */
-class WinScreen
-	: public BSWinScreen
+class LoseScreen
+	: public BSLoseScreen
 {
 public:
 	// constructor
-	explicit WinScreen(sf::RenderWindow& window);
+	explicit LoseScreen(sf::RenderWindow& window);
 	//get buttons
 	const std::shared_ptr<GUI::TextView>& getGameMenu() const { return m_titleTv; }
-	//const std::shared_ptr<GUI::ImageView>& getBoard() const { return m_winImage; }
+	const std::shared_ptr<GUI::ImageView>& getBoard() const { return m_loseImage; }
 	const std::shared_ptr<GUI::Button>& getBottomPanel() const { return m_backMenuBt; }
 	// destructor
-	virtual ~WinScreen() = default;
+	virtual ~LoseScreen() = default;
 	// convert to string
 	virtual string toString() const override;
 private:
 	std::shared_ptr<GUI::TextView> m_titleTv;
-//	std::shared_ptr<GUI::ImageView> m_winImage;
+	std::shared_ptr<GUI::ImageView> m_loseImage;
 	std::shared_ptr<GUI::Button> m_backMenuBt;
 	// init
 	void init();
 };
-
 
 

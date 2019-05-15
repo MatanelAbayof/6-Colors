@@ -147,7 +147,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
 				if (myAreaBT->getAreaPercent() >= 20.f) {
 					gameScreen.close();
-					winScreen winScreen(gameScreen.getWindow());
+					WinScreen winScreen(gameScreen.getWindow());
 					winScreen.run();
 				}
 					

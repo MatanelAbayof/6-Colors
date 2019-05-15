@@ -188,6 +188,7 @@
     <ClCompile Include="LevelDifficultyButton.cpp" />
     <ClCompile Include="LoadResourceException.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="LoseScreen.cpp" />
     <ClCompile Include="MainScreen.cpp" />
     <ClCompile Include="main_tests.cpp" />
     <ClCompile Include="matanel_tests.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="LevelDifficultyButton.h" />
     <ClInclude Include="LoadResourceException.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="LoseScreen.h" />
     <ClInclude Include="MainScreen.h" />
     <ClInclude Include="main_tests.h" />
     <ClInclude Include="Matrix.h" />

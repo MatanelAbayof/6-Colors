@@ -45,6 +45,7 @@
 #include "Utilities.h"
 #include "ChooseAIModeScreen.h"
 #include "winScreen.h"
+#include "LoseScreen.h"
 #pragma endregion
 
 #pragma region Usings
@@ -93,8 +94,8 @@ void testChooseScreen() {
 	mainLayout.getBorder().setColor(sf::Color::Blue);
 	mainLayout.getBorder().setSize(1.f);
 
-	std::shared_ptr<winScreen> ws = std::make_shared<winScreen>(window);
-	mainLayout.addView(ws);
+	std::shared_ptr<LoseScreen> ls = std::make_shared<LoseScreen>(window);
+	mainLayout.addView(ls);
 
 	while (window.isOpen())
 	{
