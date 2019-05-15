@@ -14,6 +14,7 @@
 #include "AreaButton.h"
 #include "WinScreen.h"
 #include "LoseScreen.h"
+#include "PlayerAIRegular.h"
 
 GameController::GameController()
 { }
@@ -65,7 +66,7 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 				aiPlayer = std::make_shared<PlayerAIStupid>();	
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::REGULAR: {
-				// TODO aiPlayer = std::make_shared<RegularAIPlayer>();
+				aiPlayer = std::make_shared<PlayerAIRegular>();
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::SUPER: {
 				// TODO aiPlayer = std::make_shared<SuperAIPlayer>();
