@@ -14,6 +14,8 @@
 #include "AreaButton.h"
 #include "WinScreen.h"
 #include "LoseScreen.h"
+#include "ServerPlayer.h"
+#include "ClientPlayer.h"
 
 GameController::GameController()
 { }
@@ -216,23 +218,30 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 	// timer for screen updates
 	Timer screenUpdatesTimer;
 
-	// TODO create server player
-
 	// create requests queues
 	RequestsQueue<int> sendRequests, receiveRequests;
 
 	// create client thread
 	RequestsClientThread clientThread(sendRequests, receiveRequests);
 
-	screenUpdatesTimer.start(30, [&clientThread]() {
-		// check if client connected
-		if (clientThread.isConnectedToServer()) {
-			// TODO run game screen
-		}
-	});
+	// create server player
+	std::shared_ptr<ServerPlayer> clientPlayer = std::make_shared<ServerPlayer>(clientThread);
 
 	// create screen
 	JoinGameScreen joinGameScreen(window);
+
+	screenUpdatesTimer.start(30, [this, &clientThread, &clientPlayer, &joinGameScreen]() {
+		// check if client connected
+		if (clientThread.isConnectedToServer()) {
+			// run game screen
+			std::vector<std::shared_ptr<PlayerBase>> players;
+			players.push_back(std::make_shared<UserPlayer>());
+			players.push_back(clientPlayer);
+			runGameScreen(joinGameScreen.getWindow(), players);
+			joinGameScreen.close();
+		}
+	});
+
 	joinGameScreen.getConnectButton()->addClickListener([this, &clientThread, &joinGameScreen](GUI::View& view) {
 		joinGameScreen.setAsConnecting();
 		// connect to server
@@ -249,8 +258,6 @@ void GameController::runWaitMultScreen(sf::RenderWindow& window)
 {
 	bool gameIsReady = false;
 
-	// TODO create client player
-
 	// timer for screen updates
 	Timer screenUpdatesTimer;
 
@@ -260,6 +267,9 @@ void GameController::runWaitMultScreen(sf::RenderWindow& window)
 	// create server
 	RequestsServerThread serverThread(sendRequests, receiveRequests);
 	serverThread.start(INetworkThread::DEFAULT_PORT);
+
+	// create client player
+	std::shared_ptr<ClientPlayer> clientPlayer = std::make_shared<ClientPlayer>(serverThread);
 
 	// create screen
 	WaitingMultiplayerScreen waitMultScreen(window);
@@ -276,8 +286,12 @@ void GameController::runWaitMultScreen(sf::RenderWindow& window)
 		}		
 	});
 
-	waitMultScreen.getStartButton()->addClickListener([](GUI::View& view) {
-		// TODO open game screen
+	waitMultScreen.getStartButton()->addClickListener([this, &clientPlayer, &waitMultScreen](GUI::View& view) {
+		std::vector<std::shared_ptr<PlayerBase>> players;
+		players.push_back(std::make_shared<UserPlayer>());
+		players.push_back(clientPlayer);
+		runGameScreen(view.getWindow(), players);
+		waitMultScreen.close();
 	});
 	waitMultScreen.run(screenUpdatesTimer);
 	
