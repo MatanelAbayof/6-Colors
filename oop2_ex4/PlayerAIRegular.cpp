@@ -33,6 +33,7 @@ sf::Color PlayerAIRegular::selectColor()
 		// check all vertex adjacents
 		for (auto adj : vertex->getAdjacencyList()) {
 			// check if they have different color
+			// TODO forbidden colors
 			if (vertex->getValue().getColor() != adj->getValue().getColor()) {
 				// check if this a unchecked adjacent
 				if (checkedAdj.insert(adj).second) {
@@ -41,7 +42,7 @@ sf::Color PlayerAIRegular::selectColor()
 			}
 		}
 	}
-
+	
 	// take the color with the highest counter
 	for (auto color : colorCounter) {
 		if (color.second > maxColorCounter) {

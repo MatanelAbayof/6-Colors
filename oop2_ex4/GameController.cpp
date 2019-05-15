@@ -9,6 +9,7 @@
 #include "Timer.h"
 #include "Logger.h"
 #include "PlayerAIStupid.h"
+#include "PlayerAIRegular.h"
 #include "UserPlayer.h"
 #include "ColoringAlgorithm.h"
 #include "AreaButton.h"
@@ -63,7 +64,7 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 				aiPlayer = std::make_shared<PlayerAIStupid>();	
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::REGULAR: {
-				//aiPlayer = std::make_shared<RegularAIPlayer>();
+				aiPlayer = std::make_shared<PlayerAIRegular>();
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::SUPER: {
 				//aiPlayer = std::make_shared<SuperAIPlayer>();
