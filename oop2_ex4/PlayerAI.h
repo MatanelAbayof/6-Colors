@@ -17,7 +17,9 @@ public:
 	// constructor
 	PlayerAI();
 	// check if the player is ready to play
-	virtual bool isReadyToPlay() const;
+	virtual bool isReadyToPlay() override;
+	// check if the player is ready to game
+	virtual bool isReadyToGame() const override { return true; }
 	// on other player played
 	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) override;
 	// event on player played

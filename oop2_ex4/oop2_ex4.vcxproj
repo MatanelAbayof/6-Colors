@@ -169,6 +169,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ChooseAIModeScreen.cpp" />
+    <ClCompile Include="ClientPlayer.cpp" />
     <ClCompile Include="ClientThread.cpp" />
     <ClCompile Include="ColorButton.cpp" />
     <ClCompile Include="ColoringAlgorithm.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="matanel_tests.cpp" />
     <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="NetworkException.cpp" />
+    <ClCompile Include="NetworkPlayer.cpp" />
     <ClCompile Include="PlayerAI.cpp" />
     <ClCompile Include="PlayerAIRegular.cpp" />
     <ClCompile Include="PlayerAIStupid.cpp" />
@@ -204,6 +206,7 @@
     <ClCompile Include="RequestsClientThread.cpp" />
     <ClCompile Include="RequestsServerThread.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="ServerPlayer.cpp" />
     <ClCompile Include="ServerThread.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -231,6 +234,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="ChooseAIModeScreen.h" />
+    <ClInclude Include="ClientPlayer.h" />
     <ClInclude Include="ClientThread.h" />
     <ClInclude Include="ColorButton.h" />
     <ClInclude Include="ColoringAlgorithm.h" />
@@ -258,6 +262,7 @@
     <ClInclude Include="main_tests.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NetworkException.h" />
+    <ClInclude Include="NetworkPlayer.h" />
     <ClInclude Include="PlayerAI.h" />
     <ClInclude Include="PlayerAIRegular.h" />
     <ClInclude Include="PlayerAIStupid.h" />
@@ -270,6 +275,7 @@
     <ClInclude Include="RequestsQueue.h" />
     <ClInclude Include="RequestsServerThread.h" />
     <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="ServerPlayer.h" />
     <ClInclude Include="ServerThread.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SoundManager.h" />

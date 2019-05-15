@@ -18,6 +18,8 @@ namespace GUI {
 	public:
 		// close screen
 		void close() { m_closeFlag = true; }
+		// open
+		void open() { m_closeFlag = false; }
 		// check if screen is closed
 		bool isClosed() const { return m_closeFlag; }
 		// run the screen

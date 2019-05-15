@@ -6,7 +6,7 @@ PlayerAI::PlayerAI()
 	setName("Computer");
 }
 
-bool PlayerAI::isReadyToPlay() const
+bool PlayerAI::isReadyToPlay()
 {
 	m_waitStopWatch.checkStopWatch();
 	return m_readyToPlay;

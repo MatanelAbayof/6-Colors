@@ -1,5 +1,8 @@
 #include "AreaButton.h"
 
+// init
+const float AreaButton::WIN_NUM_PRECENTS = 50.f;
+
 AreaButton::AreaButton(sf::RenderWindow& window, float areaPercent)
 	: TextView(window)
 {

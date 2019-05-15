@@ -222,6 +222,7 @@ void testGraph() {
 	}
 }
 
+/*
 void testClientAndServerNetwork() {
 	// create port
 	const unsigned short port = 30123 + rand()%100;
@@ -350,7 +351,7 @@ void testServerNetwork(const unsigned short port) {
 		// breathe...
 		std::this_thread::sleep_for(std::chrono::seconds(5));
 	}
-}
+}*/
 
 void testGUI() {
 	// create window
