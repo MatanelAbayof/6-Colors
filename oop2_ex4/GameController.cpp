@@ -9,10 +9,11 @@
 #include "Timer.h"
 #include "Logger.h"
 #include "PlayerAIStupid.h"
-#include "PlayerAIRegular.h"
 #include "UserPlayer.h"
 #include "ColoringAlgorithm.h"
 #include "AreaButton.h"
+#include "WinScreen.h"
+#include "LoseScreen.h"
 
 GameController::GameController()
 { }
@@ -64,10 +65,10 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 				aiPlayer = std::make_shared<PlayerAIStupid>();	
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::REGULAR: {
-				aiPlayer = std::make_shared<PlayerAIRegular>();
+				// TODO aiPlayer = std::make_shared<RegularAIPlayer>();
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::SUPER: {
-				//aiPlayer = std::make_shared<SuperAIPlayer>();
+				// TODO aiPlayer = std::make_shared<SuperAIPlayer>();
 			} break;
 		}
 		players.push_back(aiPlayer);
@@ -121,9 +122,18 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 	otherPlayer->connectToGame(&gameScreen, userPlayer);	
 	otherPlayer->setStartVertex(graph.getVertex(gameScreen.getBoard()->getBoardSize().x - 1));
 	userPlayer->setStartVertex(graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x));
+
+	// update area percent
+	std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
+	myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
+	myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
+	std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
+	rivalAreaBT->updateAreaPercent(static_cast<int>(otherPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
+	rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 }
 
-void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players)
+void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players) 
+// TODO need to get who play first
 {
 	// the players
 	std::shared_ptr<PlayerBase>& userPlayer = players[0], &otherPlayer = players[1];
@@ -143,8 +153,15 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				
 				// update area percent
 				std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
-				myAreaBT->updateAreaPercent(userPlayer->getPlayerVertices().size(), gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices());
+				myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
+
+				// check if user win
+				if (myAreaBT->getAreaPercent() >= 20.f) {
+					gameScreen.close();
+					WinScreen winScreen(gameScreen.getWindow());
+					winScreen.run();
+				}
 			}
 		}
 		else {
@@ -159,8 +176,18 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 					
 					// update area percent
 					std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
-					rivalAreaBT->updateAreaPercent(otherPlayer->getPlayerVertices().size(), gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices());
+					rivalAreaBT->updateAreaPercent(static_cast<int>(otherPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 					rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
+
+					// check if user lose
+					if (rivalAreaBT->getAreaPercent() >= 20.f) {
+						gameScreen.close();
+						LoseScreen loseScreen(gameScreen.getWindow());
+						loseScreen.getBackToMenuBT()->addClickListener([&loseScreen](GUI::View& view) {
+							loseScreen.close();
+						});
+						loseScreen.run();
+					}
 				}
 			}
 		}
@@ -171,6 +198,8 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 {
 	// timer for screen updates
 	Timer screenUpdatesTimer;
+
+	// TODO create server player
 
 	// create requests queues
 	RequestsQueue<string> sendRequests, receiveRequests;
@@ -202,6 +231,8 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 void GameController::runWaitMultScreen(sf::RenderWindow& window)
 {
 	bool gameIsReady = false;
+
+	// TODO create client player
 
 	// timer for screen updates
 	Timer screenUpdatesTimer;

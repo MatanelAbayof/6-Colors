@@ -34,6 +34,7 @@ string AreaButton::toString() const
 
 void AreaButton::init()
 {
+	setFont("BERNHC");
 	setPreText("Area:\n" );
 	setTextSize(37);
 }

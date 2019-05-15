@@ -19,9 +19,9 @@ public:
 	// check if the player is ready to play
 	virtual bool isReadyToPlay() const;
 	// on other player played
-	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor);
+	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) override;
 	// event on player played
-	virtual void onPlayerPlayed(const sf::Color& selectedColor) { m_readyToPlay = false; }
+	virtual void onPlayerPlayed(const sf::Color& selectedColor) override { m_readyToPlay = false; }
 	// convert to string
 	virtual string toString() const override { return "Player AI: { " + PlayerBase::toString() + "}"; }
 private:
