@@ -37,6 +37,8 @@ private:
 	bool checkRelativeBounds(const sf::FloatRect& relativeBounds) const;
 	// check if number between 0-1
 	bool checkBoundNumOK(float num) const;
+	// update view bounds
+	void updateViewBounds(int index);
 };
 }
 
@@ -48,7 +50,7 @@ void GUI::RelativeLayout<ViewType>::addView(const std::shared_ptr<ViewType>& vie
 
 	ViewGroup<ViewType>::addView(view);
 	m_relativeBounds.push_back(relativeBounds);
-	updateComponents();
+	updateViewBounds(this->getNumOfViews()-1);
 }
 
 template <class ViewType>
@@ -75,11 +77,7 @@ void GUI::RelativeLayout<ViewType>::updateComponents()
 
 	if (this->getNumOfViews() > 0) {
 		for (int i = 0; i < this->getNumOfViews(); i++) {
-			sf::FloatRect& relativeCBounds = m_relativeBounds[i];
-			sf::FloatRect childBounds(this->getPosition().x + this->getWidth()*relativeCBounds.left, this->getPosition().y + this->getHeight()*relativeCBounds.top,
-				this->getWidth()*relativeCBounds.width, this->getHeight()*relativeCBounds.height);
-			const std::shared_ptr<ViewType>& childView = this->getView(i);
-			childView->setBound(childBounds);
+			updateViewBounds(i);
 		}
 	}
 }
@@ -102,5 +100,15 @@ template <class ViewType>
 bool GUI::RelativeLayout<ViewType>::checkBoundNumOK(float num) const
 {
 	return (num >= 0) && (num <= 1);
+}
+
+template<class ViewType>
+void GUI::RelativeLayout<ViewType>::updateViewBounds(int index)
+{
+	sf::FloatRect& relativeCBounds = m_relativeBounds[index];
+	sf::FloatRect childBounds(this->getPosition().x + this->getWidth()*relativeCBounds.left, this->getPosition().y + this->getHeight()*relativeCBounds.top,
+		this->getWidth()*relativeCBounds.width, this->getHeight()*relativeCBounds.height);
+	const std::shared_ptr<ViewType>& childView = this->getView(index);
+	childView->setBound(childBounds);
 }
 
