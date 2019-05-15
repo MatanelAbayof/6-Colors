@@ -157,7 +157,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
 
 				// check if user win
-				if (myAreaBT->getAreaPercent() >= 20.f) {
+				if (myAreaBT->getAreaPercent() >= AreaButton::WIN_NUM_PRECENTS) {
 					gameScreen.close();
 					WinScreen winScreen(gameScreen.getWindow());
 					winScreen.getBackToMenuBT()->addClickListener([&winScreen](GUI::View& view) {
@@ -183,7 +183,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 					rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 
 					// check if user lose
-					if (rivalAreaBT->getAreaPercent() >= 20.f) {
+					if (rivalAreaBT->getAreaPercent() >= AreaButton::WIN_NUM_PRECENTS) {
 						gameScreen.close();
 						LoseScreen loseScreen(gameScreen.getWindow());
 						loseScreen.getBackToMenuBT()->addClickListener([&loseScreen](GUI::View& view) {

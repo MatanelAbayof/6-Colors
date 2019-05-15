@@ -12,6 +12,8 @@ class AreaButton :
 	public GUI::TextView
 {
 public:
+	// precent area to win
+	static const float WIN_NUM_PRECENTS;
 	// constructor
 	explicit AreaButton(sf::RenderWindow& window, float areaPercent = 0.f);
 	//get area percent
