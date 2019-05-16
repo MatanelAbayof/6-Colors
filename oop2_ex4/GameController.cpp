@@ -106,7 +106,8 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	});
 	gameScreen.run(screenUpdatesTimer);
 	gameScreen.getBottomPanel()->enable();
-	gameScreen.getGameMenu()->getRestartButton()->enable();
+	if (showRestartBt)
+		gameScreen.getGameMenu()->getRestartButton()->enable();
 	gameScreen.open();
 
 	// create game
