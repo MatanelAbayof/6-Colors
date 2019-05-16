@@ -15,7 +15,7 @@ string RequestsServerThread::toString() const
 
 void RequestsServerThread::onClientJoined(const sf::TcpSocket& clientSocket)
 {
-	LOG("Server: Client with ip=" + clientSocket.getRemoteAddress().toString() + " joined to server");
+	//LOG("Server: Client with ip=" + clientSocket.getRemoteAddress().toString() + " joined to server");
 }
 
 void RequestsServerThread::buildPacket(sf::Packet& packet)

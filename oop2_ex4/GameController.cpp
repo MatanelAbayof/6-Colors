@@ -120,7 +120,7 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	gameScreen.run(screenUpdatesTimer);
 }
 
-void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players)
+void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players, bool userStartbottomLeftVertex)
 {
 	// clean players info (shapes)
 	for (auto& player : players)
@@ -129,16 +129,28 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 	// the players
 	std::shared_ptr<PlayerBase>& userPlayer = players[0], &otherPlayer = players[1];
 
+	// connect to game
+	userPlayer->connectToGame(&gameScreen, otherPlayer);
+	otherPlayer->connectToGame(&gameScreen, userPlayer);
+
 	// set board
 	gameScreen.getBoard()->randomizeBoard(Board::DEFAULT_BOARD_SIZE);
 	gameScreen.getGameMenu()->getTurnButton()->setText(userPlayer->getName() + " turn");
 	Graph<PolygonView>& graph = gameScreen.getBoard()->getPolygonsGraph();
 
-	// connect to game
-	userPlayer->connectToGame(&gameScreen, otherPlayer);
-	otherPlayer->connectToGame(&gameScreen, userPlayer);	
-	otherPlayer->setStartVertex(graph.getVertex(gameScreen.getBoard()->getBoardSize().x - 1));
-	userPlayer->setStartVertex(graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x));
+	// set vertices	
+	Graph<PolygonView>::Vertex* topRightVertex = graph.getVertex(gameScreen.getBoard()->getBoardSize().x - 1);
+	Graph<PolygonView>::Vertex* bottomLeftVertex = graph.getVertex(graph.getNumOfVertices() - gameScreen.getBoard()->getBoardSize().x);
+
+	if (userStartbottomLeftVertex) {
+		otherPlayer->setStartVertex(topRightVertex);
+		userPlayer->setStartVertex(bottomLeftVertex);
+	}
+	else {
+		otherPlayer->setStartVertex(bottomLeftVertex);
+		userPlayer->setStartVertex(topRightVertex);
+	}
+	
 
 	// update area percent
 	std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
@@ -149,13 +161,13 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 	rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 }
 
-void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players) 
+void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players, bool firstPlayerTurn)
 // TODO need to get who play first
 {
 	// the players
 	std::shared_ptr<PlayerBase>& userPlayer = players[0], &otherPlayer = players[1];
 
-	bool isFirstPlayerTurn = true;
+	bool isFirstPlayerTurn = firstPlayerTurn;
 
 	screenUpdatesTimer.start(30, [&userPlayer, &otherPlayer, &gameScreen, &isFirstPlayerTurn]() {
 		if (isFirstPlayerTurn) {

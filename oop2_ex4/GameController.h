@@ -28,9 +28,9 @@ private:
 	// run game screen
 	void runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players);
 	// create game
-	void createGame(GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players);
+	void createGame(GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players, bool userStartbottomLeftVertex = true);
 	// play game
-	void playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players);
+	void playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players, bool firstPlayerTurn = true);
 	// run join screen
 	void runJoinScreen(sf::RenderWindow& window);
 	// run waiting multiplayer screen

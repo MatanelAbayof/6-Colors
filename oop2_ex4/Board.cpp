@@ -42,7 +42,6 @@ string Board::toString() const
 		std::to_string(m_boardSize.y) + ", " + RelativeLayout<PolygonView>::toString() + " }";
 }
 
-
 void Board::randomizeBoard(const sf::Vector2i& boardSize)
 {
 	// set board size
