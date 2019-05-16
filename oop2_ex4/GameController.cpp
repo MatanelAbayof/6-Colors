@@ -80,7 +80,7 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 	chooseAIMScreen.run();
 }
 
-void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players)
+void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players, bool userPlayFirst)
 {
 	// timer for screen updates
 	Timer screenUpdatesTimer;
@@ -105,9 +105,8 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	gameScreen.getGameMenu()->getRestartButton()->enable();
 	gameScreen.open();
 
-	// create and play game
-	createGame(gameScreen, players);
-	playGame(screenUpdatesTimer, gameScreen, players);
+	// create game
+	createGame(gameScreen, players, userPlayFirst);
 	
 	gameScreen.getGameMenu()->getExitButton()->addClickListener([&gameScreen](GUI::View& view) {
 		gameScreen.close();
@@ -117,7 +116,9 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 		createGame(gameScreen, players);
 		playGame(screenUpdatesTimer, gameScreen, players);
 	});
-	gameScreen.run(screenUpdatesTimer);
+
+	LOG("userPlayFirst=" + std::to_string(userPlayFirst));
+	playGame(screenUpdatesTimer, gameScreen, players, userPlayFirst);
 }
 
 void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players, bool userStartbottomLeftVertex)
@@ -169,6 +170,11 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 
 	bool isFirstPlayerTurn = firstPlayerTurn;
 
+	if (!isFirstPlayerTurn) {
+		gameScreen.getBottomPanel()->getColorPanel()->disable();
+		gameScreen.getGameMenu()->getTurnButton()->setText(otherPlayer->getName() + " turn");
+	}
+	LOG("before play");
 	screenUpdatesTimer.start(30, [&userPlayer, &otherPlayer, &gameScreen, &isFirstPlayerTurn]() {
 		if (isFirstPlayerTurn) {
 			if (userPlayer->isReadyToPlay()) {
@@ -197,9 +203,10 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 			}
 		}
 		else {
+			//LOG("check ready");
 			if (otherPlayer->isReadyToPlay()) {
-				if (otherPlayer->isReadyToPlay()) {
 					sf::Color selectedColor = otherPlayer->selectColor();
+					LOG("color = " + std::to_string(selectedColor.toInteger()));
 					ColoringAlgorithm colorAlgo;
 					colorAlgo.colorGraph(otherPlayer->getPlayerVertices(), otherPlayer->getBorderVertices(), selectedColor);
 					gameScreen.getBottomPanel()->getColorPanel()->enable();
@@ -219,11 +226,11 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 							loseScreen.close();
 						});
 						loseScreen.run();
-					}
-				}
+					}				
 			}
 		}
 	});
+	gameScreen.run(screenUpdatesTimer);
 }
 
 void GameController::runJoinScreen(sf::RenderWindow& window)
@@ -250,7 +257,7 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 			std::vector<std::shared_ptr<PlayerBase>> players;
 			players.push_back(std::make_shared<UserPlayer>());
 			players.push_back(clientPlayer);
-			runGameScreen(joinGameScreen.getWindow(), players);
+			runGameScreen(joinGameScreen.getWindow(), players, false);
 			joinGameScreen.close();
 		}
 	});
