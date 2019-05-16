@@ -199,6 +199,7 @@
     <ClCompile Include="PlayerAI.cpp" />
     <ClCompile Include="PlayerAIRegular.cpp" />
     <ClCompile Include="PlayerAIStupid.cpp" />
+    <ClCompile Include="PlayerAISuper.cpp" />
     <ClCompile Include="PlayerBase.cpp" />
     <ClCompile Include="PolygonShape.cpp" />
     <ClCompile Include="PolygonView.cpp" />
@@ -266,6 +267,7 @@
     <ClInclude Include="PlayerAI.h" />
     <ClInclude Include="PlayerAIRegular.h" />
     <ClInclude Include="PlayerAIStupid.h" />
+    <ClInclude Include="PlayerAISuper.h" />
     <ClInclude Include="PlayerBase.h" />
     <ClInclude Include="PolygonShape.h" />
     <ClInclude Include="PolygonView.h" />
