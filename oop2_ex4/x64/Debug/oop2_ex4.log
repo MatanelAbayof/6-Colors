@@ -1,21 +1,2 @@
-﻿  AreaButton.cpp
-  Board.cpp
-  ChooseAIModeScreen.cpp
-  ColorButton.cpp
-  ColoringAlgorithm.cpp
-  GameController.cpp
-  GameScreen.cpp
-  JoinGameScreen.cpp
-  LoseScreen.cpp
-  MainScreen.cpp
-  matanel_tests.cpp
-  nahum_tests.cpp
-  PlayerAI.cpp
-  PlayerAIRegular.cpp
-  PlayerAIStupid.cpp
-  PlayerBase.cpp
-  UserPlayer.cpp
-  WaitingMultiplayerScreen.cpp
-  WinScreen.cpp
-  Generating Code...
+﻿  PlayerAIRegular.cpp
   oop2_ex4.vcxproj -> C:\Users\akiva\Documents\Source\Repos\oop2_ex4\x64\Debug\oop2_ex4.exe

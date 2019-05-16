@@ -32,9 +32,10 @@ sf::Color PlayerAIRegular::selectColor()
 	for (auto vertex : getBorderVertices()) {
 		// check all vertex adjacents
 		for (auto adj : vertex->getAdjacencyList()) {
-			// check if they have different color
-			// TODO forbidden colors
-			if (vertex->getValue().getColor() != adj->getValue().getColor()) {
+			// check if they have different and not forbidden colors
+			if (vertex->getValue().getColor() != adj->getValue().getColor()&&
+				adj->getValue().getColor()!=getForbiddenColors()[0]&&
+				adj->getValue().getColor() != getForbiddenColors()[1]) {
 				// check if this a unchecked adjacent
 				if (checkedAdj.insert(adj).second) {
 					colorCounter[adj->getValue().getColor().toInteger()]++;
