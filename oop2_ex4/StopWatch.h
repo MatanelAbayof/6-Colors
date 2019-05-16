@@ -15,7 +15,7 @@ class StopWatch
 public:
 	// constructor
 	StopWatch();
-	// start stopWatch
+	// start stopWatch. time in milliseconds
 	void start(int time, std::function<void()> onFinish);
 	//stop clock
 	void stop();

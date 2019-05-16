@@ -34,7 +34,7 @@ private:
 	bool m_active;
 	// in milliseconds
 	int m_interval;
-	// function to call on tick
+	// event function to call on tick
 	std::function<void()> m_onTick;
 };
 

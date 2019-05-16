@@ -3,6 +3,7 @@
 #include <string>
 #include "View.h"
 #include "Timer.h"
+#include "SoundManager.h"
 
 //---- using section --------
 using std::string;
@@ -58,8 +59,10 @@ namespace GUI {
 		ViewType::getBackground().setColor(sf::Color(146, 205, 255));
 		ViewType::makeRootView();
 		ViewType::addKeyDownListener([this](sf::Keyboard::Key& key) {
-			if(key == sf::Keyboard::Escape)
+			if(key == sf::Keyboard::Escape) {
 				close();
+				SoundManager::getInterface().playSound("window_close");
+			}
 		});
 	}
 	template<class ViewType>

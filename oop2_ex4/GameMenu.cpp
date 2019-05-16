@@ -4,7 +4,7 @@
 GameMenu::GameMenu(sf::RenderWindow& window) 
 	: HorizontalLayout(window), m_restartBt(std::make_shared<GUI::Button>(window, "Restart")),
                                 m_exitBt(std::make_shared<GUI::Button>(window, "Exit")),
-	                            m_turnTv(std::make_shared<GUI::TextView>(window, "turn"))
+	                            m_turnTv(std::make_shared<GUI::TextView>(window))
 {
 	initComponents(window);
 }

@@ -54,6 +54,7 @@
 #include "GameMenu.h"
 #include "AnimationView.h"
 #include "GameController.h"
+#include <random>
 #pragma endregion
 
 //-------------- using section -----------------
@@ -63,6 +64,7 @@ using namespace GUI;
 
 //-------------- declare functions -------------
 #pragma region Declarations
+void testLCG();
 void testGameController();
 void testGameMenu();
 void testJoinGameScreen();
@@ -86,6 +88,7 @@ void matanel_main()
 
 	try
 	{
+		//testLCG();
 		//testServerNetwork(30123);
 		//testClientNetwork(12345);
 		testGameController();
@@ -101,6 +104,24 @@ void matanel_main()
 		// Oh No! error...
 		ErrorDialog::show(ex.what());
 	}
+}
+
+void testLCG() {
+	std::minstd_rand0 randEngine(123);
+
+	for (int i = 0; i < 10; i++)
+		std::cout << randEngine() << std::endl;
+
+	randEngine.seed(345);
+
+	for (int i = 0; i < 10; i++)
+		randEngine();
+
+	std::cout << "reset" << std::endl;
+	randEngine.seed(123);
+
+	for (int i = 0; i < 10; i++)
+		std::cout << randEngine() << std::endl;
 }
 
 void testGameController() {

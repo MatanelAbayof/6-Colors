@@ -24,6 +24,7 @@ void GameController::run()
 {
 	// create window
 	sf::RenderWindow window(sf::VideoMode(1000, 500), "6 Colors");
+	window.setFramerateLimit(60);
 	// run main screen
 	runMainScreen(window);
 }

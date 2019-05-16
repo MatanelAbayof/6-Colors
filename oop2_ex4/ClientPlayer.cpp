@@ -1,4 +1,5 @@
 #include "ClientPlayer.h"
+#include "Logger.h"
 
 ClientPlayer::ClientPlayer(RequestsServerThread& serverThread)
 	: m_serverThread(serverThread), m_getColorFlag(false)
@@ -37,6 +38,7 @@ void ClientPlayer::connectToGame(GameScreen* gameScreen, const std::shared_ptr<P
 	NetworkPlayer::connectToGame(gameScreen, rivalPlayer);
 
 	int seed = rand();
+	LOG("seed: " + std::to_string(seed));
 	srand(seed);
 	m_serverThread.getSendRequests().push(seed);
 }

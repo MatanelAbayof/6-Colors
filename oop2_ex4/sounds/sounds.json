@@ -11,6 +11,10 @@
         {
             "name": "error",
             "path": "error.ogg"
+        },
+        {
+            "name": "window_close",
+            "path": "window_close.ogg"
         }
     ]
 }

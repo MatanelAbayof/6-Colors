@@ -63,6 +63,7 @@ private:
 	// check if have vertex at position
 	bool isHaveVertex(int index) const { return ((index >= 0) && (index < getNumOfVertices())); }
 
+// i have a new friend :)
 friend class Vertex;
 };
 
@@ -103,10 +104,6 @@ void Graph<T>::Vertex::addAdjacent(Vertex* adjVertex)
 	m_adjs.insert(adjVertex);
 	// add my self to adjVertex adjacency list 
 	adjVertex->m_adjs.insert(this);
-
-	if (adjVertex->m_adjs.size() == 5) {
-		int d = 5;
-	}
 }
 
 template<class T>

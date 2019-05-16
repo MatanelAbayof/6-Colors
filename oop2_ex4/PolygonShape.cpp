@@ -7,7 +7,7 @@ PolygonShape::PolygonShape()
 void PolygonShape::addPoint(const sf::Vector2f& relPoint)
 {
 	if (!isLegalRelPoint(relPoint))
-		throw std::invalid_argument("Relative point {x=" + std::to_string(relPoint.x) + ", y=" + std::to_string(relPoint.y) + "} must be in [0, 1]");
+		throw std::invalid_argument("Relative point { x=" + std::to_string(relPoint.x) + ", y=" + std::to_string(relPoint.y) + " } must be in [0, 1]");
 	m_relPoints.push_back(relPoint);
 }
 
