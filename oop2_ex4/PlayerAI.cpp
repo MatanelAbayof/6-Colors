@@ -19,3 +19,9 @@ void PlayerAI::onOtherPlayerPlayed(const sf::Color& selectedColor)
 		m_readyToPlay = true;
 	});
 }
+
+void PlayerAI::clean()
+{
+	PlayerBase::clean();
+	m_readyToPlay = false;
+}

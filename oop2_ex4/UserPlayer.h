@@ -31,6 +31,8 @@ public:
 	virtual bool isPlayerConnected() override { return true; };
 	// set start vertex
 	virtual void setStartVertex(GraphVertex vertex) override;
+	// clean
+	virtual void clean() override;
 	// convert to string
 	virtual string toString() const override;
 private:
