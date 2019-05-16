@@ -17,6 +17,7 @@
 #include "ServerPlayer.h"
 #include "ClientPlayer.h"
 #include "AlertDialog.h"
+#include "PlayerAIRegular.h"
 
 GameController::GameController()
 { }
@@ -69,7 +70,7 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 				aiPlayer = std::make_shared<PlayerAIStupid>();	
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::REGULAR: {
-				// TODO aiPlayer = std::make_shared<RegularAIPlayer>();
+			    aiPlayer = std::make_shared<PlayerAIRegular>();
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::SUPER: {
 				// TODO aiPlayer = std::make_shared<SuperAIPlayer>();
@@ -164,7 +165,6 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 }
 
 void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players, bool firstPlayerTurn)
-// TODO need to get who play first
 {
 	// the players
 	std::shared_ptr<PlayerBase>& userPlayer = players[0], &otherPlayer = players[1];
@@ -232,7 +232,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 		}
 
 		if (!otherPlayer->isPlayerConnected()) {
-			GUI::AlertDialog::show("Opps", "Other player disconnected from game", "Exit");
+			GUI::AlertDialog::show("Oops!", "Other player disconnected from game", "Exit");
 			gameScreen.close();
 		}
 	});

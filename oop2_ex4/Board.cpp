@@ -3,6 +3,7 @@
 #include "Square.h"
 #include "Utilities.h"
 #include "Matrix.h"
+#include <array>
 
 // init
 const sf::Vector2i Board::DEFAULT_BOARD_SIZE{ 50,50 };
@@ -92,8 +93,19 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)
 	}
 	// add trigs in bottom (last row)
 	randomizeBoardEdgeLine(shapesMatrix, false);
+
 	// set adjs at graph
 	setAdjs(shapesMatrix);
+
+	// change color of adjs at start vertices
+	std::array<Graph<PolygonView>::Vertex*, 2> startVertices = { m_polygonsGraph.getVertex(getBoardSize().x - 1), m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - getBoardSize().x) };
+	for (int i = 0; i < startVertices.size(); i++) {
+		Graph<PolygonView>::Vertex* vertex = startVertices[i];
+		for (auto adj : vertex->getAdjacencyList()) {
+			if (adj->getValue().getColor() == vertex->getValue().getColor())
+				adj->getValue().setColor(Utilities::randColor({ vertex->getValue().getColor() }));
+		}
+	}
 }
 
 void Board::randomizeBoardEdgeLine(Matrix<SquareStructInfo>& shapesMatrix, bool isFirstLine)

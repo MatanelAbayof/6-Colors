@@ -25,7 +25,7 @@ sf::Color PlayerAIRegular::selectColor()
 	// check color max occourrences
 	int maxColorCounter = 0;
 	// max color occorrenced (represented as an int)
-	int maxColor;
+	int maxColor = Utilities::randColor(getForbiddenColors()).toInteger();
 	sf::Color selectedColor;
 
 	// check all border vertices
