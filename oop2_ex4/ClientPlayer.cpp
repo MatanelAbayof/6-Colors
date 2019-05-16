@@ -33,6 +33,11 @@ bool ClientPlayer::isReadyToPlay()
 	return false;
 }
 
+bool ClientPlayer::isPlayerConnected()
+{
+	return (m_serverThread.getState() == RequestsServerThread::State::RUNNING);
+}
+
 void ClientPlayer::connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer)
 {
 	NetworkPlayer::connectToGame(gameScreen, rivalPlayer);

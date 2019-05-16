@@ -26,7 +26,9 @@ public:
 	// on other player played
 	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) override;
 	// event on player played
-	virtual void onPlayerPlayed(const sf::Color& selectedColor) override { m_selected = false; }
+	virtual void onPlayerPlayed(const sf::Color& selectedColor) override;
+	// check if the player is connected to game
+	virtual bool isPlayerConnected() override { return true; };
 	// set start vertex
 	virtual void setStartVertex(GraphVertex vertex) override;
 	// convert to string

@@ -47,6 +47,8 @@ public:
 	virtual bool isReadyToGame() const = 0;
 	// check if the player is ready to play
 	virtual bool isReadyToPlay() = 0;
+	// check if the player is connected to game
+	virtual bool isPlayerConnected() = 0;
 	// get rival player
 	const std::shared_ptr<PlayerBase>& getRivalPlayer() const { return m_rivalPlayer; }
 	// clean

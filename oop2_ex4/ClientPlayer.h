@@ -22,6 +22,8 @@ public:
 	virtual bool isReadyToPlay() override;
 	// check if the player is ready to game
 	virtual bool isReadyToGame() const override { return true; }
+	// check if the player is connected to game
+	virtual bool isPlayerConnected() override;
 	// connect to game
 	virtual void connectToGame(GameScreen* gameScreen, const std::shared_ptr<PlayerBase>& rivalPlayer) override;
 	// on other player played

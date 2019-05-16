@@ -28,6 +28,8 @@ public:
 	virtual void onOtherPlayerPlayed(const sf::Color& selectedColor) override;
 	// event on player played
 	virtual void onPlayerPlayed(const sf::Color& selectedColor) override;
+	// check if the player is connected to game
+	virtual bool isPlayerConnected() override;
 	// convert to string
 	virtual string toString() const override;
 private:

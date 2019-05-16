@@ -31,6 +31,12 @@ void UserPlayer::onOtherPlayerPlayed(const sf::Color& selectedColor)
 	updateForbiddenColors();
 }
 
+void UserPlayer::onPlayerPlayed(const sf::Color& selectedColor)
+{
+	m_selected = false;
+	updateForbiddenColors();
+}
+
 void UserPlayer::setStartVertex(GraphVertex vertex)
 {
 	PlayerBase::setStartVertex(vertex);

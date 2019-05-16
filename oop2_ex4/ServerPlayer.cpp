@@ -55,6 +55,11 @@ void ServerPlayer::onOtherPlayerPlayed(const sf::Color& selectedColor)
 void ServerPlayer::onPlayerPlayed(const sf::Color& selectedColor)
 { }
 
+bool ServerPlayer::isPlayerConnected()
+{
+	return m_clientThread.isConnectedToServer();
+}
+
 string ServerPlayer::toString() const
 {
 	return "ServerPlayer: { " + NetworkPlayer::toString() + " }";

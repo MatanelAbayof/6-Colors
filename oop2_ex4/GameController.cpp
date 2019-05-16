@@ -16,6 +16,7 @@
 #include "LoseScreen.h"
 #include "ServerPlayer.h"
 #include "ClientPlayer.h"
+#include "AlertDialog.h"
 
 GameController::GameController()
 { }
@@ -228,6 +229,11 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 						loseScreen.run();
 					}				
 			}
+		}
+
+		if (!otherPlayer->isPlayerConnected()) {
+			GUI::AlertDialog::show("Opps", "Other player disconnected from game", "Exit");
+			gameScreen.close();
 		}
 	});
 	gameScreen.run(screenUpdatesTimer);
