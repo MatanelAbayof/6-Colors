@@ -26,7 +26,7 @@ private:
 	// run chose mode AI screen
 	void runChooseModeAIScreen(sf::RenderWindow& window);
 	// run game screen
-	void runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players, bool userPlayFirst = true);
+	void runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players, bool showRestartBt, bool userPlayFirst);
 	// create game
 	void createGame(GameScreen& gameScreen, std::vector<std::shared_ptr<PlayerBase>>& players, bool userStartbottomLeftVertex = true);
 	// play game

@@ -78,12 +78,12 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 			} break;
 		}
 		players.push_back(aiPlayer);
-		runGameScreen(levelDiffBt->getWindow(), players);
+		runGameScreen(levelDiffBt->getWindow(), players, true, true);
 	});
 	chooseAIMScreen.run();
 }
 
-void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players, bool userPlayFirst)
+void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::shared_ptr<PlayerBase>>& players, bool showRestartBt, bool userPlayFirst)
 {
 	// timer for screen updates
 	Timer screenUpdatesTimer;
@@ -94,7 +94,8 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	// create game screen
 	GameScreen gameScreen(window);
 
-	
+	if (!showRestartBt)
+		gameScreen.getGameMenu()->getRestartButton()->hide();
 
 	// wait until players are ready
 	gameScreen.getBottomPanel()->disable();
@@ -261,7 +262,7 @@ void GameController::runJoinScreen(sf::RenderWindow& window)
 			std::vector<std::shared_ptr<PlayerBase>> players;
 			players.push_back(std::make_shared<UserPlayer>());
 			players.push_back(clientPlayer);
-			runGameScreen(joinGameScreen.getWindow(), players, false);
+			runGameScreen(joinGameScreen.getWindow(), players, false, false);
 			joinGameScreen.close();
 		}
 	});
@@ -314,7 +315,7 @@ void GameController::runWaitMultScreen(sf::RenderWindow& window)
 		std::vector<std::shared_ptr<PlayerBase>> players;
 		players.push_back(std::make_shared<UserPlayer>());
 		players.push_back(clientPlayer);
-		runGameScreen(view.getWindow(), players);
+		runGameScreen(view.getWindow(), players, false, true);
 		waitMultScreen.close();
 	});
 	waitMultScreen.run(screenUpdatesTimer);
