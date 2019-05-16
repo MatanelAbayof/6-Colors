@@ -52,7 +52,7 @@ public:
 	// get rival player
 	const std::shared_ptr<PlayerBase>& getRivalPlayer() const { return m_rivalPlayer; }
 	// clean
-	void clean();
+	virtual void clean();
 	// convert to string
 	virtual string toString() const;
 protected:

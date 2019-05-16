@@ -43,6 +43,12 @@ void UserPlayer::setStartVertex(GraphVertex vertex)
 	updateForbiddenColors();
 }
 
+void UserPlayer::clean()
+{
+	PlayerBase::clean();
+	m_selected = false;
+}
+
 string UserPlayer::toString() const
 {
 	return "UserPlayer: { " + PlayerBase::toString() + " }";

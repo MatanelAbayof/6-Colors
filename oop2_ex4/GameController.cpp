@@ -18,6 +18,7 @@
 #include "ClientPlayer.h"
 #include "AlertDialog.h"
 #include "PlayerAIRegular.h"
+#include "PlayerAISuper.h"
 
 GameController::GameController()
 { }
@@ -73,7 +74,7 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 			    aiPlayer = std::make_shared<PlayerAIRegular>();
 			} break;
 			case LevelDifficultyButton::LevelDifficulty::SUPER: {
-				// TODO aiPlayer = std::make_shared<SuperAIPlayer>();
+				 aiPlayer = std::make_shared<PlayerAISuper>();
 			} break;
 		}
 		players.push_back(aiPlayer);
@@ -117,9 +118,8 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 		// create and play game
 		createGame(gameScreen, players);
 		playGame(screenUpdatesTimer, gameScreen, players);
+		gameScreen.close();
 	});
-
-	LOG("userPlayFirst=" + std::to_string(userPlayFirst));
 	playGame(screenUpdatesTimer, gameScreen, players, userPlayFirst);
 }
 
@@ -175,7 +175,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 		gameScreen.getBottomPanel()->getColorPanel()->disable();
 		gameScreen.getGameMenu()->getTurnButton()->setText(otherPlayer->getName() + " turn");
 	}
-	LOG("before play");
+
 	screenUpdatesTimer.start(30, [&userPlayer, &otherPlayer, &gameScreen, &isFirstPlayerTurn]() {
 		if (isFirstPlayerTurn) {
 			if (userPlayer->isReadyToPlay()) {
@@ -204,10 +204,8 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 			}
 		}
 		else {
-			//LOG("check ready");
 			if (otherPlayer->isReadyToPlay()) {
 					sf::Color selectedColor = otherPlayer->selectColor();
-					LOG("color = " + std::to_string(selectedColor.toInteger()));
 					ColoringAlgorithm colorAlgo;
 					colorAlgo.colorGraph(otherPlayer->getPlayerVertices(), otherPlayer->getBorderVertices(), selectedColor);
 					gameScreen.getBottomPanel()->getColorPanel()->enable();

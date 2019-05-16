@@ -28,6 +28,8 @@ public:
 	virtual void onPlayerPlayed(const sf::Color& selectedColor) override { m_readyToPlay = false; }
 	// convert to string
 	virtual string toString() const override { return "Player AI: { " + PlayerBase::toString() + "}"; }
+	// clean
+	virtual void clean() override;
 private:
 	// waiting stop watch
 	mutable StopWatch m_waitStopWatch;
