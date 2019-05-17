@@ -1,7 +1,7 @@
 #include "PlayerAI.h"
 
 PlayerAI::PlayerAI()
-	: m_readyToPlay(false)                // TODO m_readyToPlay = false      when played!!!!
+	: m_readyToPlay(false)
 {
 	setName("Computer");
 }

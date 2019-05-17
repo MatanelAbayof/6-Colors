@@ -19,18 +19,18 @@ void BottomPanel::initComponents(sf::RenderWindow & window)
 	getBorder().setSize(1.f);
 	getBackground().setColor(sf::Color(240, 255, 239));
 
-	//init ptr
+	// init ptr
 	m_colorPanel = std::make_shared<ColorPanel>(window);
 	m_myArea = std::make_shared<AreaButton>(window);
 	m_rivalArea = std::make_shared<AreaButton>(window);
 
-	//init text
+	// init text
 	m_myArea->setPreText("My " + m_myArea->getPreText());
 	m_rivalArea->setPreText("Rival " + m_rivalArea->getPreText());
 	m_myArea->setText(m_myArea->getPreText() + std::to_string(m_myArea->getAreaPercent()) + "%");
 	m_rivalArea->setText(m_rivalArea->getPreText() + std::to_string(m_myArea->getAreaPercent()) + "%");
 	
-	//init button
+	// init button
 	initButton(m_myArea);
 	initColorPanel(m_colorPanel);
 	initButton(m_rivalArea);

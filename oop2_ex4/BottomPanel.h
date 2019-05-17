@@ -20,23 +20,22 @@ public:
 	explicit BottomPanel(sf::RenderWindow& window);
 	// get color panel
 	const std::shared_ptr<ColorPanel>& getColorPanel() const { return m_colorPanel; }
-	//get my arae button
-	std::shared_ptr<AreaButton>& getMyAreaButton() { return m_myArea; }
-	//get rival arae button
-	std::shared_ptr<AreaButton>& getRivalAreaButton() { return m_rivalArea; }
+	// get my area button
+	const std::shared_ptr<AreaButton>& getMyAreaButton() const { return m_myArea; }
+	// get rival area button
+	const std::shared_ptr<AreaButton>& getRivalAreaButton() const { return m_rivalArea; }
 	// convert to string
 	virtual string toString() const override;
-protected:
-	//init
-	void initComponents(sf::RenderWindow& window);
-	//init button
-	void initButton(const std::shared_ptr<AreaButton>& bt);
-	//init color panel bootom
-	void initColorPanel(const std::shared_ptr<ColorPanel>& bt);
 private:
-	//color panel
+	// color panel
 	std::shared_ptr<ColorPanel> m_colorPanel;
-	//the area button
+	// the area button
 	std::shared_ptr<AreaButton> m_myArea, m_rivalArea;
+	// init
+	void initComponents(sf::RenderWindow& window);
+	// init button
+	void initButton(const std::shared_ptr<AreaButton>& bt);
+	// init color panel bootom
+	void initColorPanel(const std::shared_ptr<ColorPanel>& bt);
 };
 

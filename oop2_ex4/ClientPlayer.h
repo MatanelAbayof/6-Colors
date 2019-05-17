@@ -15,7 +15,7 @@ class ClientPlayer :
 {
 public:
 	// constructor
-	ClientPlayer(RequestsServerThread& serverThread);
+	explicit ClientPlayer(RequestsServerThread& serverThread);
 	// when a player want to select a color
 	virtual sf::Color selectColor() override;
 	// check if the player is ready to play

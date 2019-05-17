@@ -28,9 +28,9 @@ public:
 	// convert to string
 	virtual string toString() const override;
 private:
-	//init
+	// init
 	void init();
-	//pre text
+	// pre text
 	string m_preText;
 	// quantity of area in percent
 	float m_areaPercent;

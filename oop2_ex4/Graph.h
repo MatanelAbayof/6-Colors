@@ -55,8 +55,6 @@ public:
 	void clear();
 	// convert to string
 	virtual string toString() const;
-
-	// TODO add: remove vertex, for each
 private:
 	// vertices
 	std::vector<std::unique_ptr<Vertex>> m_vertices;

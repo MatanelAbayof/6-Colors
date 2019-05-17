@@ -26,7 +26,7 @@ public:
 	// convert to string
 	virtual string toString() const override;
 private:
-	//init
+	// init
 	void init(const sf::Color& color);
 	// color
 	sf::Color m_color;

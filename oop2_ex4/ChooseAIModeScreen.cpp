@@ -1,8 +1,5 @@
 #include "ChooseAIModeScreen.h"
 
-
-
-
 ChooseAIModeScreen::ChooseAIModeScreen(sf::RenderWindow& window)
 	: BaseScreen(window),
 	m_stupidAIBt(std::make_shared<LevelDifficultyButton>(window)), 

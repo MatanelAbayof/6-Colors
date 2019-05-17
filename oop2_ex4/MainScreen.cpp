@@ -18,7 +18,7 @@ string MainScreen::toString() const
 void MainScreen::init()
 {
 	// init title
-	m_menuTitle->setTextSize(30);	
+	m_menuTitle->setTextSize(40);	
 	m_menuTitle->setTextColor(sf::Color(244, 226, 63));
 	m_menuTitle->setTextStyle(sf::Text::Style::Underlined);
 	m_menuTitle->setFont("BRLNSDB");

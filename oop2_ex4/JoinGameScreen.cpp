@@ -63,7 +63,7 @@ void JoinGameScreen::initComponents()
 	m_connectBt->addLeaveListener([](View& view) {
 		view.getBackground().setColor(JoinGameScreen::CONNECT_BT_COLOR);
 	});
-	addView(m_connectBt, sf::FloatRect(0.4f, 0.8f, 0.2f, 0.12f));
+	addView(m_connectBt, sf::FloatRect(0.4f, 0.8f, 0.2f, 0.1f));
 
 	// listen IP keyboard
 	m_ipEt->addKeyDownListener([this](sf::Keyboard::Key& key) {

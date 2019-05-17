@@ -1,13 +1,7 @@
 #include "PlayerAIRegular.h"
 
-
 PlayerAIRegular::PlayerAIRegular()
-{
-}
-
-PlayerAIRegular::~PlayerAIRegular()
-{
-}
+{ }
 
 sf::Color PlayerAIRegular::selectColor()
 {

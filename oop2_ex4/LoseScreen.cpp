@@ -1,4 +1,5 @@
 #include "LoseScreen.h"
+#include "SoundManager.h"
 
 LoseScreen::LoseScreen(sf::RenderWindow & window)
 	: BSLoseScreen(window), m_titleTv(std::make_shared<GUI::TextView>(window, "You lose!!!")),
@@ -15,7 +16,7 @@ string LoseScreen::toString() const
 
 void LoseScreen::init()
 {
-	//m_winImage->getImage().setTexture("win");
+	GUI::SoundManager::getInterface().playSound("lose");
 	getBackground().setColor(sf::Color::Cyan);
 	
 	// init title

@@ -24,9 +24,8 @@ void WaitingMultiplayerScreen::init()
 {
 	// init waiting to client title
 	m_waitingToClientTv->setTextColor(sf::Color::Cyan);
-	m_waitingToClientTv->setTextSize(30);
+	m_waitingToClientTv->setTextSize(32);
 	m_waitingToClientTv->setTextColor(sf::Color::Black);
-	m_waitingToClientTv->setTextStyle(sf::Text::Style::Underlined);
 	m_waitingToClientTv->setFont("BRLNSDB");
 	addView(m_waitingToClientTv, sf::FloatRect(1.f / 4.f, 0.05f, 1.f / 2.f, 0.10f));
 
@@ -46,7 +45,7 @@ void WaitingMultiplayerScreen::init()
 
 	// init start game button
 	m_startBt->getBackground().setColor(sf::Color(170, 170, 170));
-	m_startBt->setTextSize(22);
+	m_startBt->setTextSize(24);
 	m_startBt->setTextColor(sf::Color::White);
 	m_startBt->setTextStyle(sf::Text::Style::Bold);
 	m_startBt->disable();
@@ -57,5 +56,5 @@ void WaitingMultiplayerScreen::init()
 		view.getBackground().setColor(sf::Color(sf::Color::Green));
 	}));
 	
-	addView(m_startBt, sf::FloatRect(2.f / 5.f, 0.75f, 1.f / 5.f, 0.10f));
+	addView(m_startBt, sf::FloatRect(2.f / 5.f, 0.8f, 1.f / 5.f, 0.1f));
 }

@@ -17,6 +17,8 @@ void GUI::Button::initComponents()
 {
 	setFont("CURLZ");
 	setTextStyle(sf::Text::Style::Bold);
+	getBorder().setSize(1.f);
+	getBorder().setColor(sf::Color::Black);
 
 	// init sounds at events
 	addEnterListener([](View &view) {

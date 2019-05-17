@@ -19,12 +19,15 @@
 #include "AlertDialog.h"
 #include "PlayerAIRegular.h"
 #include "PlayerAISuper.h"
+#include "SoundManager.h"
 
 GameController::GameController()
 { }
 
 void GameController::run()
 {
+	// play background music
+	GUI::SoundManager::getInterface().playBackgroundMusic("bm1");
 	// create window
 	sf::RenderWindow window(sf::VideoMode(1000, 500), "6 Colors");
 	window.setFramerateLimit(60);
@@ -158,10 +161,10 @@ void GameController::createGame(GameScreen& gameScreen, std::vector<std::shared_
 	
 
 	// update area percent
-	std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
+	const std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
 	myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 	myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
-	std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
+	const std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
 	rivalAreaBT->updateAreaPercent(static_cast<int>(otherPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 	rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 }
@@ -190,7 +193,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 				gameScreen.getGameMenu()->getTurnButton()->setText(otherPlayer->getName() + " turn");
 				
 				// update area percent
-				std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
+				const std::shared_ptr<AreaButton>& myAreaBT = gameScreen.getBottomPanel()->getMyAreaButton();
 				myAreaBT->updateAreaPercent(static_cast<int>(userPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 				myAreaBT->setText(myAreaBT->getPreText() + std::to_string(myAreaBT->getAreaPercent()) + "%");
 
@@ -215,7 +218,7 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 					gameScreen.getGameMenu()->getTurnButton()->setText(userPlayer->getName() + " turn");
 					
 					// update area percent
-					std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
+					const std::shared_ptr<AreaButton>& rivalAreaBT = gameScreen.getBottomPanel()->getRivalAreaButton();
 					rivalAreaBT->updateAreaPercent(static_cast<int>(otherPlayer->getPlayerVertices().size()), static_cast<int>(gameScreen.getBoard()->getPolygonsGraph().getNumOfVertices()));
 					rivalAreaBT->setText(rivalAreaBT->getPreText() + std::to_string(rivalAreaBT->getAreaPercent()) + "%");
 

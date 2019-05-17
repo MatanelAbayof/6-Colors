@@ -48,7 +48,7 @@ void GUI::SoundManager::stopBackgroundMusic()
 
 string GUI::SoundManager::toString() const
 {
-	string soundsStr = "SoundManager: { Sounds names={ ";
+	string soundsStr = "SoundManager: { soundsNames={ ";
 	int count = 0;
 	for (auto it = m_soundsBuffers.cbegin(); it != m_soundsBuffers.cend(); ++it) {
 		soundsStr += it->first;
@@ -56,15 +56,21 @@ string GUI::SoundManager::toString() const
 			soundsStr += ", ";
 		count++;
 	}
+	soundsStr += " }, backgroundMusicNames={ ";
+	count = 0;
+	for (auto it = m_backMusics.cbegin(); it != m_backMusics.cend(); ++it) {
+		soundsStr += it->first;
+		if (count + 1 < static_cast<int>(m_backMusics.size()))
+			soundsStr += ", ";
+		count++;
+	}
 	soundsStr += " }, num of media players=" + std::to_string(m_mediaPlayers.size()) + " " + ResourceLoader::toString() + " }";
-
-	// TODO add background musics to string
-
 	return soundsStr;
 }
 
 GUI::SoundManager::SoundManager()
 {
+	m_backMusicPlayer.setLoop(true);
 	loadSoundsBuffers();
 	loadBackgroundMusics();
 }

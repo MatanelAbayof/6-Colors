@@ -15,6 +15,14 @@
         {
             "name": "window_close",
             "path": "window_close.ogg"
+        },
+        {
+            "name": "win",
+            "path": "win.ogg"
+        },
+        {
+            "name": "lose",
+            "path": "lose.ogg"
         }
     ]
 }

@@ -1,18 +1,6 @@
 #include "ColoringAlgorithm.h"
 
-
-
-
-
-ColoringAlgorithm::ColoringAlgorithm()
-{
-}
-
-ColoringAlgorithm::~ColoringAlgorithm()
-{
-}
-
-void ColoringAlgorithm::colorGraph(VertexSet& playerVertex, VertexSet& borderVertex, sf::Color color)
+void ColoringAlgorithm::colorGraph(VertexSet& playerVertex, VertexSet& borderVertex, const sf::Color& color)
 {
 	// color all players vertixes
 	for (auto vertex : playerVertex) {
@@ -29,7 +17,7 @@ void ColoringAlgorithm::colorGraph(VertexSet& playerVertex, VertexSet& borderVer
 
 void ColoringAlgorithm::addAdj(VertexSet& playerVertex, VertexSet& borderVertex, PlayerBase::GraphVertex vertex)
 {
-	// check if the vertix still nedds to be in border vetices
+	// check if the vertex stil needs to be in border vetices
 	bool throwFromBorder = true;
 
 	for (auto adj : vertex->getAdjacencyList()) {
@@ -58,5 +46,5 @@ void ColoringAlgorithm::addAdj(VertexSet& playerVertex, VertexSet& borderVertex,
 
 string ColoringAlgorithm::toString() const
 {
-	return "Coloring Algorithm";
+	return "Coloring Algorithm: { }";
 }

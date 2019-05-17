@@ -24,9 +24,7 @@ GUI::ErrorDialog::ErrorDialog(sf::RenderWindow& window, const string& errorMessa
 }
 
 void GUI::ErrorDialog::initComponents()
-{
-	// TODO add error icon to window
-	
+{	
 	// play error sound
 	SoundManager::getInterface().playSound("error");
 }

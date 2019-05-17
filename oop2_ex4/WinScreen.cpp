@@ -1,4 +1,5 @@
 #include "WinScreen.h"
+#include "SoundManager.h"
 
 WinScreen::WinScreen(sf::RenderWindow & window)
 	: BSWinScreen(window), m_titleTv(std::make_shared<GUI::TextView>(window, "You win!!!")),
@@ -14,6 +15,7 @@ string WinScreen::toString() const
 
 void WinScreen::init()
 {	
+	GUI::SoundManager::getInterface().playSound("win");
 	getBackground().setTexture("win");
 
 	// init title
