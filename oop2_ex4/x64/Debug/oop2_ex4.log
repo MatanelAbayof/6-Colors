@@ -1,2 +1,21 @@
-﻿  PlayerAISuper.cpp
-  oop2_ex4.vcxproj -> C:\Users\akiva\Documents\Source\Repos\oop2_ex4\x64\Debug\oop2_ex4.exe
+﻿  Board.cpp
+  ChooseAIModeScreen.cpp
+  ClientPlayer.cpp
+  ColoringAlgorithm.cpp
+  GameController.cpp
+  GameMenu.cpp
+  GameScreen.cpp
+  JoinGameScreen.cpp
+  LevelDifficultyButton.cpp
+  MainScreen.cpp
+  NetworkPlayer.cpp
+  PlayerAI.cpp
+  PlayerAIRegular.cpp
+  PlayerAIStupid.cpp
+  PlayerAISuper.cpp
+  PlayerBase.cpp
+  ServerPlayer.cpp
+  UserPlayer.cpp
+  matanel_tests.cpp
+  Generating Code...
+  oop2_ex4.vcxproj -> D:\Development\Cpp\Projects\oop_course\oop2_ex4\oop2_ex4\x64\Debug\oop2_ex4.exe

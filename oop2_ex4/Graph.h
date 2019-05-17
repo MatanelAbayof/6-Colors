@@ -14,7 +14,6 @@ template <class T>
 class Graph
 {
 public:
-
 	// vertex of graph
 	class Vertex {
 		public:

@@ -1,13 +1,7 @@
 #include "PlayerAISuper.h"
 
-
 PlayerAISuper::PlayerAISuper()
-{
-}
-
-PlayerAISuper::~PlayerAISuper()
-{
-}
+{ }
 
 sf::Color PlayerAISuper::selectColor()
 {

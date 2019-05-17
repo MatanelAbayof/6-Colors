@@ -12,21 +12,19 @@ using std::string;
 /*
  * PlayerAISuper class
  */
-
 class PlayerAISuper:
 	public PlayerAI
 {
 public:
 	// constructor
 	PlayerAISuper();
-	// destructor
-	~PlayerAISuper();
 	// select color
 	virtual sf::Color selectColor() override;
 	// convert to string
-	virtual string toString() const;
+	virtual string toString() const override;
 private:
-	int countAdj(GraphVertex vertex, std::unordered_set <GraphVertex>& checkedAdj);
+	// count number of adjs
+	int countAdj(GraphVertex vertex, std::unordered_set<GraphVertex>& checkedAdj);
 };
 
 

@@ -17,6 +17,7 @@ class PlayerAIStupid :
 public:
 	// constructor
 	PlayerAIStupid() = default;
+	// select color
 	virtual sf::Color selectColor() override;
 	// convert to string
 	virtual string toString() const override;

@@ -121,8 +121,8 @@ void GameController::runGameScreen(sf::RenderWindow& window, std::vector<std::sh
 	});
 	gameScreen.getGameMenu()->getRestartButton()->addClickListener([this, &screenUpdatesTimer, &gameScreen, &players](GUI::View& view) {
 		// create and play game
-		createGame(gameScreen, players);
-		playGame(screenUpdatesTimer, gameScreen, players);
+		createGame(gameScreen, players, true);
+		playGame(screenUpdatesTimer, gameScreen, players, true);
 		gameScreen.close();
 	});
 	playGame(screenUpdatesTimer, gameScreen, players, userPlayFirst);

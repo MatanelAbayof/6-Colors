@@ -69,7 +69,7 @@ private:
 	std::unordered_set<GraphVertex> m_playerVertices;
 	// list of border vertices
 	std::unordered_set<GraphVertex> m_borderVertices;
-	//game screen
+	// game screen
 	GameScreen* m_gameScreen;
 	// rival player
 	std::shared_ptr<PlayerBase> m_rivalPlayer;

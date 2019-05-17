@@ -26,6 +26,7 @@ public:
 private:
 	// init
 	void init();
+	// level difficulty
 	LevelDifficulty m_levelDiff;
 };
 

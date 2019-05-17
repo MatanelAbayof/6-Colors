@@ -24,15 +24,13 @@ public:
 	const std::shared_ptr<GUI::TextView>& getTurnButton() const { return m_turnTv; }
 	// convert to string
 	virtual string toString() const override;
-protected:
-	// init components
-	void initComponents(sf::RenderWindow& window);
-	// init button
-	void initButton(std::shared_ptr<GUI::Button> bt);
 private:
 	// buttons
 	std::shared_ptr<GUI::Button> m_restartBt, m_exitBt;
 	// turn button
 	std::shared_ptr<GUI::TextView> m_turnTv;
+	// init components
+	void initComponents(sf::RenderWindow& window);
+	// init button
+	void initButton(std::shared_ptr<GUI::Button> bt);
 };
-

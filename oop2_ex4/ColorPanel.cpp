@@ -1,5 +1,6 @@
 #include "ColorPanel.h"
 
+// init buttons colors
 const sf::Color ColorPanel::BLUE_COLOR(sf::Color::Blue),
                 ColorPanel::GREEN_COLOR(sf::Color::Green),
                 ColorPanel::RED_COLOR(sf::Color::Red),

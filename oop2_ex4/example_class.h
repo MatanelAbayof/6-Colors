@@ -14,7 +14,7 @@ public:
 	// constructor
 	ExampleClass();
 	// destructor
-	~ExampleClass();
+	virtual ~ExampleClass();
 	// convert to string
 	virtual string toString() const;
 private:

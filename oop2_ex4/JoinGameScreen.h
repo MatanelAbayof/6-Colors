@@ -44,7 +44,7 @@ private:
 	std::shared_ptr<GUI::EditText> m_ipEt;
 	// connect button
 	std::shared_ptr<GUI::Button> m_connectBt;
-	// load animation
+	// load animation view
 	std::shared_ptr<GUI::AnimationView> m_loadAv;
 	// init components
 	void initComponents();

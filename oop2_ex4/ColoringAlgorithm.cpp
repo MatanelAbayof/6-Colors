@@ -17,7 +17,7 @@ void ColoringAlgorithm::colorGraph(VertexSet& playerVertex, VertexSet& borderVer
 
 void ColoringAlgorithm::addAdj(VertexSet& playerVertex, VertexSet& borderVertex, PlayerBase::GraphVertex vertex)
 {
-	// check if the vertex stil needs to be in border vetices
+	// check if the vertex still needs to be in border vetices
 	bool throwFromBorder = true;
 
 	for (auto adj : vertex->getAdjacencyList()) {

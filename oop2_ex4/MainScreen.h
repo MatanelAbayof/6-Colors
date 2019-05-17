@@ -18,7 +18,7 @@ public:
 	// constructor
 	explicit MainScreen(sf::RenderWindow& window);
 	// destructor
-	~MainScreen() = default;
+	virtual ~MainScreen() = default;
 	// get certin button
 	const std::shared_ptr<GUI::Button>& getSingleBt() const { return m_singlePlayerBt; }
 	const std::shared_ptr<GUI::Button>& getCreateBt() const { return m_createGameBt; }
