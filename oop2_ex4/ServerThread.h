@@ -19,8 +19,8 @@ using std::string;
 class ServerThread : public INetworkThread
 {
 public:
+	// list of clients
 	using ClientList = std::list<std::unique_ptr<sf::TcpSocket>>;
-
 	// start server in new thread
 	void start(const unsigned short port);
 	// stop thread

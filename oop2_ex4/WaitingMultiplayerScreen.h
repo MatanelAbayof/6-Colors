@@ -29,6 +29,8 @@ public:
 	const std::shared_ptr<GUI::Button>& getStartButton() const { return m_startBt; }
 	// set as ready to play
 	void setReadyToPlay();
+	// convert to string
+	virtual string toString() const override;
 private:
 	// waiting and IP signs
 	std::shared_ptr<GUI::TextView> m_waitingToClientTv, m_myIpTv;

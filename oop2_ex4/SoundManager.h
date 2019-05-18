@@ -37,15 +37,15 @@ private:
 	// background music
 	sf::Music m_backMusicPlayer;
 	// constructor
-	SoundManager();
-	// disable copy
-	SoundManager& operator=(const SoundManager&) = delete;
-	SoundManager(const SoundManager&) = delete;
+	SoundManager();	
 	// load sounds buffers from files
 	void loadSoundsBuffers();
 	// load background musics (name and path)
 	void loadBackgroundMusics();
 	// find free media player from list
 	sf::Sound& findFreeMediaPlayer();
+	// disable copy
+	SoundManager& operator=(const SoundManager&) = delete;
+	SoundManager(const SoundManager&) = delete;
 };
 }

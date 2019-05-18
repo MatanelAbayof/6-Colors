@@ -1,21 +1,38 @@
-﻿  Board.cpp
+﻿  AlertDialog.cpp
+  Board.cpp
+  BottomPanel.cpp
+  Button.cpp
   ChooseAIModeScreen.cpp
   ClientPlayer.cpp
+  ColorPanel.cpp
   ColoringAlgorithm.cpp
+  EditText.cpp
+  ErrorDialog.cpp
   GameController.cpp
   GameMenu.cpp
   GameScreen.cpp
+  ImageButton.cpp
   JoinGameScreen.cpp
   LevelDifficultyButton.cpp
+  LoseScreen.cpp
   MainScreen.cpp
   NetworkPlayer.cpp
   PlayerAI.cpp
+  Generating Code...
+  Compiling...
   PlayerAIRegular.cpp
   PlayerAIStupid.cpp
   PlayerAISuper.cpp
   PlayerBase.cpp
+  RequestsServerThread.cpp
   ServerPlayer.cpp
+  ServerThread.cpp
+  SoundManager.cpp
+  TextView.cpp
   UserPlayer.cpp
+  Utilities.cpp
+  WaitingMultiplayerScreen.cpp
+  WinScreen.cpp
   matanel_tests.cpp
   Generating Code...
   oop2_ex4.vcxproj -> D:\Development\Cpp\Projects\oop_course\oop2_ex4\oop2_ex4\x64\Debug\oop2_ex4.exe

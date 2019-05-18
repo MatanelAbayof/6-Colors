@@ -20,6 +20,11 @@ void WaitingMultiplayerScreen::setReadyToPlay()
 	m_myIpTv->hide();	
 }
 
+string WaitingMultiplayerScreen::toString() const
+{
+	return "WaitingMultiplayerScreen: { " + GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>::toString() + " }";
+}
+
 void WaitingMultiplayerScreen::init()
 {
 	// init waiting to client title

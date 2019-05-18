@@ -25,8 +25,6 @@ public:
 	virtual int getNumOfViews() const;
 	// draw
 	virtual void draw() override;
-	// convert to string
-	virtual string toString() const override;
 	// handle click event
 	virtual bool handleClickEvent(float mouseX, float mouseY) override;
 	// handle enter event
@@ -37,6 +35,8 @@ public:
 	virtual void handleKeyDownEvent(sf::Keyboard::Key keyCode) override;
 	// handle key released event
 	virtual void handleKeyReleasedEvent(sf::Keyboard::Key keyCode) override;
+	// convert to string
+	virtual string toString() const override;
 protected:
 	// constructor
 	explicit ViewGroup(sf::RenderWindow& window);
