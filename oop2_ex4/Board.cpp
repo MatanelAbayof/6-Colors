@@ -99,7 +99,7 @@ void Board::randomizeBoard(const sf::Vector2i& boardSize)
 
 	// change color of adjs at start vertices
 	std::array<Graph<PolygonView>::Vertex*, 2> startVertices = { m_polygonsGraph.getVertex(getBoardSize().x - 1), m_polygonsGraph.getVertex(m_polygonsGraph.getNumOfVertices() - getBoardSize().x) };
-	for (int i = 0; i < startVertices.size(); i++) {
+	for (size_t i = 0; i < startVertices.size(); i++) {
 		Graph<PolygonView>::Vertex* vertex = startVertices[i];
 		for (auto adj : vertex->getAdjacencyList()) {
 			if (adj->getValue().getColor() == vertex->getValue().getColor())

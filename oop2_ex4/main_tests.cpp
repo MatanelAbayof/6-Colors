@@ -1,3 +1,4 @@
+/*
 #include "main_tests.h"
 
 //-------------- declarations -----------------
@@ -21,4 +22,4 @@ int main() {
 #endif // AKIVA_TESTS
 
 	return 0;
-}
+}*/

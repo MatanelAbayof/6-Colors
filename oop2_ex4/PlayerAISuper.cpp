@@ -10,7 +10,7 @@ sf::Color PlayerAISuper::selectColor()
 
 	// count colors occurrences of new adjacents
 	std::unordered_map <int, int> colorCounter;
-	for (int i = 0; i < ColorPanel::COLORS.size(); i++) {
+	for (size_t i = 0; i < ColorPanel::COLORS.size(); i++) {
 		// get the number that represnt the color
 		colorCounter[ColorPanel::COLORS[i].toInteger()] = 0;
 	}
