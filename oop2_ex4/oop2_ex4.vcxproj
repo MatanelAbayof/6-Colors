@@ -159,7 +159,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="akiva_tests.cpp" />
     <ClCompile Include="AlertDialog.cpp" />
     <ClCompile Include="AnimationView.cpp" />
     <ClCompile Include="AreaButton.cpp" />
@@ -176,7 +175,6 @@
     <ClCompile Include="ColorPanel.cpp" />
     <ClCompile Include="EditText.cpp" />
     <ClCompile Include="ErrorDialog.cpp" />
-    <ClCompile Include="example_class.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameMenu.cpp" />
@@ -192,9 +190,6 @@
     <ClCompile Include="LoseScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainScreen.cpp" />
-    <ClCompile Include="main_tests.cpp" />
-    <ClCompile Include="matanel_tests.cpp" />
-    <ClCompile Include="nahum_tests.cpp" />
     <ClCompile Include="NetworkException.cpp" />
     <ClCompile Include="NetworkPlayer.cpp" />
     <ClCompile Include="PlayerAI.cpp" />
@@ -243,7 +238,6 @@
     <ClInclude Include="ColorPanel.h" />
     <ClInclude Include="EditText.h" />
     <ClInclude Include="ErrorDialog.h" />
-    <ClInclude Include="example_class.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameMenu.h" />
@@ -261,7 +255,6 @@
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LoseScreen.h" />
     <ClInclude Include="MainScreen.h" />
-    <ClInclude Include="main_tests.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NetworkException.h" />
     <ClInclude Include="NetworkPlayer.h" />
