@@ -15,7 +15,7 @@ using BSLoseScreen = GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>;
  * LoseScreen class
  */
 class LoseScreen
-	: public BSLoseScreen
+	: public GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>
 {
 public:
 	// constructor

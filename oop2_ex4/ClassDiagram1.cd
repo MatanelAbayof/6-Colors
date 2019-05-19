@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GUI::AlertDialog" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAhEAAAAAAAAQgAgAAAABAAAAAAAQAAQBAAAAAAAAAA=</HashCode>
+      <FileName>AlertDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::AnimationView" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAABAAIABAAAAIABAQiAAASAAAAgAEAAAAAAAQ=</HashCode>
+      <FileName>AnimationView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::BaseScreen&lt;ViewType&gt;" Collapsed="true">
+    <Position X="22.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAhAAABAAAAAAACAABAAAQAEAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>BaseScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::Border" Collapsed="true">
+    <Position X="29" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAgAAEIADgAAAgAAAAAAAABCoAoIAAA=</HashCode>
+      <FileName>Border.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::Button" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::Cell" Collapsed="true">
+    <Position X="30.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAABBAAAAAAAAABUBwAAAAAAEAQACQACIAAAACA=</HashCode>
+      <FileName>Cell.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::EditText" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAJAAAAAAAAAAACBAAAIAAAAAIAACAAAAAAAAA=</HashCode>
+      <FileName>EditText.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ErrorDialog" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAABAAAAAAAAAAABAEAAAAAAAA=</HashCode>
+      <FileName>ErrorDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::FontManager" Collapsed="true">
+    <Position X="8" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABABAAAAAAAAAAIAQAgCAABAAA=</HashCode>
+      <FileName>FontManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::HorizontalLayout&lt;ViewType&gt;" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAACAAAAAACAAIQBAAAAAACAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>HorizontalLayout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::IHandler&lt;T&gt;" Collapsed="true">
+    <Position X="30.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAIAAAAAAAAAEAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>IHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ImageButton" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAggAAAAAAAAAgAAEBAADACCAAAAgQAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImageButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ImageTexture" Collapsed="true">
+    <Position X="32.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAACAABAICBAAAAoAAAAAgAAACAAAIAAA=</HashCode>
+      <FileName>ImageTexture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ImageView" Collapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAQAAAAAAAABIABAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImageView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::LoadResourceException" Collapsed="true">
+    <Position X="36" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>LoadResourceException.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::RelativeLayout&lt;ViewType&gt;" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQEACAAAAEAACAAQBAAAAAACAAAAAAAAQgAAAAA=</HashCode>
+      <FileName>RelativeLayout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ResourceLoader" Collapsed="true">
+    <Position X="8" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAgAAEAAAA=</HashCode>
+      <FileName>ResourceLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::SoundManager" Collapsed="true">
+    <Position X="10.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIqAAABABAAAAAAIAAAhIAAwgAAAAQA=</HashCode>
+      <FileName>SoundManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::TextureInfo" Collapsed="true">
+    <Position X="30.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEYAAAQAAAgAAQAAABAEAAAAAAAgAQAAAACgAEAA=</HashCode>
+      <FileName>TextureInfo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::TextureManager" Collapsed="true">
+    <Position X="5.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAABABABAAAAAAAAAAAAIAgAAAAAAg=</HashCode>
+      <FileName>TextureManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::TextView" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAAAIACAAAgAAAwIADACCgAgCgAIAEAAAAAAAAAA=</HashCode>
+      <FileName>TextView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::VerticalLayout&lt;ViewType&gt;" Collapsed="true">
+    <Position X="22" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAACAAAAAACAAARBAAAAEACAAAAQAAAAQAAAAA=</HashCode>
+      <FileName>VerticalLayout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::View" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>7YAILCEAQLJAAdirAIJRBFYCAIyDYCWGRMSUBQBQICA=</HashCode>
+      <FileName>View.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI::ViewGroup&lt;ViewType&gt;" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAQAACAIAAACgAAIQBAAAAAQAAAUAQAAIAAAAAAA=</HashCode>
+      <FileName>ViewGroup.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AreaButton" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAEAACAAAAAAABAAAAABSAAABAAAAIAAAAAAgAgAAA=</HashCode>
+      <FileName>AreaButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Board" Collapsed="true">
+    <Position X="24.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEAAAAAQCAAAAAAAAAABBQAAIAAAAAAAAgAAJDAAAAA=</HashCode>
+      <FileName>Board.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BottomPanel" Collapsed="true">
+    <Position X="19.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAgAAAEAIBAAAAAAAAgAABAAAEAAESAA=</HashCode>
+      <FileName>BottomPanel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChooseAIModeScreen" Collapsed="true">
+    <Position X="13.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAQAAAAUABAAAAAAABAgAAAAAAgAAAAAABAIAACA=</HashCode>
+      <FileName>ChooseAIModeScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientPlayer" Collapsed="true">
+    <Position X="1" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEEIAQAIAAAAAQAAFAACAAAAAAAAAAAABAAAAAg=</HashCode>
+      <FileName>ClientPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientThread" Collapsed="true">
+    <Position X="5.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEBAAAAAAAJBAAAgAAAABAAgAAAEAABGAAEABAAIAAA=</HashCode>
+      <FileName>ClientThread.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ColorButton" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAABAAAACAAAAIAAAAAgAgIIAA=</HashCode>
+      <FileName>ColorButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ColoringAlgorithm" Collapsed="true">
+    <Position X="32.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABBAQAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>ColoringAlgorithm.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ColorPanel" Collapsed="true">
+    <Position X="15.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAIAAAAAECABEAAAAAAAACAAUAAAAACQIA=</HashCode>
+      <FileName>ColorPanel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameController" Collapsed="true">
+    <Position X="34.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAQABEAAABAAAAABAAAAAAQAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>GameController.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameMenu" Collapsed="true">
+    <Position X="17.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAABAAAAAAAAAAAAgIhACIAgAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>GameMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameScreen" Collapsed="true">
+    <Position X="28" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAAAAAIAAAAAAAAAIABAAAAAAACAIAAAQAAAQAAAA=</HashCode>
+      <FileName>GameScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graph&lt;T&gt;" Collapsed="true">
+    <Position X="29" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAABgABAAAAAAAABAAAIAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>Graph.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INetworkThread" Collapsed="true">
+    <Position X="6.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAgAAAABAAgAAAAYBAAAAAAkEABAAAEgAAgIAwQ=</HashCode>
+      <FileName>INetworkThread.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JoinGameScreen" Collapsed="true">
+    <Position X="26" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQggAAAAAAAgiAAAgEAABAAAgBCAAAAAEAAIIACACAA=</HashCode>
+      <FileName>JoinGameScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelDifficultyButton" Collapsed="true">
+    <Position X="13" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAABAIAAAAQAAIAAAAAAAAACAA=</HashCode>
+      <FileName>LevelDifficultyButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logger" Collapsed="true">
+    <Position X="29" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAABACAAAAAAAAAAAAAAgAAAIAAA=</HashCode>
+      <FileName>Logger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoseScreen" Collapsed="true">
+    <Position X="21" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAEAAAQAAAAABAAAAgAAAAIAEAAABAAACAI=</HashCode>
+      <FileName>LoseScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainScreen" Collapsed="true">
+    <Position X="18.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAEECAQBAAMAgAAAAIAAAgAAAAAABI=</HashCode>
+      <FileName>MainScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Matrix&lt;T&gt;" Collapsed="true">
+    <Position X="32.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAQIACAAAAAAAAAIAADQEQAAEgAAAAQQAAgAAACAA=</HashCode>
+      <FileName>Matrix.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkException" Collapsed="true">
+    <Position X="34.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAEAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>NetworkException.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkPlayer" Collapsed="true">
+    <Position X="2" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NetworkPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAI" Collapsed="true">
+    <Position X="10" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAQBAAFAACACAAAAAAAABAAAAAAAg=</HashCode>
+      <FileName>PlayerAI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAIRegular" Collapsed="true">
+    <Position X="7.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>PlayerAIRegular.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAIStupid" Collapsed="true">
+    <Position X="10" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>PlayerAIStupid.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAISuper" Collapsed="true">
+    <Position X="12.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAACAABAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerAISuper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerBase" Collapsed="true">
+    <Position X="6.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAEEIAAAAEIAAQBACNAASAAAAAoBQAABEBAACAAg=</HashCode>
+      <FileName>PlayerBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PolygonShape" Collapsed="true">
+    <Position X="1.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAggAAAAAAEBAACAABAAQAAAAAAAAAAACA=</HashCode>
+      <FileName>PolygonShape.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PolygonView" Collapsed="true">
+    <Position X="26.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAQAAAAAAACAIABAAAAAAKAAAAAAAAgAAKAAA=</HashCode>
+      <FileName>PolygonView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequestsClientThread" Collapsed="true">
+    <Position X="5.5" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAABKAAAAAAAAAABAAgAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RequestsClientThread.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequestsQueue&lt;T&gt;" Collapsed="true">
+    <Position X="36" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAACIAAAAAAIAAAAIAAAAAAAAAAAAAAAAAIAAAIQAA=</HashCode>
+      <FileName>RequestsQueue.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequestsServerThread" Collapsed="true">
+    <Position X="7.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAAAKAAAAAAAAAABAAgAAAEAAAAAAIAAAIAAAA=</HashCode>
+      <FileName>RequestsServerThread.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServerPlayer" Collapsed="true">
+    <Position X="3.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAEEIAAAgAAAAAQAAFAACAAAAAAAAAAAABAAAAAg=</HashCode>
+      <FileName>ServerPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServerThread" Collapsed="true">
+    <Position X="7.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAQAAACAAAIAAgAAAABAAgAAAkAAAEgQYBCIEAAAA=</HashCode>
+      <FileName>ServerThread.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shape" Collapsed="true">
+    <Position X="1.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAEAAAAAAAAAAAAAAAABAAAAAAAQQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shape.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Square" Collapsed="true">
+    <Position X="0.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAABAAAAAAAQQIAAAAgAIAAAAA=</HashCode>
+      <FileName>Square.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StopWatch" Collapsed="true">
+    <Position X="29" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAACAAgAEAAAEgAAAABBAAAAAgABAIBAGAAAAIEAA=</HashCode>
+      <FileName>StopWatch.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Timer" Collapsed="true">
+    <Position X="32.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAEgAgAABBAAIAAgABAABAAAAAAEAAA=</HashCode>
+      <FileName>Timer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Triangle" Collapsed="true">
+    <Position X="2.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAABAAAQBAAAAAAAQQIAAAAAAIAAAAA=</HashCode>
+      <FileName>Triangle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserPlayer" Collapsed="true">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEEIAAAAAAAAAAAAFAACAAEAAgIAABBAAAAAEAg=</HashCode>
+      <FileName>UserPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaitingMultiplayerScreen" Collapsed="true">
+    <Position X="16" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAgAAgABAIABCAIAACAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>WaitingMultiplayerScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinScreen" Collapsed="true">
+    <Position X="23.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEABAAAAAAABAAAAAAAAAIAAAAABAAACCI=</HashCode>
+      <FileName>WinScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Utilities::SquareStruct" Collapsed="true">
+    <Position X="29" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAA=</HashCode>
+      <FileName>Utilities.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

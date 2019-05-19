@@ -291,6 +291,7 @@
     <ClInclude Include="WinScreen.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="fonts\fonts.json" />
     <None Include="sounds\back_musics.json" />
     <None Include="sounds\sounds.json" />

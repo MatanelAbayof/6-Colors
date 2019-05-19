@@ -16,7 +16,7 @@ using JoinGameBaseScreen = GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>;
 /*
  * MainScreen class
  */
-class JoinGameScreen : public JoinGameBaseScreen
+class JoinGameScreen : public GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>
 {
 public:
 	// constructor

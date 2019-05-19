@@ -15,7 +15,7 @@ using BSGameScreen = GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>;
  * GameScreen class
  */
 class GameScreen 
-	: public BSGameScreen
+	: public GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>
 {
 public:
 	// constructor

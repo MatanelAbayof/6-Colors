@@ -407,5 +407,6 @@
     <None Include="sounds\sounds.json" />
     <None Include="textures\textures.json" />
     <None Include="fonts\fonts.json" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

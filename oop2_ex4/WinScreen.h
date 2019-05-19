@@ -15,7 +15,7 @@ using BSWinScreen = GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>;
  * winScreen class
  */
 class WinScreen
-	: public BSWinScreen
+	: public GUI::BaseScreen<GUI::RelativeLayout<GUI::View>>
 {
 public:
 	// constructor
