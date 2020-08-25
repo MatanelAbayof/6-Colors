@@ -14,7 +14,12 @@ bool PlayerAI::isReadyToPlay()
 
 void PlayerAI::onOtherPlayerPlayed(const sf::Color& selectedColor)
 {
-	int waitTime = 200 + rand()%1000;
+	prepareToPlay();
+}
+
+void PlayerAI::prepareToPlay()
+{
+	int waitTime = 200 + rand() % 1000;
 	m_waitStopWatch.start(waitTime, [this]() {
 		m_readyToPlay = true;
 	});

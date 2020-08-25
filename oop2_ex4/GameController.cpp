@@ -29,7 +29,7 @@ void GameController::run()
 	// play background music
 	GUI::SoundManager::getInterface().playBackgroundMusic("bm1");
 	// create window
-	sf::RenderWindow window(sf::VideoMode(1000, 500), "6 Colors");
+	sf::RenderWindow window(sf::VideoMode(1000, 500), "6 Colors", sf::Style::Fullscreen);
 	window.setFramerateLimit(60);
 	// run main screen
 	runMainScreen(window);
@@ -66,6 +66,11 @@ void GameController::runChooseModeAIScreen(sf::RenderWindow& window)
 		// create players
 		std::vector<std::shared_ptr<PlayerBase>> players;
 		players.push_back(std::make_shared<UserPlayer>());
+
+		// this is for AI vs AI
+		//players.push_back(std::make_shared<PlayerAISuper>());
+		//players[0]->setName("User");
+
 		std::shared_ptr<PlayerBase> aiPlayer;
 
 		switch (levelDiffBt->getLevelDifficulty())
@@ -179,6 +184,10 @@ void GameController::playGame(Timer& screenUpdatesTimer, GameScreen& gameScreen,
 	if (!isFirstPlayerTurn) {
 		gameScreen.getBottomPanel()->getColorPanel()->disable();
 		gameScreen.getGameMenu()->getTurnButton()->setText(otherPlayer->getName() + " turn");
+		otherPlayer->prepareToPlay();
+	}
+	else {
+		userPlayer->prepareToPlay();
 	}
 
 	screenUpdatesTimer.start(30, [&userPlayer, &otherPlayer, &gameScreen, &isFirstPlayerTurn]() {

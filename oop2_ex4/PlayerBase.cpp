@@ -32,6 +32,10 @@ std::vector<sf::Color> PlayerBase::getForbiddenColors() const
 	return forbiddenColors;
 }
 
+void PlayerBase::prepareToPlay()
+{
+}
+
 void PlayerBase::clean()
 {
 	m_playerVertices.clear();
