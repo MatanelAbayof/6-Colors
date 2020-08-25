@@ -1,6 +1,6 @@
 
 <div>
-    <a href="https://github.com/MatanelAbayof/Robbery-in-the-Depths"><img src="https://raw.githubusercontent.com/MatanelAbayof/Robbery-in-the-Depths/master/oop2_project/textures/diver.png" alt="Robbery in the Depths" title="Robbery in the Depths"></a>
+    <a href="https://github.com/MatanelAbayof/6-Colors"><img src="https://raw.githubusercontent.com/MatanelAbayof/6-Colors/master/oop2_ex4/textures/colors.png" title="6 Colors" alt="6 Colors"></a>
 </div>
 
 <div>
@@ -23,17 +23,17 @@ This project uses [SFML library](https://www.sfml-dev.org/download/sfml/2.5.1/).
 
 ## Preview
 <div>
-    <img src="https://raw.githubusercontent.com/MatanelAbayof/Robbery-in-the-Depths/master/screenshots/gameplay1.gif" alt="Preview">
+    <img src="https://github.com/MatanelAbayof/6-Colors/raw/master/screenshots/gameplay.gif" alt="Preview">
 </div>
 
 ## Running the application
 ### Windows
 * Download Visual C++ 15 (2017) - 32-bit from [this link](https://www.sfml-dev.org/files/SFML-2.5.1-windows-vc15-32-bit.zip)
 * Download SFML-2.5v library from [this link](https://drive.google.com/file/d/1izFw9RaW8r2Hs3REshlN25zrhiTjrlyF/view?usp=sharing)
-* Download game from [this link](https://drive.google.com/file/d/1rwskQgCo7DHqZ1JmO708bUdp0aOkUJOD/view?usp=sharing)
-* Run `‹Game›/Robbery in the Depths.exe`
+* Download game from [this link](https://drive.google.com/file/d/1DblDgtjvC3QlYstouypXytm6--fYUwxb/view?usp=sharing)
+* Run `‹Game›/6 Colors.exe`
 
-`‹Game›` *is path to Robbery in the Depths x64 directory.*
+`‹Game›` *is path to "6 Colors" directory.*
 
 ## Dependencies
 ### Windows
