@@ -26,6 +26,8 @@ This project uses [SFML library](https://www.sfml-dev.org/download/sfml/2.5.1/).
     <img src="https://github.com/MatanelAbayof/6-Colors/raw/master/screenshots/gameplay.gif" alt="Preview">
 </div>
 
+Watch on [YouTube](https://youtu.be/fjMCsY60U9o)
+
 ## Running the application
 ### Windows
 * Download Visual C++ 15 (2017) - 32-bit from [this link](https://www.sfml-dev.org/files/SFML-2.5.1-windows-vc15-32-bit.zip)
