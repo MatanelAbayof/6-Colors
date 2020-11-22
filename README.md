@@ -44,7 +44,7 @@ Watch on [YouTube](https://youtu.be/fjMCsY60U9o)
 
 ## Building the solution
 ### Windows
-* Open the solution in [Microsoft Visual Studio 2019](https://www.visualstudio.com/) (or newer) and build it
+* Open the solution in [Microsoft Visual Studio 2019](https://www.visualstudio.com/) (or newer)
 * Click on build solution
 
 ## License
